@@ -27,6 +27,8 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
+import Hello from './components/Hello.tsx';
+
 const Section: React.FC<{
   title: string;
 }> = ({children, title}) => {
@@ -85,6 +87,9 @@ const App = () => {
           </Section>
           <Section title="Learn More">
             Read the docs to discover what to do next:
+          </Section>
+          <Section title="Michael's">
+            <Hello name="Michael" />
           </Section>
           <LearnMoreLinks />
         </View>

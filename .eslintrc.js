@@ -16,5 +16,7 @@ module.exports = {
       2,
       {extensions: ['.js', '.jsx', '.ts', '.tsx']},
     ],
+    'import/prefer-default-export': 'off',
+    'import/extensions': ['off'],
   },
 };
