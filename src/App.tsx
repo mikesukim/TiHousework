@@ -10,6 +10,7 @@
 
 import React from 'react';
 import {
+  Button,
   SafeAreaView,
   ScrollView,
   StatusBar,
@@ -27,8 +28,10 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
+import {Navigation} from 'react-native-navigation';
 import Hello from './components/Hello.tsx';
 import Clock from './components/Clock.tsx';
+import {name as appName} from '../app.json';
 
 const styles = StyleSheet.create({
   sectionContainer: {
@@ -77,7 +80,7 @@ const Section: React.FC<{
   );
 };
 
-const App = () => {
+const App = (props) => {
   const isDarkMode = useColorScheme() === 'dark';
 
   const backgroundStyle = {
@@ -113,6 +116,19 @@ const App = () => {
           </Section>
           <Section title="Michael's">
             <Clock />
+          </Section>
+          <Section title="Michael's">
+            <Button
+              title="Push Clock Screen"
+              color="#710ce3"
+              onPress={() =>
+                Navigation.push(props.componentId, {
+                  component: {
+                    name: `com.${appName}.ClockScreen`,
+                  },
+                })
+              }
+            />
           </Section>
           <LearnMoreLinks />
         </View>
