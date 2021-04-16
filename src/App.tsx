@@ -28,6 +28,7 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 
 import Hello from './components/Hello.tsx';
+import Clock from './components/Clock.tsx';
 
 const styles = StyleSheet.create({
   sectionContainer: {
@@ -109,6 +110,9 @@ const App = () => {
           </Section>
           <Section title="Michael's">
             <Hello name="yolo" />
+          </Section>
+          <Section title="Michael's">
+            <Clock />
           </Section>
           <LearnMoreLinks />
         </View>
