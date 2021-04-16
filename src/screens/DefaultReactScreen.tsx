@@ -29,9 +29,9 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 
 import {Navigation} from 'react-native-navigation';
-import Hello from './components/Hello.tsx';
-import Clock from './components/Clock.tsx';
-import {name as appName} from '../app.json';
+import Hello from '../components/Hello.tsx';
+import Clock from '../components/Clock.tsx';
+import {name as appName} from '../../app.json';
 
 const styles = StyleSheet.create({
   sectionContainer: {
@@ -80,7 +80,7 @@ const Section: React.FC<{
   );
 };
 
-const App = (props) => {
+const DefaultReactScreen = (props): JSX.Element => {
   const isDarkMode = useColorScheme() === 'dark';
 
   const backgroundStyle = {
@@ -137,4 +137,4 @@ const App = (props) => {
   );
 };
 
-export default App;
+export default DefaultReactScreen;
