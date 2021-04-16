@@ -7,7 +7,7 @@ interface Props {
 interface State {
   value: number;
 }
-class Hello extends React.Component<Props, State> {
+class TempCompState extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {value: 7};
@@ -25,8 +25,8 @@ class Hello extends React.Component<Props, State> {
   }
 }
 
-Hello.defaultProps = {
+TempCompState.defaultProps = {
   name: 'John',
 };
 
-export default Hello;
+export default TempCompState;

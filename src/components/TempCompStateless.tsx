@@ -1,11 +1,11 @@
 import React from 'react';
 import {Text} from 'react-native';
 
-interface props {
+interface Props {
   name?: string;
 }
 
-function TempCompStateless({name}: props): JSX.Element {
+function TempCompStateless({name}: Props): JSX.Element {
   return <Text>Hello {name} </Text>;
 }
 
