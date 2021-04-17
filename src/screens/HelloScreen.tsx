@@ -9,13 +9,9 @@ function HelloScreen(): JSX.Element {
       <Hello name="Michaaaaaeellll" />
       <Hello name="Michaaaaaeellll" />
       <Hello name="Michaaaaaeellll" />
-      <Hello name="Michaaaaaeellll" />
+      <Hello />
     </View>
   );
 }
-
-HelloScreen.defaultProps = {
-  name: 'john',
-};
 
 export default HelloScreen;
