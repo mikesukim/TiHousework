@@ -10,6 +10,7 @@
 
 import React from 'react';
 import {
+  Button,
   SafeAreaView,
   ScrollView,
   StatusBar,
@@ -27,8 +28,12 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
-import Hello from './components/Hello.tsx';
-import Clock from './components/Clock.tsx';
+import {Navigation} from 'react-native-navigation';
+import Hello from '../components/Hello.tsx';
+import Clock from '../components/Clock.tsx';
+import {SCREENS} from '../constants/screen.tsx';
+
+import ROUTER from '../navigation/router.tsx';
 
 const styles = StyleSheet.create({
   sectionContainer: {
@@ -77,7 +82,7 @@ const Section: React.FC<{
   );
 };
 
-const App = () => {
+const DefaultReactScreen = (props): JSX.Element => {
   const isDarkMode = useColorScheme() === 'dark';
 
   const backgroundStyle = {
@@ -114,6 +119,31 @@ const App = () => {
           <Section title="Michael's">
             <Clock />
           </Section>
+          <Section title="Michael's">
+            <Button
+              title="Push Clock Screen"
+              color="#710ce3"
+              onPress={() =>
+                Navigation.push(props.componentId, {
+                  component: {
+                    name: SCREENS.Clock,
+                  },
+                })
+              }
+            />
+          </Section>
+          <Section title="Michael's">
+            <Button
+              title="Push Hello using ROUTER"
+              color="#710ce3"
+              onPress={() =>
+                ROUTER.showPushScreen({
+                  componentId: props.componentId,
+                  screen: SCREENS.Hello,
+                })
+              }
+            />
+          </Section>
           <LearnMoreLinks />
         </View>
       </ScrollView>
@@ -121,4 +151,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default DefaultReactScreen;

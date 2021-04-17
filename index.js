@@ -2,8 +2,7 @@
  * @format
  */
 
-import {AppRegistry} from 'react-native';
-import {name as appName} from './app.json';
-import App from './src/App.tsx';
+import {registerScreens, registerRoot} from './src/navigation';
 
-AppRegistry.registerComponent(appName, () => App);
+registerScreens();
+registerRoot();
