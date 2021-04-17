@@ -31,7 +31,9 @@ import {
 import {Navigation} from 'react-native-navigation';
 import Hello from '../components/Hello.tsx';
 import Clock from '../components/Clock.tsx';
-import {name as appName} from '../../app.json';
+import {SCREENS} from '../constants/screen.tsx';
+
+import ROUTER from '../navigation/router.tsx';
 
 const styles = StyleSheet.create({
   sectionContainer: {
@@ -124,8 +126,20 @@ const DefaultReactScreen = (props): JSX.Element => {
               onPress={() =>
                 Navigation.push(props.componentId, {
                   component: {
-                    name: `com.${appName}.ClockScreen`,
+                    name: SCREENS.Clock,
                   },
+                })
+              }
+            />
+          </Section>
+          <Section title="Michael's">
+            <Button
+              title="Push Hello using ROUTER"
+              color="#710ce3"
+              onPress={() =>
+                ROUTER.showPushScreen({
+                  componentId: props.componentId,
+                  screen: SCREENS.Hello,
                 })
               }
             />

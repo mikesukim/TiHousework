@@ -4,10 +4,10 @@
  *          `popToScreen`, `dismissModal`...
  */
 import {Navigation} from 'react-native-navigation';
-import {SCREENS} from '../constants/screen.tsx';
 
 interface Screen {
   componentId: string;
+  screen: string;
   passProps?: object;
 }
 
@@ -15,11 +15,14 @@ interface Screen {
  * Router method to show a screen by pushing on top of current stack
  * @param {object} params i.e {componentId is compulsory, passProps is optional},
  */
-const showPushScreen = ({componentId, passProps = {}}: Screen): void => {
+const showPushScreen = ({
+  componentId,
+  screen,
+  passProps = {},
+}: Screen): void => {
   Navigation.push(componentId, {
     component: {
-      name: SCREENS.Dummy,
-      id: SCREENS.Dummy,
+      name: screen,
       passProps: {
         ...passProps,
       },
