@@ -12,6 +12,7 @@
     "prettier": "prettier --write --config ./.prettierrc.js './src/**/*.{ts,tsx}'"
   },
   "dependencies": {
+    "@react-native-google-signin/google-signin": "^6.0.0",
     "@types/react-redux": "^7.1.16",
     "react": "17.0.1",
     "react-native": "0.64.0",
