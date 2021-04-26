@@ -22,28 +22,22 @@ class KakaoLogin extends React.Component<Props, State> {
   }
 
   signInWithKakao = async (): Promise<void> => {
-    const token: KakaoOAuthToken = await login().then(
-      function (token) {
+    const token: KakaoOAuthToken = await login()
+      .then(function (token) {
         console.log('Kakao Login Succeed');
         console.log(JSON.stringify(token));
-      },
-      function () {
-        console.log('Kakao Login Error occured');
-      },
-    );
+      })
+      .catch(error => console.log(error));
   };
 
   getProfile = async (): Promise<void> => {
     this.signInWithKakao().then(async () => {
-      const profile: KakaoProfile = await getKakaoProfile().then(
-        function (profile) {
+      const profile: KakaoProfile = await getKakaoProfile()
+        .then(function (profile) {
           console.log('Kakao getProfile Succeed');
           console.log(JSON.stringify(profile));
-        },
-        function () {
-          console.log('Kakao getProfile Error occured');
-        },
-      );
+        })
+        .catch(error => console.log(error));
     });
   };
 
