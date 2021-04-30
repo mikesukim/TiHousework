@@ -1,4 +1,4 @@
-package com.tihousework;
+package com.kimnoh.busi.tihousework;
 
 import com.reactnativenavigation.NavigationActivity;
 

@@ -13,6 +13,13 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		53F44288F2CE45DC18D38F21 /* libPods-TiHousework-TiHouseworkTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 16ED211872B0228B61A02EE2 /* libPods-TiHousework-TiHouseworkTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		955E7BD42633381A00A59767 /* libRNGoogleSignin.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 955E7BD32633381A00A59767 /* libRNGoogleSignin.a */; };
+		955E7BD62633382600A59767 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 955E7BD52633382600A59767 /* AddressBook.framework */; };
+		955E7BD82633382F00A59767 /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 955E7BD72633382F00A59767 /* SafariServices.framework */; };
+		955E7BDA2633384000A59767 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 955E7BD92633384000A59767 /* SystemConfiguration.framework */; };
+		955E7BDC2633384900A59767 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 955E7BDB2633384900A59767 /* libz.tbd */; };
+		956FE31526332EDB0008C61C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 956FE31426332EDB0008C61C /* GoogleService-Info.plist */; };
+		95E14EF72635B31D00963F93 /* SwiftBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E14EF62635B31D00963F93 /* SwiftBridge.swift */; };
 		A0C741F79B15F9F608A5E60F /* libPods-TiHousework.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 604672816A7D2A8FAA96AC05 /* libPods-TiHousework.a */; };
 /* End PBXBuildFile section */
 
@@ -42,6 +49,14 @@
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = TiHousework/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		83B348BE2F129CFE70F94092 /* Pods-TiHousework-TiHouseworkTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TiHousework-TiHouseworkTests.debug.xcconfig"; path = "Target Support Files/Pods-TiHousework-TiHouseworkTests/Pods-TiHousework-TiHouseworkTests.debug.xcconfig"; sourceTree = "<group>"; };
 		895C9DB9D77B82DB5E4AEA1D /* Pods-TiHousework.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TiHousework.debug.xcconfig"; path = "Target Support Files/Pods-TiHousework/Pods-TiHousework.debug.xcconfig"; sourceTree = "<group>"; };
+		955E7BD32633381A00A59767 /* libRNGoogleSignin.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libRNGoogleSignin.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		955E7BD52633382600A59767 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
+		955E7BD72633382F00A59767 /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
+		955E7BD92633384000A59767 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		955E7BDB2633384900A59767 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		956FE31426332EDB0008C61C /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		95E14EF52635B31C00963F93 /* TiHousework-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TiHousework-Bridging-Header.h"; sourceTree = "<group>"; };
+		95E14EF62635B31D00963F93 /* SwiftBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftBridge.swift; sourceTree = "<group>"; };
 		EB189D2FF435F2F522A777B6 /* Pods-TiHousework.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TiHousework.release.xcconfig"; path = "Target Support Files/Pods-TiHousework/Pods-TiHousework.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -59,6 +74,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				955E7BDC2633384900A59767 /* libz.tbd in Frameworks */,
+				955E7BDA2633384000A59767 /* SystemConfiguration.framework in Frameworks */,
+				955E7BD82633382F00A59767 /* SafariServices.framework in Frameworks */,
+				955E7BD62633382600A59767 /* AddressBook.framework in Frameworks */,
+				955E7BD42633381A00A59767 /* libRNGoogleSignin.a in Frameworks */,
 				A0C741F79B15F9F608A5E60F /* libPods-TiHousework.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -99,6 +119,11 @@
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				955E7BDB2633384900A59767 /* libz.tbd */,
+				955E7BD92633384000A59767 /* SystemConfiguration.framework */,
+				955E7BD72633382F00A59767 /* SafariServices.framework */,
+				955E7BD52633382600A59767 /* AddressBook.framework */,
+				955E7BD32633381A00A59767 /* libRNGoogleSignin.a */,
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				604672816A7D2A8FAA96AC05 /* libPods-TiHousework.a */,
 				16ED211872B0228B61A02EE2 /* libPods-TiHousework-TiHouseworkTests.a */,
@@ -116,12 +141,15 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				95E14EF62635B31D00963F93 /* SwiftBridge.swift */,
+				956FE31426332EDB0008C61C /* GoogleService-Info.plist */,
 				13B07FAE1A68108700A75B9A /* TiHousework */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* TiHouseworkTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				D95E3D70E862F1017F0E28A0 /* Pods */,
+				95E14EF52635B31C00963F93 /* TiHousework-Bridging-Header.h */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -145,7 +173,6 @@
 				83B348BE2F129CFE70F94092 /* Pods-TiHousework-TiHouseworkTests.debug.xcconfig */,
 				3016284C3F056B0D1F5E8FCB /* Pods-TiHousework-TiHouseworkTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -208,7 +235,7 @@
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
-						LastSwiftMigration = 1120;
+						LastSwiftMigration = 1240;
 					};
 				};
 			};
@@ -243,6 +270,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				956FE31526332EDB0008C61C /* GoogleService-Info.plist in Resources */,
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 			);
@@ -413,6 +441,7 @@
 			files = (
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
+				95E14EF72635B31D00963F93 /* SwiftBridge.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -431,6 +460,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 83B348BE2F129CFE70F94092 /* Pods-TiHousework-TiHouseworkTests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -458,6 +488,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3016284C3F056B0D1F5E8FCB /* Pods-TiHousework-TiHouseworkTests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
 				INFOPLIST_FILE = TiHouseworkTests/Info.plist;
@@ -496,8 +527,9 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.kimnoh.busi.tihousework;
 				PRODUCT_NAME = TiHousework;
+				SWIFT_OBJC_BRIDGING_HEADER = "TiHousework-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -521,8 +553,9 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.kimnoh.busi.tihousework;
 				PRODUCT_NAME = TiHousework;
+				SWIFT_OBJC_BRIDGING_HEADER = "TiHousework-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
