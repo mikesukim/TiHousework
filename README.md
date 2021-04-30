@@ -12,7 +12,6 @@
 ```
 git clone
 npm install
-yarn install
 cd ios && pod install
 ```
 
