@@ -7,6 +7,7 @@
 ### Prerequisites / 선행 조건
 - npm
 - react-native
+- Xcode 12.4 version!!(12.5 version 에서 kakaotalk login error)
 
 ### Installing / 설치
 ```
