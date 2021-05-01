@@ -1,8 +1,10 @@
 import {combineReducers} from 'redux';
 import counter from './counter.ts';
+import auth from './auth.ts';
 
 const rootReducer = combineReducers({
   counter,
+  auth,
 });
 
 // 루트 리듀서를 내보내주세요.
