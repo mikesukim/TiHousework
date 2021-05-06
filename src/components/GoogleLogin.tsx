@@ -4,6 +4,7 @@ import {
   GoogleSigninButton,
   statusCodes,
 } from '@react-native-google-signin/google-signin';
+import { TouchableHighlight, Text, StyleSheet } from 'react-native';
 
 interface Props {
   name?: string;
@@ -44,19 +45,37 @@ class GoogleLogin extends React.Component<Props, State> {
     const {name} = this.props;
     const {value, isSigninInProgress} = this.state;
     return (
-      <GoogleSigninButton
-        style={{width: 192, height: 48}}
-        size={GoogleSigninButton.Size.Wide}
-        color={GoogleSigninButton.Color.Dark}
+      <TouchableHighlight //wrapper style줘야하는데? react-native에서 제공하는 component 에는 스타일 어케 주지? 
+        // style={{width: 192, height: 48}}
+        // size={GoogleSigninButton.Size.Wide}
+        // color={GoogleSigninButton.Color.Dark}
+        style={styles.wrapper}
         onPress={() => {
           this.signIn();
           this.setState({isSigninInProgress: true});
         }}
         disabled={isSigninInProgress}
-      />
+      >
+        <Text style={styles.buttonText}>Sign in with Google</Text>
+      </TouchableHighlight>
     );
   }
 }
+
+const styles = StyleSheet.create({  //styled component로 바꾸기 
+  wrapper: {
+    padding: 15,
+    display: "flex",
+    borderRadius: 40,
+    borderWidth: 1,
+    borderColor: "#ffffff"
+  },
+  buttonText: {
+    fontSize: 16,
+    width: "100%",
+    textAlign: "center"
+  }
+});
 
 GoogleLogin.defaultProps = {
   name: 'John',
