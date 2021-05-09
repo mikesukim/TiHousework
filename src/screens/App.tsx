@@ -3,7 +3,7 @@ import {Provider} from 'react-redux';
 import {createStore} from 'redux';
 
 import rootReducer from '../redux';
-import DefaultReactScreen from './DefaultReactScreen.tsx';
+import DefaultReactScreen from './DefaultReactScreen';
 import SocialLogin from '../components/SocialLogin';
 
 const store = createStore(rootReducer);

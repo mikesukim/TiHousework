@@ -26,6 +26,11 @@ export function registerRoot(): void {
               },
             },
           ],
+          options: {
+            topBar: {
+              visible: false,
+            }
+          }
         },
       },
     });

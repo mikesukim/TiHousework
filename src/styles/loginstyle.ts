@@ -34,3 +34,25 @@ export const WelcomeText = styled.Text`
     fontWeight: 300;
     marginBottom: 40px;
 `;
+
+export const RoundedButton = styled.TouchableHighlight`
+    padding: 15px;
+    display: flex;
+    borderRadius: 40px;
+    borderWidth: 1px;
+    borderColor: #ffffff;
+    marginBottom: 15px;
+`;
+
+export const ButtonText = styled.Text`
+    fontSize: 16px;
+    width: 100%;
+    textAlign: center;
+    color: #ffffff;
+`;
+
+export const ButtonsWrapper = styled.View`
+    
+`;
+
+
