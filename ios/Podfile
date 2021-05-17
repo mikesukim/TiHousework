@@ -9,6 +9,10 @@ target 'TiHousework' do
   # Pods for test_google_signin
   pod 'GoogleSignIn', '~> 5.0.2'
 
+  # Pods for TiHousework with Firebase
+  pod 'Firebase/Analytics'
+  pod 'Firebase/DynamicLinks'
+
   use_react_native!(
     :path => config[:reactNativePath],
     # to enable hermes on iOS, change `false` to `true` and then install pods
