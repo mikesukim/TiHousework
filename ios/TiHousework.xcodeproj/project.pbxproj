@@ -18,9 +18,9 @@
 		955E7BD82633382F00A59767 /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 955E7BD72633382F00A59767 /* SafariServices.framework */; };
 		955E7BDA2633384000A59767 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 955E7BD92633384000A59767 /* SystemConfiguration.framework */; };
 		955E7BDC2633384900A59767 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 955E7BDB2633384900A59767 /* libz.tbd */; };
-		956FE31526332EDB0008C61C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 956FE31426332EDB0008C61C /* GoogleService-Info.plist */; };
 		95E14EF72635B31D00963F93 /* SwiftBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E14EF62635B31D00963F93 /* SwiftBridge.swift */; };
 		A0C741F79B15F9F608A5E60F /* libPods-TiHousework.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 604672816A7D2A8FAA96AC05 /* libPods-TiHousework.a */; };
+		B27B3D3326557CB40025424A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B27B3D3226557CB30025424A /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,9 +54,9 @@
 		955E7BD72633382F00A59767 /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
 		955E7BD92633384000A59767 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		955E7BDB2633384900A59767 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
-		956FE31426332EDB0008C61C /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		95E14EF52635B31C00963F93 /* TiHousework-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TiHousework-Bridging-Header.h"; sourceTree = "<group>"; };
 		95E14EF62635B31D00963F93 /* SwiftBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftBridge.swift; sourceTree = "<group>"; };
+		B27B3D3226557CB30025424A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "TiHousework/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		EB189D2FF435F2F522A777B6 /* Pods-TiHousework.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TiHousework.release.xcconfig"; path = "Target Support Files/Pods-TiHousework/Pods-TiHousework.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -106,6 +106,7 @@
 		13B07FAE1A68108700A75B9A /* TiHousework */ = {
 			isa = PBXGroup;
 			children = (
+				B27B3D3226557CB30025424A /* GoogleService-Info.plist */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
@@ -142,7 +143,6 @@
 			isa = PBXGroup;
 			children = (
 				95E14EF62635B31D00963F93 /* SwiftBridge.swift */,
-				956FE31426332EDB0008C61C /* GoogleService-Info.plist */,
 				13B07FAE1A68108700A75B9A /* TiHousework */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* TiHouseworkTests */,
@@ -270,9 +270,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				956FE31526332EDB0008C61C /* GoogleService-Info.plist in Resources */,
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				B27B3D3326557CB40025424A /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
