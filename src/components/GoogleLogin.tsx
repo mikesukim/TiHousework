@@ -22,6 +22,8 @@ class GoogleLogin extends React.Component<Props, State> {
   }
 
   signIn = async () => {
+    const {userHook} = this.props;
+    const {email, onCreate, onRemove} = userHook;
     try {
       await GoogleSignin.hasPlayServices();
       const userInfo = await GoogleSignin.signIn();
@@ -41,7 +43,6 @@ class GoogleLogin extends React.Component<Props, State> {
   };
 
   render(): JSX.Element {
-    const {name} = this.props;
     const {value, isSigninInProgress} = this.state;
     return (
       <GoogleSigninButton

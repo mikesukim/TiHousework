@@ -8,6 +8,7 @@ import rootReducer from '../redux';
 
 import DefaultReactScreen from './DefaultReactScreen.tsx';
 import SocialLogin from '../components/SocialLogin';
+import ApiTestComp from '../components/ApiTestComp';
 
 const store = createStore(rootReducer);
 const persistor = persistStore(store);
@@ -17,6 +18,7 @@ function App(): JSX.Element {
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <SocialLogin />
+        <ApiTestComp />
       </PersistGate>
     </Provider>
   );

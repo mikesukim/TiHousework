@@ -3,6 +3,7 @@ import {Text, View} from 'react-native';
 import useAuth from '../hooks/useAuth.tsx';
 
 import GoogleLogin from './GoogleLogin.tsx';
+import WrapperGoogleLogin from './WrapperGoogleLogin';
 import KakaoLogin from './KakaoLogin.tsx';
 
 function SocialLogin(): JSX.Element {
@@ -12,7 +13,7 @@ function SocialLogin(): JSX.Element {
 
   return (
     <View>
-      <GoogleLogin />
+      <WrapperGoogleLogin />
       <KakaoLogin />
       <Text>{token ? 'token exist' : 'token missing'}</Text>
     </View>
