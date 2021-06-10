@@ -4,19 +4,21 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import counter from './counter.ts';
 import auth from './auth.ts';
+import user from './user.ts';
 
 const persistConfig = {
   key: 'root',
   // localStorage에 저장합니다.
   storage: AsyncStorage,
   // reducer들중에 auth reducer만 localstorage에 저장합니다.
-  whitelist: ['auth'],
+  whitelist: ['auth', 'user'],
   // blacklist -> 그것만 제외합니다
 };
 
 const rootReducer = combineReducers({ 
   counter,
   auth,
+  user,
 });
 
 // 루트 리듀서를 내보내주세요.

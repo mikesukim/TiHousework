@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {Button, Text, View} from 'react-native';
 import {TESTTOKEN} from '../credentials';
 import useAuth from '../hooks/useAuth.tsx';
+import useUser from '../hooks/useUser.tsx';
 import {getHelloWorld, postLogin} from '../router';
 
 function ApiTestComp(): JSX.Element {
@@ -9,7 +10,7 @@ function ApiTestComp(): JSX.Element {
   const [isClicked, setIsClicked] = useState(false);
 
   const {token, onRemoveToken, onAddToken} = useAuth();
-
+  const {email, onCreate, onRemove} = useUser();
   const [data, setData] = useState({
     message: '',
   });
@@ -59,6 +60,7 @@ function ApiTestComp(): JSX.Element {
         disabled={!!isClicked}
       />
       <Text>{isLoading ? 'loading' : data.message}</Text>
+      <Text>{email}</Text>
     </View>
   );
 }
