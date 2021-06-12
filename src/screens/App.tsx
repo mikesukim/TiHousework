@@ -36,17 +36,19 @@ function App(): JSX.Element {
   };
 
   React.useEffect(() => {
+  dynamicLinks()
+    .getInitialLink()
+    .then(link => {
+      alert(link.url);
+      // if (link.url === 'https://invertase.io/offer') {
+      //   // ...set initial route as offers screen
+      // }
+    });
+
     const unsubscribe = dynamicLinks().onLink(handleDynamicLink);
     // When the component is unmounted, remove the listener
     return () => unsubscribe();
 
-    // dynamicLinks()
-    // .getInitialLink()
-    // .then(link => {
-    //   if (link.url === 'https://invertase.io/offer') {
-    //     // ...set initial route as offers screen
-    //   }
-    // });
   }, []);
 
   return (
