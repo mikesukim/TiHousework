@@ -36,6 +36,8 @@ function ApiTestComp(): JSX.Element {
         setData({
           message: error.message,
         });
+        console.log(error.response.status);
+        console.log(error.response.data);
       });
   };
 
