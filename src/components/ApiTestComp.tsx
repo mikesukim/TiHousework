@@ -6,14 +6,20 @@ import useUser from '../hooks/useUser.tsx';
 import {getHelloWorld, postLogin} from '../router';
 
 function ApiTestComp(): JSX.Element {
-  const [isLoading, setIsLoading] = useState(true);
   const [isClicked, setIsClicked] = useState(false);
-
+  const [loginSucceed, setloginSucceed] = useState(false);
   const {token, onRemoveToken, onAddToken} = useAuth();
   const {email, onCreate, onRemove} = useUser();
   const [data, setData] = useState({
-    message: '',
+    message: 'not started',
   });
+
+  useEffect(() => {
+    // console.log(`EFFECT =  ${token}`);
+    if (loginSucceed) {
+      requestHelloWorld();
+    }
+  }, [loginSucceed]);
 
   const requestLogin = () => {
     setIsClicked(true);
@@ -24,14 +30,14 @@ function ApiTestComp(): JSX.Element {
           message: response.data.message,
         });
         onAddToken(response.data.token);
-        setIsLoading(false);
-        setIsClicked(false);
-        requestHelloWorld();
+        setloginSucceed(true);
       })
       .catch(function (error) {
         setData({
           message: error.message,
         });
+        console.log(error.response.status);
+        console.log(error.response.data);
       });
   };
 
@@ -42,8 +48,6 @@ function ApiTestComp(): JSX.Element {
         setData({
           message: response.data.message,
         });
-        setIsLoading(false);
-        setIsClicked(false);
       })
       .catch(function (error) {
         setData({
@@ -54,12 +58,9 @@ function ApiTestComp(): JSX.Element {
 
   return (
     <View>
-      <Button
-        title="Request API!"
-        onPress={requestLogin}
-        disabled={!!isClicked}
-      />
-      <Text>{isLoading ? 'loading' : data.message}</Text>
+      <Button title="Request HELLO!" onPress={requestLogin} disabled={false} />
+      <Text>{data.message}</Text>
+      <Text>{token}</Text>
       <Text>{email}</Text>
     </View>
   );

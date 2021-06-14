@@ -22,13 +22,16 @@ class GoogleLogin extends React.Component<Props, State> {
   }
 
   signIn = async () => {
-    const {userHook} = this.props;
-    const {email, onCreate, onRemove} = userHook;
+    const useUser = this.props.userHook;
+    const {email, onCreate, onRemove} = useUser;
+    // const {token, onRemoveToken, onAddToken} = useUser;
     try {
       await GoogleSignin.hasPlayServices();
       const userInfo = await GoogleSignin.signIn();
       //   this.setState({userInfo});
-      console.log(userInfo.user);
+      onCreate({
+        email: userInfo.user.email,
+      });
     } catch (error) {
       if (error.code === statusCodes.SIGN_IN_CANCELLED) {
         // user cancelled the login flow

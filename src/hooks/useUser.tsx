@@ -11,6 +11,7 @@ interface UserProps {
 
 export default function useAuth(): UserProps {
   const email = useSelector((state: RootState) => state.user.email);
+  const user = useSelector((state: RootState) => state.user);
   const dispatch = useDispatch();
 
   const onCreate = useCallback((user: UserState) => dispatch(create(user)), [
@@ -21,6 +22,7 @@ export default function useAuth(): UserProps {
 
   return {
     email,
+    user,
     onCreate,
     onRemove,
   };

@@ -1,17 +1,17 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Provider} from 'react-redux';
 import {createStore} from 'redux';
+import SplashScreen from 'react-native-splash-screen';
 
 import {persistStore} from 'redux-persist';
 import {PersistGate} from 'redux-persist/integration/react';
 import rootReducer from '../redux';
-
-import DefaultReactScreen from './DefaultReactScreen.tsx';
+import DefaultReactScreen from './DefaultReactScreen';
 import SocialLogin from '../components/SocialLogin';
 import ApiTestComp from '../components/ApiTestComp';
 
-import dynamicLinks from '@react-native-firebase/dynamic-links'; 
-import { Alert } from 'react-native';
+import dynamicLinks from '@react-native-firebase/dynamic-links';
+import {Alert} from 'react-native';
 
 const store = createStore(rootReducer);
 const persistor = persistStore(store);
@@ -35,20 +35,19 @@ function App(): JSX.Element {
     // }
   };
 
-  React.useEffect(() => {
-  dynamicLinks()
-    .getInitialLink()
-    .then(link => {
-      alert(link.url);
-      // if (link.url === 'https://invertase.io/offer') {
-      //   // ...set initial route as offers screen
-      // }
-    });
-
+  useEffect(() => {
+    SplashScreen.hide();
+    dynamicLinks()
+      .getInitialLink()
+      .then(link => {
+          alert(link.url);
+        // if (link.url === 'https://invertase.io/offer') {
+        //   // ...set initial route as offers screen
+        // }
+      });
     const unsubscribe = dynamicLinks().onLink(handleDynamicLink);
     // When the component is unmounted, remove the listener
     return () => unsubscribe();
-
   }, []);
 
   return (
