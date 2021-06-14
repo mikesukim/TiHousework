@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "1037600109526",
+    "project_id": "tihousework-a3b37",
+    "storage_bucket": "tihousework-a3b37.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1037600109526:android:0b68594fffe89c0e146a77",
+        "android_client_info": {
+          "package_name": "com.kimnoh.busi.tihousework"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1037600109526-j6rvmqkp5i87gjig651tn2oq2dmeqh7a.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.kimnoh.busi.tihousework",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "1037600109526-8krp6sd7ho2597mfg94gcqvbrpe5iiam.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDNPU_ylGIIr2HMD5s9E2uXO7bq3spThhY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1037600109526-8krp6sd7ho2597mfg94gcqvbrpe5iiam.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1037600109526-ubqj42har7qe8gmm1dta4mneerhk3okm.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.kimnoh.busi.tihousework",
+                "app_store_id": "123456789"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,15 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
-    <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
-    "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-    <plist version="1.0">
-    <dict>
-      <key>CLIENT_ID</key>
-      <string>889842190734-2teqqqu1ttfnt5aa3muiphndmh8b1cn8.apps.googleusercontent.com</string>
-      <key>REVERSED_CLIENT_ID</key>
-      <string>com.googleusercontent.apps.889842190734-2teqqqu1ttfnt5aa3muiphndmh8b1cn8</string>
-      <key>PLIST_VERSION</key>
-      <string>1</string>
-      <key>BUNDLE_ID</key>
-      <string>com.kimnoh.busi.TiHousework</string>
-    </dict>
-    </plist>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>1037600109526-ubqj42har7qe8gmm1dta4mneerhk3okm.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.1037600109526-ubqj42har7qe8gmm1dta4mneerhk3okm</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>1037600109526-j6rvmqkp5i87gjig651tn2oq2dmeqh7a.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCYgUXreyZz0tv2LVPfB25E4bomuJTTw5k</string>
+	<key>GCM_SENDER_ID</key>
+	<string>1037600109526</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.kimnoh.busi.tihousework</string>
+	<key>PROJECT_ID</key>
+	<string>tihousework-a3b37</string>
+	<key>STORAGE_BUCKET</key>
+	<string>tihousework-a3b37.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:1037600109526:ios:5466a331a23681c5146a77</string>
+</dict>
+</plist>
