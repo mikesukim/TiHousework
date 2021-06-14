@@ -10,8 +10,8 @@ import DefaultReactScreen from './DefaultReactScreen';
 import SocialLogin from '../components/SocialLogin';
 import ApiTestComp from '../components/ApiTestComp';
 
-import dynamicLinks from '@react-native-firebase/dynamic-links'; 
-import { Alert } from 'react-native';
+import dynamicLinks from '@react-native-firebase/dynamic-links';
+import {Alert} from 'react-native';
 
 const store = createStore(rootReducer);
 const persistor = persistStore(store);
@@ -37,17 +37,17 @@ function App(): JSX.Element {
 
   useEffect(() => {
     SplashScreen.hide();
+    dynamicLinks()
+      .getInitialLink()
+      .then(link => {
+          alert(link.url);
+        // if (link.url === 'https://invertase.io/offer') {
+        //   // ...set initial route as offers screen
+        // }
+      });
     const unsubscribe = dynamicLinks().onLink(handleDynamicLink);
     // When the component is unmounted, remove the listener
     return () => unsubscribe();
-
-    // dynamicLinks()
-    // .getInitialLink()
-    // .then(link => {
-    //   if (link.url === 'https://invertase.io/offer') {
-    //     // ...set initial route as offers screen
-    //   }
-    // });
   }, []);
 
   return (
