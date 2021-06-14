@@ -1,12 +1,12 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Provider} from 'react-redux';
 import {createStore} from 'redux';
+import SplashScreen from 'react-native-splash-screen';
 
 import {persistStore} from 'redux-persist';
 import {PersistGate} from 'redux-persist/integration/react';
 import rootReducer from '../redux';
-
-import DefaultReactScreen from './DefaultReactScreen.tsx';
+import DefaultReactScreen from './DefaultReactScreen';
 import SocialLogin from '../components/SocialLogin';
 import ApiTestComp from '../components/ApiTestComp';
 
@@ -35,10 +35,11 @@ function App(): JSX.Element {
     // }
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     const unsubscribe = dynamicLinks().onLink(handleDynamicLink);
     // When the component is unmounted, remove the listener
     return () => unsubscribe();
+    SplashScreen.hide();
 
     // dynamicLinks()
     // .getInitialLink()
