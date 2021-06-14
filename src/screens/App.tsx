@@ -36,10 +36,10 @@ function App(): JSX.Element {
   };
 
   useEffect(() => {
+    SplashScreen.hide();
     const unsubscribe = dynamicLinks().onLink(handleDynamicLink);
     // When the component is unmounted, remove the listener
     return () => unsubscribe();
-    SplashScreen.hide();
 
     // dynamicLinks()
     // .getInitialLink()
