@@ -1,8 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/native'
-import colors from './colors.ts' //이거 왜 안되지 
-
-import logoimg from '../img/logo.png'
+// import colors from './colors.ts' //이거 왜 안되지 
+// import logoimg from '../img/logo.png'
 
 export const Wrapper = styled.View`
     background: #008388;
@@ -40,7 +39,7 @@ export const RoundedButton = styled.TouchableHighlight`
     display: flex;
     borderRadius: 40px;
     borderWidth: 1px;
-    borderColor: #ffffff;
+    borderColor: #aaaaaa;
     marginBottom: 15px;
 `;
 
@@ -48,7 +47,7 @@ export const ButtonText = styled.Text`
     fontSize: 16px;
     width: 100%;
     textAlign: center;
-    color: #ffffff;
+    color: #aaaaaa;
 `;
 
 // export const ButtonsWrapper = styled.View`

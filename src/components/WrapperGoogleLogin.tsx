@@ -5,7 +5,6 @@ import useAuth from '../hooks/useAuth.tsx';
 
 function WrapperGoogleLogin(): JSX.Element {
   const useUserHook = useUser();
-  // const useAuthHook = useAuth();
   return <GoogleLogin userHook={useUserHook} />;
 }
 

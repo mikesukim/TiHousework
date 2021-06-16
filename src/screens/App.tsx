@@ -56,6 +56,7 @@ function App(): JSX.Element {
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <JiyunLogin />
+        {/* <SocialLogin /> */}
       </PersistGate>
     </Provider>
   );

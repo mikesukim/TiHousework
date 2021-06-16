@@ -1,12 +1,11 @@
 import React from 'react';
-import {Text, View} from 'react-native';
 import {
   GoogleSignin,
   GoogleSigninButton,
   statusCodes,
 } from '@react-native-google-signin/google-signin';
-import { TouchableHighlight, Text, StyleSheet } from 'react-native';
-import { RoundedButton, ButtonText } from '../styles/loginstyle';
+// import { TouchableHighlight, Text, StyleSheet, View } from 'react-native';
+import {RoundedButton, ButtonText} from '../styles/loginstyle';
 
 interface Props {
   name?: string;
@@ -60,9 +59,8 @@ class GoogleLogin extends React.Component<Props, State> {
           this.signIn();
           this.setState({isSigninInProgress: true});
         }}
-        disabled={isSigninInProgress}
-      >
-      <ButtonText>Sign in with Google</ButtonText>
+        disabled={isSigninInProgress}>
+        <ButtonText>Sign in with Google</ButtonText>
       </RoundedButton>
     );
   }

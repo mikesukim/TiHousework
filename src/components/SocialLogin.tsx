@@ -9,8 +9,7 @@ import KakaoLogin from './KakaoLogin.tsx';
 import {WelcomeText, WelcomeWrapper, Wrapper} from '../styles/loginstyle';
 
 function SocialLogin(): JSX.Element {
-  const {token} = useAuth();
-  useEffect(() => {}, [token]);
+  // const {token} = useAuth();
 
   return (
     <Wrapper>
