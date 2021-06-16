@@ -9,7 +9,7 @@ interface UserProps {
   onRemove: () => void;
 }
 
-export default function useAuth(): UserProps {
+export default function useUser(): UserProps {
   const email = useSelector((state: RootState) => state.user.email);
   const user = useSelector((state: RootState) => state.user);
   const dispatch = useDispatch();

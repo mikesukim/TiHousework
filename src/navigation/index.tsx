@@ -6,6 +6,7 @@ import App from '../screens/App.tsx';
 import DefaultReactScreen from '../screens/DefaultReactScreen.tsx';
 import ClockScreen from '../screens/ClockScreen.tsx';
 import HelloScreen from '../screens/HelloScreen.tsx';
+import JiyunScreen from '../screens/JiyunScreen';
 
 export function registerScreens(): void {
   Navigation.registerComponent(SCREENS.Root, () => App);

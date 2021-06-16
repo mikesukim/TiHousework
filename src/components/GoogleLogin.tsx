@@ -1,4 +1,5 @@
 import React from 'react';
+import {Text, View} from 'react-native';
 import {
   GoogleSignin,
   GoogleSigninButton,
@@ -23,7 +24,8 @@ class GoogleLogin extends React.Component<Props, State> {
 
   signIn = async () => {
     const useUser = this.props.userHook;
-    const {email, onCreate, onRemove} = useUser;
+    const {email, onCreate} = useUser;
+    // const {email, onCreate, onRemove} = useUser;
     // const {token, onRemoveToken, onAddToken} = useUser;
     try {
       await GoogleSignin.hasPlayServices();
@@ -61,9 +63,5 @@ class GoogleLogin extends React.Component<Props, State> {
     );
   }
 }
-
-GoogleLogin.defaultProps = {
-  name: 'John',
-};
 
 export default GoogleLogin;

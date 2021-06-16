@@ -11,7 +11,8 @@ import SocialLogin from '../components/SocialLogin';
 import ApiTestComp from '../components/ApiTestComp';
 
 import dynamicLinks from '@react-native-firebase/dynamic-links';
-import {Alert} from 'react-native';
+import JiyunScreen from './JiyunScreen';
+import JiyunLogin from '../components/JiyunLogin';
 
 const store = createStore(rootReducer);
 const persistor = persistStore(store);
@@ -37,6 +38,9 @@ function App(): JSX.Element {
 
   useEffect(() => {
     SplashScreen.hide();
+    const unsubscribe = dynamicLinks().onLink(handleDynamicLink);
+    // When the component is unmounted, remove the listener
+
     dynamicLinks()
       .getInitialLink()
       .then(link => {
@@ -45,16 +49,14 @@ function App(): JSX.Element {
         //   // ...set initial route as offers screen
         // }
       });
-    const unsubscribe = dynamicLinks().onLink(handleDynamicLink);
-    // When the component is unmounted, remove the listener
     return () => unsubscribe();
   }, []);
 
   return (
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
-        <SocialLogin />
-        <ApiTestComp />
+        <JiyunScreen />
+        <JiyunLogin />
       </PersistGate>
     </Provider>
   );
