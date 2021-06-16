@@ -1,4 +1,5 @@
 import React from 'react';
+import {Text, View} from 'react-native';
 import {
   GoogleSignin,
   GoogleSigninButton,
@@ -24,11 +25,17 @@ class GoogleLogin extends React.Component<Props, State> {
   }
 
   signIn = async () => {
+    const useUser = this.props.userHook;
+    const {email, onCreate} = useUser;
+    // const {email, onCreate, onRemove} = useUser;
+    // const {token, onRemoveToken, onAddToken} = useUser;
     try {
       await GoogleSignin.hasPlayServices();
       const userInfo = await GoogleSignin.signIn();
       //   this.setState({userInfo});
-      console.log(userInfo.user);
+      onCreate({
+        email: userInfo.user.email,
+      });
     } catch (error) {
       if (error.code === statusCodes.SIGN_IN_CANCELLED) {
         // user cancelled the login flow
@@ -43,7 +50,6 @@ class GoogleLogin extends React.Component<Props, State> {
   };
 
   render(): JSX.Element {
-    const {name} = this.props;
     const {value, isSigninInProgress} = this.state;
     return (
       <RoundedButton
@@ -61,9 +67,5 @@ class GoogleLogin extends React.Component<Props, State> {
     );
   }
 }
-
-GoogleLogin.defaultProps = {
-  name: 'John',
-};
 
 export default GoogleLogin;

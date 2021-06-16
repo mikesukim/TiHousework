@@ -4,6 +4,8 @@
 #import <React/RCTBridge.h>
 #import <React/RCTBundleURLProvider.h>
 
+#import "RNSplashScreen.h"
+
 #ifdef FB_SONARKIT_ENABLED
 #import <FlipperKit/FlipperClient.h>
 #import <FlipperKitLayoutPlugin/FlipperKitLayoutPlugin.h>
@@ -13,6 +15,9 @@
 #import <FlipperKitReactPlugin/FlipperKitReactPlugin.h>
 
 #import <RNKakaoLogins.h>
+
+#import <Firebase/Firebase.h>
+
 
 static void InitializeFlipper(UIApplication *application) {
   FlipperClient *client = [FlipperClient sharedClient];
@@ -27,14 +32,16 @@ static void InitializeFlipper(UIApplication *application) {
 
 @implementation AppDelegate
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+  [FIRApp configure];
+  
 #ifdef FB_SONARKIT_ENABLED
   InitializeFlipper(application);
 #endif
 
   [ReactNativeNavigation bootstrapWithDelegate:self launchOptions:launchOptions];
 
+  [RNSplashScreen show];
   return YES;
 }
 
