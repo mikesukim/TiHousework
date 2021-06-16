@@ -55,7 +55,6 @@ function App(): JSX.Element {
   return (
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
-        <JiyunScreen />
         <JiyunLogin />
       </PersistGate>
     </Provider>

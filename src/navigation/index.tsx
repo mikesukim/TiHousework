@@ -13,6 +13,7 @@ export function registerScreens(): void {
   Navigation.registerComponent(SCREENS.DefaultReact, () => DefaultReactScreen);
   Navigation.registerComponent(SCREENS.Clock, () => ClockScreen);
   Navigation.registerComponent(SCREENS.Hello, () => HelloScreen);
+  Navigation.registerComponent(SCREENS.Welcome, () => JiyunScreen);
 }
 
 export function registerRoot(): void {

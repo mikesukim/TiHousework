@@ -7,7 +7,7 @@ const SCREENS = {
   DefaultReact: `com.${appName}.DefaultReactScreen`,
   Clock: `com.${appName}.ClockScreen`,
   Hello: `com.${appName}.HelloScreen`,
-  Jiyun: `com.${appName}.JiyunScreen`,
+  Welcome: `com.${appName}.JiyunScreen`,
 };
 
 export {SCREENS};
