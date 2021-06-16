@@ -24,9 +24,9 @@ export const Logo = styled.Image`
     marginBottom: 40px;
 `;
 
-Logo.defaultProps = {
-    source: logoimg,
-}
+// Logo.defaultProps = {
+//     source: logoimg,
+// }
 
 export const WelcomeText = styled.Text`
     font-size: 30px;
@@ -51,8 +51,5 @@ export const ButtonText = styled.Text`
     color: #ffffff;
 `;
 
-export const ButtonsWrapper = styled.View`
-    
-`;
-
-
+// export const ButtonsWrapper = styled.View`
+// `;
