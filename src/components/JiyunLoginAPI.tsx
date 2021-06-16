@@ -39,10 +39,10 @@ function JiyunLoginAPI(): JSX.Element {
 
   return (
     <View>
-      {/* {message === 'success' ? <JiyunWelcome /> : null} */}
-      {/* <Text>{message}</Text> */}
-      {/* <Text>{email}</Text>
-      <Text>{token}</Text> */}
+      {message === 'success' ? <JiyunWelcome /> : null}
+      <Text>{message}</Text>
+      <Text>{email}</Text>
+      <Text>{token}</Text>
     </View>
   );
 }

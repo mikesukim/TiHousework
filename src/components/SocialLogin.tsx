@@ -6,17 +6,19 @@ import GoogleLogin from './GoogleLogin.tsx';
 import WrapperGoogleLogin from './WrapperGoogleLogin';
 import KakaoLogin from './KakaoLogin.tsx';
 
+import {WelcomeText, WelcomeWrapper, Wrapper} from '../styles/loginstyle';
+
 function SocialLogin(): JSX.Element {
-  const {token} = useAuth();
-  useEffect(() => {
-  }, [token]);
+  // const {token} = useAuth();
 
   return (
-    <View>
-      <WrapperGoogleLogin />
-      <KakaoLogin />
-      <Text>{token ? 'token exist' : 'token missing'}</Text>
-    </View>
+    <Wrapper>
+      <WelcomeWrapper>
+        <WelcomeText>Welcome to TiHouseWork</WelcomeText>
+        <WrapperGoogleLogin />
+        <KakaoLogin />
+      </WelcomeWrapper>
+    </Wrapper>
   );
 }
 

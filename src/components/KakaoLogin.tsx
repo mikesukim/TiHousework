@@ -8,6 +8,7 @@ import {
   logout,
   unlink,
 } from '@react-native-seoul/kakao-login';
+import { RoundedButton, ButtonText } from '../styles/loginstyle';
 
 interface Props {
   name?: string;
@@ -43,9 +44,12 @@ class KakaoLogin extends React.Component<Props, State> {
 
   render(): JSX.Element {
     return (
-      <View>
-        <Button title="Kakao Login" onPress={this.getProfile} />
-      </View>
+      // <View>
+      //   <Button title="Kakao Login" onPress={this.getProfile} />
+      // </View>
+      <RoundedButton onPress={this.getProfile}>
+        <ButtonText>Sign with KakaoTalk</ButtonText>
+      </RoundedButton>
     );
   }
 }
