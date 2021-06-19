@@ -17,20 +17,25 @@
         android:launchMode="singleTask"
         android:windowSoftInputMode="adjustResize">
         <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-            <category android:name="android.intent.category.LAUNCHER" />
+          <action android:name="android.intent.action.MAIN" />
+          <category android:name="android.intent.category.LAUNCHER" />
+          <action android:name="android.intent.action.VIEW" />
+          <category android:name="android.intent.category.DEFAULT" />
+          <category android:name="android.intent.category.BROWSABLE" />
+          <data
+            android:host="tihouse.page.link"
+            android:scheme="https"/>
+          <data
+            android:host="tihouse.page.link"
+            android:scheme="http"/>
         </intent-filter>
       </activity>
       <activity android:name="com.kakao.sdk.auth.AuthCodeHandlerActivity">
     <intent-filter>
-        <action android:name="android.intent.action.VIEW" />
-        <category android:name="android.intent.category.DEFAULT" />
-        <category android:name="android.intent.category.BROWSABLE" />
-
-        <!-- Redirect URI: "kakao{NATIVE_APP_KEY}://oauth“ -->
-        <data android:host="oauth"
-            android:scheme="kakao419c7da51309af744dc31b1669b52afe" />
-        </intent-filter>
+      <!-- Redirect URI: "kakao{NATIVE_APP_KEY}://oauth“ -->
+      <data android:host="oauth"
+          android:scheme="kakao419c7da51309af744dc31b1669b52afe" />
+    </intent-filter>
     </activity>
     </application>
 </manifest>
