@@ -1,17 +1,16 @@
 import React, {useEffect} from 'react';
 import {Provider} from 'react-redux';
 import {createStore} from 'redux';
-import SplashScreen from 'react-native-splash-screen';
 
+import SplashScreen from 'react-native-splash-screen';
+import dynamicLinks from '@react-native-firebase/dynamic-links';
 import {persistStore} from 'redux-persist';
 import {PersistGate} from 'redux-persist/integration/react';
 import rootReducer from '../redux';
-import DefaultReactScreen from './DefaultReactScreen';
-import SocialLogin from '../components/SocialLogin';
-import ApiTestComp from '../components/ApiTestComp';
 
-import dynamicLinks from '@react-native-firebase/dynamic-links';
-import JiyunScreen from './JiyunScreen';
+// import DefaultReactScreen from './DefaultReactScreen';
+// import SocialLogin from '../components/SocialLogin';
+// import ApiTestComp from '../components/ApiTestComp';
 import JiyunLogin from '../components/JiyunLogin';
 
 const store = createStore(rootReducer);
