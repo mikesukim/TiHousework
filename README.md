@@ -16,7 +16,8 @@ git clone
 npm install
 cd ios && pod install
 
-index.js 가 담긴 credentials 폴더를 src에 포함시켜함!
+credentials폴더 를 src에 포함시켜함!
+credentials폴더를 얻으려면 성언한테 연락하세요!
 ```
 ## Running the tests / 테스트의 실행
 
