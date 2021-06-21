@@ -18,9 +18,6 @@ const persistor = persistStore(store);
 
 function App(): JSX.Element {
   const handleDynamicLink = link => {
-    // alert(JSON.stringify(link));
-    // alert(link.url);
-
     if (link.url === 'https://google.com') {
       alert(JSON.stringify('This is google page'));
     }
@@ -33,6 +30,14 @@ function App(): JSX.Element {
     // if (link.url === 'https://invertase.io/offer') {
     //   // ...navigate to your offers screen
     // }
+  };
+
+  const isInvited = () => {
+    //
+  };
+
+  const hasToken = () => {
+    //
   };
 
   useEffect(() => {
@@ -48,6 +53,10 @@ function App(): JSX.Element {
         //   // ...set initial route as offers screen
         // }
       });
+
+    isInvited();
+    hasToken();
+
     return () => unsubscribe();
   }, []);
 
