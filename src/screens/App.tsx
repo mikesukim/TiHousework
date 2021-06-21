@@ -23,8 +23,8 @@ function App(): JSX.Element {
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <CheckInvitation />
-        <SocialLogin />
-        <ApiTestComp />
+        {/* <SocialLogin />
+        <ApiTestComp /> */}
       </PersistGate>
     </Provider>
   );
