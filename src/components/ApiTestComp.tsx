@@ -9,7 +9,7 @@ function ApiTestComp(): JSX.Element {
   const [isClicked, setIsClicked] = useState(false);
   const [loginSucceed, setloginSucceed] = useState(false);
   const {token, onRemoveToken, onAddToken} = useAuth();
-  const {email, onCreate, onRemove} = useUser();
+  const {email, roomID, isInvited, inviterEmail} = useUser();
   const [data, setData] = useState({
     message: 'not started',
   });
@@ -62,6 +62,9 @@ function ApiTestComp(): JSX.Element {
       <Text>{data.message}</Text>
       <Text>{token}</Text>
       <Text>{email}</Text>
+      <Text>{roomID}</Text>
+      <Text>{isInvited}</Text>
+      <Text>{inviterEmail}</Text>
     </View>
   );
 }
