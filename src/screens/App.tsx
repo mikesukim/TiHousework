@@ -6,6 +6,11 @@ import SplashScreen from 'react-native-splash-screen';
 import {persistStore} from 'redux-persist';
 import {PersistGate} from 'redux-persist/integration/react';
 import rootReducer from '../redux';
+import DefaultReactScreen from './DefaultReactScreen';
+import SocialLogin from '../components/SocialLogin';
+import ApiTestComp from '../components/ApiTestComp';
+import RoomCheckToScreenMW from '../components/RoomCheckToScreenMW';
+import TempHook from '../components/TempHook';
 
 import InvitationTokenCheckMW from '../components/InvitationTokenCheckMW';
 
