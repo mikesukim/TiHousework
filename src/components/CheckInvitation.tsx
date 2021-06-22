@@ -8,32 +8,14 @@ import ApiTestComp from './ApiTestComp';
 
 function CheckInvitation(): JSX.Element {
   const {onUpdateIsInvited} = useUser();
-  const {token, onRemoveToken, onAddToken} = useAuth();
-  const handleDynamicLink = link => {
-    // // Handle dynamic link inside your own application
-    // if (link.url === 'https://invertase.io/offer') {
-    //   // ...navigate to your offers screen
-    // }
-    if (link.url === 'https://google.com') {
-      Alert.alert(JSON.stringify('This is google page'));
-    }
-    if (link.url === 'https://naver.com') {
-      Alert.alert(JSON.stringify('This is naver page!'));
-    }
-  };
-
-  function hasToken() {
-    if (token) {
-      console.log('token 있어여');
-      return true;
-    }
-    console.log('token 없어여');
-    return false;
-  }
+  const {token} = useAuth();
 
   useEffect(() => {
-    onAddToken('hihi');
-    // 앱이 꺼져있는 상태에서 처음 킬 때
+    isFromLink();
+  }, []);
+
+  // 앱이 꺼져있는 상태에서 처음 킬 때
+  function isFromLink() {
     dynamicLinks()
       .getInitialLink()
       .then(link => {
@@ -43,16 +25,19 @@ function CheckInvitation(): JSX.Element {
         //   // ...set initial route as offers screen
         // }
       });
+  }
 
-    const unsubscribe = dynamicLinks().onLink(handleDynamicLink);
-    // When the component is unmounted, remove the listener
-    return () => unsubscribe();
-  }, [onUpdateIsInvited]);
+  function hasToken() {
+    if (token) {
+      return true;
+    }
+    return false;
+  }
 
   if (hasToken()) {
-    return <SocialLogin />;
+    return <ApiTestComp />;
   }
-  return <ApiTestComp />;
+  return <SocialLogin />;
 }
 
 export default CheckInvitation;
