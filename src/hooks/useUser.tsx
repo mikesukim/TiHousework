@@ -21,7 +21,7 @@ interface UserProps {
   onRemove: () => void;
 }
 
-export default function useAuth(): UserProps {
+export default function useUser(): UserProps {
   const user = useSelector((state: RootState) => state.user);
   const email = useSelector((state: RootState) => state.user.email);
   const roomID = useSelector((state: RootState) => state.user.roomID);
