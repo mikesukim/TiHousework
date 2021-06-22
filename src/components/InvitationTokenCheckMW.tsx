@@ -6,7 +6,7 @@ import useAuth from '../hooks/useAuth';
 import SocialLogin from './SocialLogin';
 import ApiTestComp from './ApiTestComp';
 
-function CheckInvitation(): JSX.Element {
+function InvitationTokenCheckMW(): JSX.Element {
   const {onUpdateIsInvited} = useUser();
   const {token} = useAuth();
 
@@ -40,4 +40,4 @@ function CheckInvitation(): JSX.Element {
   return <SocialLogin />;
 }
 
-export default CheckInvitation;
+export default InvitationTokenCheckMW;
