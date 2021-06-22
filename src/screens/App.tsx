@@ -9,6 +9,8 @@ import rootReducer from '../redux';
 import DefaultReactScreen from './DefaultReactScreen';
 import SocialLogin from '../components/SocialLogin';
 import ApiTestComp from '../components/ApiTestComp';
+import RoomCheckToScreenMW from '../components/RoomCheckToScreenMW';
+import TempHook from '../components/TempHook';
 
 import dynamicLinks from '@react-native-firebase/dynamic-links';
 import {Alert} from 'react-native';
@@ -40,7 +42,7 @@ function App(): JSX.Element {
     dynamicLinks()
       .getInitialLink()
       .then(link => {
-          alert(link.url);
+        alert(link.url);
         // if (link.url === 'https://invertase.io/offer') {
         //   // ...set initial route as offers screen
         // }
@@ -55,6 +57,8 @@ function App(): JSX.Element {
       <PersistGate loading={null} persistor={persistor}>
         <SocialLogin />
         <ApiTestComp />
+        <RoomCheckToScreenMW />
+        {/* <TempHook/> */}
       </PersistGate>
     </Provider>
   );
