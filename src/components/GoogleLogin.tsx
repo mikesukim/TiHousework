@@ -23,12 +23,10 @@ class GoogleLogin extends React.Component<Props, State> {
 
   signIn = async () => {
     const useUser = this.props.userHook;
-    const {email, onCreateUser, onRemoveUser} = useUser;
-    // const {token, onRemoveToken, onAddToken} = useUser;
+    const {onCreateUser} = useUser;
     try {
       await GoogleSignin.hasPlayServices();
       const userInfo = await GoogleSignin.signIn();
-      //   this.setState({userInfo});
       onCreateUser({
         email: userInfo.user.email,
         roomID: '123123123',
