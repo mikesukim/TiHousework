@@ -5,6 +5,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import counter from './counter.ts';
 import auth from './auth.ts';
 import user from './user.ts';
+import maintenance from './maintenance.ts';
 
 const persistConfig = {
   key: 'root',
@@ -19,6 +20,7 @@ const rootReducer = combineReducers({
   counter,
   auth,
   user,
+  maintenance,
 });
 
 // 루트 리듀서를 내보내주세요.

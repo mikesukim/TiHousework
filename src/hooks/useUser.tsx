@@ -17,8 +17,20 @@ import {
 
 interface UserProps {
   user: UserState;
-  onCreate: (user: UserState) => void;
-  onRemove: () => void;
+  email: string;
+  roomID: string;
+  isInvited: boolean;
+  inviterEmail: string;
+  onCreateUser: (user: UserState) => void;
+  onRemoveUser: () => void;
+  onUpdateEmail: (email: string) => void;
+  onRemoveEmail: () => void;
+  onUpdateRoomID: (roomID: string) => void;
+  onRemoveRoomID: () => void;
+  onUpdateIsInvited: (isInvited: boolean) => void;
+  onRemoveIsInvited: () => void;
+  onUpdateInviterEmail: (inviterEmail: string) => void;
+  onRemoveInviterEmail: () => void;
 }
 
 export default function useUser(): UserProps {
