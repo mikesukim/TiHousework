@@ -1,19 +1,27 @@
 import React, {useEffect, useState} from 'react';
-import {Text, View, Button, Alert} from 'react-native';
+import {StyleSheet, Text, View, Button, Alert} from 'react-native';
 import useUser from '../hooks/useUser.tsx';
 
 function WelcomeScreen(): JSX.Element {
   const {isInvited, inviterEmail} = useUser();
 
-  // isInvited = false
+  const styles = StyleSheet.create({
+    text: {
+      textAlign: 'center',
+      fontSize: 21,
+    },
+  });
+
+  // isInvited = true
   // inviteEmail = ''
   function Greeting(props) {
     const isInvited = props.isInvited;
+    console.log("Checking isInvited from Welcome = " + isInvited);
     if (isInvited) {
       return (
         <View>
-          <Text>안녕하세요 티집살림이에요!</Text>
-          <Text>{inviterEmail} 님이 초대하셨네요!</Text>
+          <Text style={styles.text}>안녕하세요 티집살림이에요!</Text>
+          <Text style={styles.text}>{inviterEmail} 님이 초대하셨네요!</Text>
           <Button
             title="방에 입장"
             onPress={() => Alert.alert(`${inviterEmail} 의 방으로 입장`)}

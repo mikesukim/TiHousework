@@ -2,15 +2,19 @@ import React, {useEffect, useState} from 'react';
 import {Alert, Text, View} from 'react-native';
 import {NavigationComponent} from 'react-native-navigation';
 import useUser from '../hooks/useUser.tsx';
+import TwoHouseWorkErrorScreen from '../screens/TwoHouseWorkErrorScreen';
+import WelcomeScreen from '../screens/WelcomeScreen';
+import TodoScreenTemp from '../screens/TodoScreenTemp';
 
 function RoomCheckToScreenMW(): JSX.Element {
-  useEffect(() => {
-    inviteAfterCheck();
-  }, []);
-
-  // isInvited = false
+  // isInvited = true
   // roomID = ''
-  const {isInvited, roomID} = useUser();
+  const {isInvited, roomID, onUpdateIsInvited, onUpdateRoomID} = useUser();
+
+  useEffect(() => {
+    onUpdateIsInvited(true);
+    onUpdateRoomID('123');
+  }, []);
 
   function inviteCheck() {
     return isInvited;
@@ -23,21 +27,16 @@ function RoomCheckToScreenMW(): JSX.Element {
     return false;
   }
 
-  function inviteAfterCheck() {
-    if (inviteCheck()) {
-      if (checkRoom()) {
-        Alert.alert('두집살림');
-      } else {
-        Alert.alert('누가 초대했어?');
-      }
-    } else if (checkRoom()) {
-      Alert.alert('Displaying Checklist');
-    } else {
-      Alert.alert('누구를 초대할래');
+  if (inviteCheck()) {
+    if (checkRoom()) {
+      return <TwoHouseWorkErrorScreen />;
     }
+    return <WelcomeScreen />;
   }
-
-  return null;
+  if (checkRoom()) {
+    return <TodoScreenTemp />;
+  }
+  return <WelcomeScreen />;
 }
 
 export default RoomCheckToScreenMW;
