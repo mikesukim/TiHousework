@@ -1,10 +1,18 @@
 import React, {useEffect, useState} from 'react';
-import {Button, Text, View} from 'react-native';
+import {
+  Button,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableHighlight,
+  View,
+} from 'react-native';
 
 function Websocket(): JSX.Element {
-  const [state, setState] = useState('not connected yet');
+  const [connectionState, setConnectionState] = useState('not connected yet');
   const [wsState, setWsState] = useState({});
-  const [isConnected, setIsConnect] = useState(false);
+  const [text, setText] = useState('');
+  const [data, setData] = useState('initial data');
 
   function connectWs() {
     const wsURL =
@@ -12,14 +20,14 @@ function Websocket(): JSX.Element {
     const ws = new WebSocket(wsURL);
     ws.onopen = () => {
       // connection opened
-      setState('connected!');
+      setConnectionState('connected!');
     };
     ws.onclose = e => {
       // connection disconnected
-      setState('disconnected!');
+      setConnectionState('disconnected!');
     };
     ws.onmessage = e => {
-      console.log(e.data);
+      setData(e.data);
     };
     setWsState(ws);
     return ws;
@@ -29,13 +37,54 @@ function Websocket(): JSX.Element {
   function disconnectWs() {
     wsState.close();
   }
+
+  function sendMessageWs() {
+    wsState.send(
+      JSON.stringify({
+        action: 'sendmessage',
+        data: text,
+      }),
+    );
+    setText('');
+  }
+
   return (
     <View>
-      <Text>{state}</Text>
+      <Text style={styles.connectionText}>{connectionState}</Text>
       <Button title="Connect To Websocket!" onPress={connectWs} />
       <Button title="Disconnect To Websocket!" onPress={disconnectWs} />
+      <TextInput style={styles.input} onChangeText={setText} value={text} />
+      <TouchableHighlight style={styles.sendButton} onPress={sendMessageWs}>
+        <Text style={styles.sendText}>Send</Text>
+      </TouchableHighlight>
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  input: {
+    height: 40,
+    margin: 12,
+    borderWidth: 1,
+  },
+  sendButton: {
+    marginRight: 40,
+    marginLeft: 40,
+    marginTop: 10,
+    paddingTop: 20,
+    paddingBottom: 20,
+    backgroundColor: '#68a0cf',
+    borderRadius: 10,
+    borderWidth: 1,
+    borderColor: '#fff',
+  },
+  sendText: {
+    color: '#fff',
+    textAlign: 'center',
+  },
+  connectionText: {
+    textAlign: 'center',
+  },
+});
 
 export default Websocket;
