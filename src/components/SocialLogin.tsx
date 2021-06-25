@@ -1,8 +1,6 @@
 import React, {useEffect} from 'react';
-import {Text, View} from 'react-native';
+import {View} from 'react-native';
 import useAuth from '../hooks/useAuth.tsx';
-
-import GoogleLogin from './GoogleLogin.tsx';
 import WrapperGoogleLogin from './WrapperGoogleLogin';
 import KakaoLogin from './KakaoLogin.tsx';
 

@@ -1,10 +1,8 @@
 import React, {useEffect, useState} from 'react';
-import {Text, View} from 'react-native';
 import {postLogin, postRegister} from '../router';
 import useUser from '../hooks/useUser.tsx';
 import useAuth from '../hooks/useAuth';
 import RoomCheckToScreenMW from './RoomCheckToScreenMW';
-import Hello from './Hello';
 import SocialLogin from './SocialLogin';
 
 function LoginRegisterMW(): JSX.Element {

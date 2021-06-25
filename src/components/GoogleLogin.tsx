@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {
   GoogleSignin,
   GoogleSigninButton,
@@ -23,7 +23,7 @@ class GoogleLogin extends React.Component<Props, State> {
 
   signIn = async () => {
     const useUser = this.props.userHook;
-    const {user, email, onCreateUser} = useUser;
+    const {onCreateUser} = useUser;
     const useMaintenance = this.props.maintenanceHook;
     const {onUpdateIsSocialLoggedIn} = useMaintenance;
     try {

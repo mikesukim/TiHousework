@@ -1,11 +1,9 @@
 import React, {useEffect, useState} from 'react';
-import {Alert, Text, View} from 'react-native';
 import dynamicLinks from '@react-native-firebase/dynamic-links';
 import useUser from '../hooks/useUser';
 import useAuth from '../hooks/useAuth';
 import useMaintenance from '../hooks/useMaintenance';
 import SocialLogin from './SocialLogin';
-import ApiTestComp from './ApiTestComp';
 import RoomCheckToScreenMW from './RoomCheckToScreenMW';
 import LoginRegisterMW from './LoginRegisterMW';
 
@@ -14,24 +12,17 @@ function InvitationTokenCheckMW(): JSX.Element {
   const {token, onRemoveToken, onAddToken} = useAuth();
   const {isSocialLoggedIn} = useMaintenance();
 
-  useEffect(() => {
-    onRemoveToken();
-    // onAddToken('dd');
-    isFromLink();
-  }, []);
-
   // 앱이 꺼져있는 상태에서 처음 킬 때
   function isFromLink() {
     onUpdateIsInvited(false);
     dynamicLinks()
       .getInitialLink()
       .then(link => {
-        console.log('yayayaya');
-        console.log(link);
-        if (link.url === 'https://tihouse.page.link/test1') {
+        console.log(link.url);
+        if (link.url === 'https://google.com') {
           console.log('저 구글 링크로 들어왔어요');
           onUpdateIsInvited(true);
-        } else if (link.url === 'https://tihouse.page.link/test') {
+        } else if (link.url === 'https://naver.com') {
           console.log('저 네이버 링크로 들어왔어요');
           onUpdateIsInvited(true);
         }
@@ -40,6 +31,12 @@ function InvitationTokenCheckMW(): JSX.Element {
         // }
       });
   }
+
+  useEffect(() => {
+    onRemoveToken();
+    // onAddToken('dd');
+    setTimeout(() => isFromLink(), 300);
+  }, []);
 
   function hasToken() {
     if (token) {
