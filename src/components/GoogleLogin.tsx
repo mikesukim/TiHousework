@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   GoogleSignin,
   GoogleSigninButton,
@@ -23,7 +23,9 @@ class GoogleLogin extends React.Component<Props, State> {
 
   signIn = async () => {
     const useUser = this.props.userHook;
-    const {onCreateUser} = useUser;
+    const {user, email, onCreateUser} = useUser;
+    const useMaintenance = this.props.maintenanceHook;
+    const {onUpdateIsSocialLoggedIn} = useMaintenance;
     try {
       await GoogleSignin.hasPlayServices();
       const userInfo = await GoogleSignin.signIn();
@@ -33,6 +35,7 @@ class GoogleLogin extends React.Component<Props, State> {
         isInvited: false,
         inviterEmail: '',
       });
+      onUpdateIsSocialLoggedIn(true);
     } catch (error) {
       if (error.code === statusCodes.SIGN_IN_CANCELLED) {
         // user cancelled the login flow

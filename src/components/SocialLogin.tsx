@@ -15,7 +15,6 @@ function SocialLogin(): JSX.Element {
     <View>
       <WrapperGoogleLogin />
       <KakaoLogin />
-      <Text>{token ? 'token exist' : 'token missing'}</Text>
     </View>
   );
 }

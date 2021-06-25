@@ -3,15 +3,20 @@ import {Alert, Text, View} from 'react-native';
 import dynamicLinks from '@react-native-firebase/dynamic-links';
 import useUser from '../hooks/useUser';
 import useAuth from '../hooks/useAuth';
+import useMaintenance from '../hooks/useMaintenance';
 import SocialLogin from './SocialLogin';
 import ApiTestComp from './ApiTestComp';
 import RoomCheckToScreenMW from './RoomCheckToScreenMW';
+import LoginRegisterMW from './LoginRegisterMW';
 
 function InvitationTokenCheckMW(): JSX.Element {
   const {onUpdateIsInvited} = useUser();
-  const {token} = useAuth();
+  const {token, onRemoveToken, onAddToken} = useAuth();
+  const {isSocialLoggedIn} = useMaintenance();
 
   useEffect(() => {
+    onRemoveToken();
+    // onAddToken('dd');
     isFromLink();
   }, []);
 
@@ -22,7 +27,8 @@ function InvitationTokenCheckMW(): JSX.Element {
       .getInitialLink()
       .then(link => {
         console.log('yayayaya');
-        if (link.url === 'https://google.com') {
+        console.log(link);
+        if (link.url === 'https://tihouse.page.link/test1') {
           console.log('저 구글 링크로 들어왔어요');
           onUpdateIsInvited(true);
         } else if (link.url === 'https://tihouse.page.link/test') {
@@ -43,8 +49,14 @@ function InvitationTokenCheckMW(): JSX.Element {
   }
 
   if (hasToken()) {
+    console.log('토큰있어서 소셜 로그인 안함');
     return <RoomCheckToScreenMW />;
   }
+  if (isSocialLoggedIn) {
+    console.log('토큰없고 소셜 로그인 됐삼');
+    return <LoginRegisterMW />;
+  }
+  console.log('토큰없고 소셜 로그인 안됐삼');
   return <SocialLogin />;
 }
 

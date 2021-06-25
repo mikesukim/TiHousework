@@ -7,13 +7,12 @@ import WelcomeScreen from '../screens/WelcomeScreen';
 import TodoScreenTemp from '../screens/TodoScreenTemp';
 
 function RoomCheckToScreenMW(): JSX.Element {
-  // isInvited = true
-  // roomID = ''
-  const {isInvited, roomID, onUpdateIsInvited, onUpdateRoomID} = useUser();
+  const {isInvited, roomID, onUpdateIsInvited, onUpdateRoomID, onRemoveRoomID} = useUser();
 
   useEffect(() => {
-    onUpdateIsInvited(true);
-    onUpdateRoomID('123');
+    onUpdateIsInvited(false);
+    // onUpdateRoomID('123');
+    onRemoveRoomID();
   }, []);
 
   function inviteCheck() {
