@@ -13,7 +13,6 @@ function LoginRegisterMW(): JSX.Element {
   const {email} = useUser();
 
   function requestLoginApi() {
-    // const email = '5jungi@gmail.com';
     postLogin(email)
       .then(function (response) {
         onAddToken(response.data.token);
@@ -61,7 +60,6 @@ function LoginRegisterMW(): JSX.Element {
   if (isLoginSucceeded) {
     return <RoomCheckToScreenMW />;
   }
-
   return <SocialLogin />;
 }
 
