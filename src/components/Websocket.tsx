@@ -57,6 +57,7 @@ function Websocket(): JSX.Element {
       <TouchableHighlight style={styles.sendButton} onPress={sendMessageWs}>
         <Text style={styles.sendText}>Send</Text>
       </TouchableHighlight>
+      <Text style={styles.connectionText}>{data}</Text>
     </View>
   );
 }
