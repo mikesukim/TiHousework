@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useRef} from 'react';
 import {
   Button,
   StyleSheet,
@@ -14,12 +14,14 @@ import {
   SendBtn,
   TextInputBox,
 } from '../styled-components';
+import ConfettiCannon from 'react-native-confetti-cannon';
 
 function Websocket(): JSX.Element {
   const [connectionState, setConnectionState] = useState('not connected yet');
   const [wsState, setWsState] = useState({});
   const [text, setText] = useState('');
   const [data, setData] = useState('initial data');
+  const confetti = useRef(null);
 
   function connectWs() {
     const wsURL =
@@ -28,6 +30,7 @@ function Websocket(): JSX.Element {
     ws.onopen = () => {
       // connection opened
       setConnectionState('connected!');
+      confetti.current.start();
     };
     ws.onclose = e => {
       // connection disconnected
@@ -69,6 +72,13 @@ function Websocket(): JSX.Element {
       <DataView>
         <Text style={styles.dataText}>{data}</Text>
       </DataView>
+      <ConfettiCannon
+        count={100}
+        origin={{x: 0, y: 0}}
+        ref={confetti}
+        autoStart={false}
+        fadeOut={true}
+      />
     </Container>
   );
 }

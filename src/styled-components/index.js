@@ -8,7 +8,7 @@ export const Container = styled.View`
 
 export const InnerContainer = styled.View`
   margin-top:50px;
-  background-color: #ffffff00;
+  background-color: white;
 `;
 
 export const DataView = styled.View`
@@ -27,10 +27,11 @@ export const SendBtn = styled.TouchableHighlight`
   margin-top: 10px;
   padding-top: 20px;
   padding-bottom: 20px;
-  background-color: #68a0cf;
   border-radius: 10px;
   border-width: 1px;
   border-color: #fff;
+  background-color: #68a0cf;
+  position: relative;
 `;
 
 export const TextInputBox = styled.TextInput`
