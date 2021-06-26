@@ -3,6 +3,38 @@ import styled from 'styled-components/native';
 export const Container = styled.View`
   flex: 1;
   background-color: #ffffff00;
-  align-items: center;
+  position: relative;
+`;
+
+export const InnerContainer = styled.View`
+  margin-top:50px;
+  background-color: #ffffff00;
+`;
+
+export const DataView = styled.View`
+  flex: 1;
+  background-color: #ffffff00;
+  position: absolute;
+  top: 50%;
   justify-content: center;
+  left: 0;
+  right: 0;
+`;
+
+export const SendBtn = styled.TouchableHighlight`
+  margin-right: 40px;
+  margin-left: 40px;
+  margin-top: 10px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  background-color: #68a0cf;
+  border-radius: 10px;
+  border-width: 1px;
+  border-color: #fff;
+`;
+
+export const TextInputBox = styled.TextInput`
+  height: 40px;
+  margin: 12px;
+  border-width: 1px;
 `;

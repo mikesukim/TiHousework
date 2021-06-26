@@ -7,6 +7,13 @@ import {
   TouchableHighlight,
   View,
 } from 'react-native';
+import {
+  Container,
+  InnerContainer,
+  DataView,
+  SendBtn,
+  TextInputBox,
+} from '../styled-components';
 
 function Websocket(): JSX.Element {
   const [connectionState, setConnectionState] = useState('not connected yet');
@@ -49,41 +56,32 @@ function Websocket(): JSX.Element {
   }
 
   return (
-    <View>
-      <Text style={styles.connectionText}>{connectionState}</Text>
-      <Button title="Connect To Websocket!" onPress={connectWs} />
-      <Button title="Disconnect To Websocket!" onPress={disconnectWs} />
-      <TextInput style={styles.input} onChangeText={setText} value={text} />
-      <TouchableHighlight style={styles.sendButton} onPress={sendMessageWs}>
-        <Text style={styles.sendText}>Send</Text>
-      </TouchableHighlight>
-      <Text style={styles.connectionText}>{data}</Text>
-    </View>
+    <Container>
+      <InnerContainer>
+        <Text style={styles.connectionText}>{connectionState}</Text>
+        <Button title="Connect To Websocket!" onPress={connectWs} />
+        <Button title="Disconnect To Websocket!" onPress={disconnectWs} />
+        <TextInputBox onChangeText={setText} value={text} />
+        <SendBtn onPress={sendMessageWs}>
+          <Text style={styles.sendText}>Send</Text>
+        </SendBtn>
+      </InnerContainer>
+      <DataView>
+        <Text style={styles.dataText}>{data}</Text>
+      </DataView>
+    </Container>
   );
 }
 
 const styles = StyleSheet.create({
-  input: {
-    height: 40,
-    margin: 12,
-    borderWidth: 1,
-  },
-  sendButton: {
-    marginRight: 40,
-    marginLeft: 40,
-    marginTop: 10,
-    paddingTop: 20,
-    paddingBottom: 20,
-    backgroundColor: '#68a0cf',
-    borderRadius: 10,
-    borderWidth: 1,
-    borderColor: '#fff',
-  },
   sendText: {
     color: '#fff',
     textAlign: 'center',
   },
   connectionText: {
+    textAlign: 'center',
+  },
+  dataText: {
     textAlign: 'center',
   },
 });
