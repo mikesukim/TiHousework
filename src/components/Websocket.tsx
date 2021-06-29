@@ -15,11 +15,12 @@ import {
   TextInputBox,
 } from '../styled-components';
 import ConfettiCannon from 'react-native-confetti-cannon';
+import WebsocketMsgSender from './WebsocketMsgSender';
 
 function Websocket(): JSX.Element {
   const [connectionState, setConnectionState] = useState('not connected yet');
   const [wsState, setWsState] = useState({});
-  const [text, setText] = useState('');
+  // const [text, setText] = useState('');
   const [data, setData] = useState('initial data');
   const confetti = useRef(null);
 
@@ -30,7 +31,6 @@ function Websocket(): JSX.Element {
     ws.onopen = () => {
       // connection opened
       setConnectionState('connected!');
-      confetti.current.start();
     };
     ws.onclose = e => {
       // connection disconnected
@@ -38,6 +38,9 @@ function Websocket(): JSX.Element {
     };
     ws.onmessage = e => {
       setData(e.data);
+      if (e.data.includes('congrat')){
+        confetti.current.start();
+      }
     };
     setWsState(ws);
     return ws;
@@ -48,15 +51,7 @@ function Websocket(): JSX.Element {
     wsState.close();
   }
 
-  function sendMessageWs() {
-    wsState.send(
-      JSON.stringify({
-        action: 'sendmessage',
-        data: text,
-      }),
-    );
-    setText('');
-  }
+  console.log('AAAAAA')
 
   return (
     <Container>
@@ -64,16 +59,13 @@ function Websocket(): JSX.Element {
         <Text style={styles.connectionText}>{connectionState}</Text>
         <Button title="Connect To Websocket!" onPress={connectWs} />
         <Button title="Disconnect To Websocket!" onPress={disconnectWs} />
-        <TextInputBox onChangeText={setText} value={text} />
-        <SendBtn onPress={sendMessageWs}>
-          <Text style={styles.sendText}>Send</Text>
-        </SendBtn>
       </InnerContainer>
       <DataView>
         <Text style={styles.dataText}>{data}</Text>
       </DataView>
+      <WebsocketMsgSender ws={wsState} />
       <ConfettiCannon
-        count={100}
+        count={45}
         origin={{x: 0, y: 0}}
         ref={confetti}
         autoStart={false}
@@ -84,10 +76,6 @@ function Websocket(): JSX.Element {
 }
 
 const styles = StyleSheet.create({
-  sendText: {
-    color: '#fff',
-    textAlign: 'center',
-  },
   connectionText: {
     textAlign: 'center',
   },
