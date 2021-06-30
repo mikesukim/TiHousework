@@ -7,15 +7,18 @@ import {
   TouchableHighlight,
   View,
 } from 'react-native';
+import ConfettiCannon from 'react-native-confetti-cannon';
+import {useSpring, animated, config} from '@react-spring/native';
 import {
   Container,
   InnerContainer,
   DataView,
   SendBtn,
   TextInputBox,
+  H1,
 } from '../styled-components';
-import ConfettiCannon from 'react-native-confetti-cannon';
 import WebsocketMsgSender from './WebsocketMsgSender';
+import styled from 'styled-components/native';
 
 function Websocket(): JSX.Element {
   const [connectionState, setConnectionState] = useState('not connected yet');
@@ -23,6 +26,17 @@ function Websocket(): JSX.Element {
   // const [text, setText] = useState('');
   const [data, setData] = useState('initial data');
   const confetti = useRef(null);
+
+  const [flip, set] = useState(false);
+  const props = useSpring({
+    to: { opacity: 1 },
+    from: { opacity: 0 },
+    reset: true,
+    reverse: flip,
+    delay: 200,
+    config: config.molasses,
+    onRest: () => set(!flip),
+  });
 
   function connectWs() {
     const wsURL =
@@ -51,11 +65,13 @@ function Websocket(): JSX.Element {
     wsState.close();
   }
 
-  console.log('AAAAAA')
-
   return (
     <Container>
       <InnerContainer>
+        <H1 as={animated.Text} style={props}>Yolo</H1>
+        <animated.Text style={props}>
+          hello
+        </animated.Text>
         <Text style={styles.connectionText}>{connectionState}</Text>
         <Button title="Connect To Websocket!" onPress={connectWs} />
         <Button title="Disconnect To Websocket!" onPress={disconnectWs} />
@@ -75,7 +91,14 @@ function Websocket(): JSX.Element {
   );
 }
 
+
 const styles = StyleSheet.create({
+  h1: {
+    textAlign: 'center',
+    fontWeight: 'bold',
+    fontStyle: 'italic',
+    fontSize: 20,
+  },
   connectionText: {
     textAlign: 'center',
   },

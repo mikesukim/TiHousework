@@ -39,3 +39,9 @@ export const TextInputBox = styled.TextInput`
   margin: 12px;
   border-width: 1px;
 `;
+
+export const H1 = styled.Text`
+  text-align: center;
+  font-weight: bold;
+  font-size: 20;
+`;

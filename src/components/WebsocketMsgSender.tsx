@@ -4,7 +4,6 @@ import { SendBtn, TextInputBox } from '../styled-components';
 
 function WebsocketMsgSender(props): JSX.Element {
   const [text, setText] = useState('');
-  console.log('BBBBBBB')
 
   function sendMessageWs() {
     props.ws.send(
