@@ -1,5 +1,5 @@
 import React from 'react';
-import {Button, Text, View} from 'react-native';
+import {Alert, Button, Text, View} from 'react-native';
 import {
   KakaoOAuthToken,
   KakaoProfile,
@@ -31,13 +31,20 @@ class KakaoLogin extends React.Component<Props, State> {
   };
 
   getProfile = async (): Promise<void> => {
+    const useMaintenance = this.props.maintenanceHook;
+    const {onUpdateIsSocialLoggedIn} = useMaintenance;
     this.signInWithKakao().then(async () => {
       const profile: KakaoProfile = await getKakaoProfile()
         .then(function (profile) {
+          onUpdateIsSocialLoggedIn(true);
           console.log('Kakao getProfile Succeed');
           console.log(JSON.stringify(profile));
         })
-        .catch(error => console.log(error));
+        .catch(error => {
+          onUpdateIsSocialLoggedIn(false);
+          Alert.alert('로그인 실패. 다시 시도해주세요');
+          console.log(error);
+        });
     });
   };
 

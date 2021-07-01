@@ -29,13 +29,16 @@ function InvitationTokenCheckMW(): JSX.Element {
         // if (link.url === 'https://invertase.io/offer') {
         //   // ...set initial route as offers screen
         // }
+      })
+      .catch(error => {
+        onUpdateIsInvited(false);
+        console.log('링크로 안 들어왔어요');
       });
   }
 
   useEffect(() => {
     onRemoveToken();
-    // onAddToken('dd');
-    setTimeout(() => isFromLink(), 300);
+    setTimeout(() => isFromLink(), 2000);
   }, []);
 
   function hasToken() {
@@ -53,7 +56,7 @@ function InvitationTokenCheckMW(): JSX.Element {
     console.log('토큰없고 소셜 로그인 됐삼');
     return <LoginRegisterMW />;
   }
-  console.log('토큰없고 소셜 로그인 안됐삼');
+  // console.log('토큰없고 소셜 로그인 안됐삼');
   return <SocialLogin />;
 }
 

@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react';
+import {Alert} from 'react-native';
 import {postLogin, postRegister} from '../router';
 import useUser from '../hooks/useUser.tsx';
 import useAuth from '../hooks/useAuth';
@@ -14,7 +15,6 @@ function LoginRegisterMW(): JSX.Element {
     postLogin(email)
       .then(function (response) {
         onAddToken(response.data.token);
-        console.log('토큰 받았습니다');
         setIsLoginSucceeded(true);
         console.log('우리 앱 로그인 일단 성공');
       })
@@ -34,13 +34,17 @@ function LoginRegisterMW(): JSX.Element {
                   console.log('우리 앱 로그인 일단 성공');
                 })
                 .catch(function (e) {
-                  console.log('It should not happen..');
+                  Alert.alert('로그인 실패. 다시 시도해주세요');
                 });
             })
-            .catch(function (er) {
-              console.log(er.response.data);
+            .catch(function (e) {
+              console.log(e.response.data);
+              Alert.alert('로그인 실패. 다시 시도해주세요');
             });
-        } else console.log('Error');
+        } else {
+          console.log('Error');
+          Alert.alert('로그인 실패. 다시 시도해주세요');
+        }
       });
   }
 

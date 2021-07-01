@@ -4,6 +4,7 @@ import {
   GoogleSigninButton,
   statusCodes,
 } from '@react-native-google-signin/google-signin';
+import {Alert} from 'react-native';
 
 interface Props {
   name?: string;
@@ -37,13 +38,18 @@ class GoogleLogin extends React.Component<Props, State> {
       });
       onUpdateIsSocialLoggedIn(true);
     } catch (error) {
+      onUpdateIsSocialLoggedIn(false);
       if (error.code === statusCodes.SIGN_IN_CANCELLED) {
+        Alert.alert('로그인 실패. 다시 시도해주세요');
         // user cancelled the login flow
       } else if (error.code === statusCodes.IN_PROGRESS) {
+        Alert.alert('로그인 실패. 다시 시도해주세요');
         // operation (e.g. sign in) is in progress already
       } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
+        Alert.alert('로그인 실패. 다시 시도해주세요');
         // play services not available or outdated
       } else {
+        Alert.alert('로그인 실패. 다시 시도해주세요');
         // some other error happened
       }
     }
