@@ -8,6 +8,7 @@ import {PersistGate} from 'redux-persist/integration/react';
 import rootReducer from '../redux';
 import Test from '../screens/Test';
 
+
 const store = createStore(rootReducer);
 const persistor = persistStore(store);
 
