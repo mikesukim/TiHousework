@@ -5,6 +5,7 @@ import SplashScreen from 'react-native-splash-screen';
 
 import {persistStore} from 'redux-persist';
 import {PersistGate} from 'redux-persist/integration/react';
+import {SafeAreaView} from 'react-native';
 import rootReducer from '../redux';
 import Test from '../screens/Test';
 
@@ -20,7 +21,9 @@ function App(): JSX.Element {
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         {/* <InvitationTokenCheckMW /> */}
-        <Test />
+        <SafeAreaView>
+          <Test />
+        </SafeAreaView>
       </PersistGate>
     </Provider>
   );
