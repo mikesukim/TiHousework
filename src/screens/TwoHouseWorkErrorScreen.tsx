@@ -10,22 +10,10 @@ import {
   Header3,
   SendBtn,
 } from './StyledComps';
-// import FontStyles from '../fonts/fonts';
-// import styled from 'styled-components';
 
 function TempHook(): JSX.Element {
   const [state, setState] = useState('initial state');
   const deviceHeight = Dimensions.get('window').height;
-
-  // const styles = StyleSheet.create({
-  //   baseText: {
-  //     fontFamily: "Roboto Condensed"
-  //   },
-  //   titleText: {
-  //     fontSize: 20,
-  //     fontWeight: "bold"
-  //   }
-  // });
 
   useEffect(() => {
     setState('hello');
@@ -33,8 +21,6 @@ function TempHook(): JSX.Element {
 
   return (
     <Container>
-      {/* <FontStyles /> */}
-      {/* <Text style={styles.baseText}>hello World</Text> */}
       <TopContainer>
         <Header1>Title</Header1>
       </TopContainer>

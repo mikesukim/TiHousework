@@ -32,14 +32,16 @@ export const BottomContainer = styled.View`
 
 export const Header1 = styled.Text`
   font-weight: bold;
-  font-size: 13;
+  font-size: 30;
   color: #000000;
+  font-family: 'Montserrat-ExtraBold'; 
 `;
 
 export const Header2 = styled.Text`
   font-size: 23;
   font-weight: 600;
   color: #000000;
+  font-family: 'Montserrat-Black'; 
 `;
 
 export const Header3 = styled.Text`
@@ -48,6 +50,7 @@ export const Header3 = styled.Text`
   color: #000000;
   margin-top: 3%;
   line-height: 25;
+  font-family: 'Montserrat-Light'; 
 `;
 
 const BtnContainder = styled.TouchableOpacity`
@@ -65,6 +68,7 @@ const BtnContainder = styled.TouchableOpacity`
 `;
 
 const BtnText = styled.Text`
+  font-family: 'Montserrat-Light'; 
   font-size: 16px;
   text-align: center;
   font-weight: bold;
