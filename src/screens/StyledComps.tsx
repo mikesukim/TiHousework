@@ -1,20 +1,6 @@
 import styled from 'styled-components/native';
-import React, {Component} from 'react';
-import {Dimensions} from 'react-native'; 
-
-const deviceHeight = Dimensions.get('window').height;
-
-const ResponsiveSize = size => {
-  if (deviceHeight >= 568 && deviceHeight <= 667) {
-    return size;
-  }
-  if (deviceHeight > 667 && deviceHeight <= 844) {
-    return size * 1.17;
-  }
-  if (deviceHeight > 844 && deviceHeight <= 844 ) {
-    return size * 1.8;
-  }
-};
+import React from 'react';
+import {RFPercentage} from 'react-native-responsive-fontsize';
 
 export const Container = styled.View`
   padding: 8% 8%;
@@ -32,34 +18,31 @@ export const BottomContainer = styled.View`
 
 export const Header1 = styled.Text`
   font-weight: bold;
-  font-size: 30;
+  font-size: ${RFPercentage(5)};
   color: #000000;
-  font-family: 'Montserrat-ExtraBold'; 
+  font-family: 'Montserrat-ExtraLight';
 `;
 
 export const Header2 = styled.Text`
-  font-size: 23;
+  font-size: ${RFPercentage(3)};
   font-weight: 600;
   color: #000000;
-  font-family: 'Montserrat-Black'; 
+  font-family: 'Montserrat-Black';
 `;
 
 export const Header3 = styled.Text`
-  font-size: 15;
+  font-size: ${RFPercentage(2)};
   font-weight: 300;
   color: #000000;
   margin-top: 3%;
   line-height: 25;
-  font-family: 'Montserrat-Light'; 
+  font-family: 'Montserrat-Light';
 `;
 
-const BtnContainder = styled.TouchableOpacity`
+const BtnContainer = styled.TouchableOpacity`
   margin-right: 70px;
   margin-top: 140px;
-  padding-top: 22px;
-  padding-bottom: 22px;
-  padding-right: 22px;
-  padding-left: 22px;
+  padding: 25px 25px 25px 25px;
   position: absolute;
   border-radius: 10px;
   border-width: 1px;
@@ -68,15 +51,15 @@ const BtnContainder = styled.TouchableOpacity`
 `;
 
 const BtnText = styled.Text`
-  font-family: 'Montserrat-Light'; 
-  font-size: 16px;
+  font-family: 'Montserrat-Light';
+  font-size: ${RFPercentage(2)};
   text-align: center;
   font-weight: bold;
   color: white;
 `;
 
 export const SendBtn = ({onPress, title, bgColor}) => (
-  <BtnContainder onPress={onPress} bgColor={bgColor}>
+  <BtnContainer onPress={onPress} bgColor={bgColor}>
     <BtnText>{title}</BtnText>
-  </BtnContainder>
+  </BtnContainer>
 );

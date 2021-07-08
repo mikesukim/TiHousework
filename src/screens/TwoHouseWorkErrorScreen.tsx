@@ -1,6 +1,5 @@
-import {ConfigFunction} from '@babel/core';
 import React, {useEffect, useState} from 'react';
-import {Alert, Dimensions, StyleSheet, Text} from 'react-native';
+import {Alert, Dimensions} from 'react-native';
 import {
   Container,
   TopContainer,
@@ -28,7 +27,7 @@ function TempHook(): JSX.Element {
         <Header2>Oops! 두집살림</Header2>
         <Header3>
           남의 집가서 헛은짓 하지말고 너의 부모님/아이들이 있는 본가로
-          돌아가렴...
+          돌아가렴...{console.log("checking device height"+deviceHeight)}
         </Header3>
         <SendBtn
           title="첫집살림으로"

@@ -1,6 +1,4 @@
-import React, {useEffect, useState} from 'react';
-import {Alert, Text, View} from 'react-native';
-import {NavigationComponent} from 'react-native-navigation';
+import React, {useEffect} from 'react';
 import useUser from '../hooks/useUser.tsx';
 import TwoHouseWorkErrorScreen from '../screens/TwoHouseWorkErrorScreen';
 import WelcomeScreen from '../screens/WelcomeScreen';
