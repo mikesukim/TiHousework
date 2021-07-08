@@ -1,5 +1,6 @@
 import React, {useEffect, useRef, useState} from 'react';
 import {Text, View} from 'react-native';
+import SocialLogin from '../components/SocialLogin';
 import Websocket from '../components/Websocket';
 import WebsocketMsgSender from '../components/WebsocketMsgSender';
 import {Container,DataView} from '../styled-components';

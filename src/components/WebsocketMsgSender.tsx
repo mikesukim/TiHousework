@@ -14,7 +14,6 @@ function WebsocketMsgSender(props): JSX.Element {
     );
     setText('');
   }
-
   return (
     <>
       <TextInputBox onChangeText={setText} value={text} />
