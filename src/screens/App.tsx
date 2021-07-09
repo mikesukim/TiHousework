@@ -12,6 +12,7 @@ import rootReducer from '../redux';
 import Navigation from '../navigation'
 import {configureGoogleLogin} from '../services/googleSigninConfig';
 
+
 const store = createStore(rootReducer);
 const persistor = persistStore(store);
 
