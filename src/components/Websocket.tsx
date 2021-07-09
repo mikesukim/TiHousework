@@ -1,18 +1,15 @@
-import React, {useEffect, useState} from 'react';
-import {
-  Button,
-  StyleSheet,
-  Text,
-  TextInput,
-  TouchableHighlight,
-  View,
-} from 'react-native';
+import React, {useEffect, useState, useRef} from 'react';
+import {Button, Text} from 'react-native';
+import ConfettiCannon from 'react-native-confetti-cannon';
+import {Container, InnerContainer} from '../styled-components';
+import WebsocketMsgSender from './WebsocketMsgSender';
+import WebsocketMsgReceiver from './WebsocketMsgReceiver';
 
 function Websocket(): JSX.Element {
   const [connectionState, setConnectionState] = useState('not connected yet');
   const [wsState, setWsState] = useState({});
-  const [text, setText] = useState('');
-  const [data, setData] = useState('initial data');
+  const websocketMsgReceiver = useRef(null);
+  // const confetti = useRef(null);
 
   function connectWs() {
     const wsURL =
@@ -27,65 +24,37 @@ function Websocket(): JSX.Element {
       setConnectionState('disconnected!');
     };
     ws.onmessage = e => {
-      setData(e.data);
+      websocketMsgReceiver.current.callSetText(e.data);
     };
     setWsState(ws);
     return ws;
   }
-  //   useEffect(() => {}, []);
 
   function disconnectWs() {
     wsState.close();
   }
 
-  function sendMessageWs() {
-    wsState.send(
-      JSON.stringify({
-        action: 'sendmessage',
-        data: text,
-      }),
-    );
-    setText('');
-  }
-
   return (
-    <View>
-      <Text style={styles.connectionText}>{connectionState}</Text>
-      <Button title="Connect To Websocket!" onPress={connectWs} />
-      <Button title="Disconnect To Websocket!" onPress={disconnectWs} />
-      <TextInput style={styles.input} onChangeText={setText} value={text} />
-      <TouchableHighlight style={styles.sendButton} onPress={sendMessageWs}>
-        <Text style={styles.sendText}>Send</Text>
-      </TouchableHighlight>
-      <Text style={styles.connectionText}>{data}</Text>
-    </View>
+    <Container>
+      <InnerContainer>
+        <Text style={{textAlign: 'center'}}>{connectionState}</Text>
+        <Button title="Connect To Websocket!" onPress={connectWs} />
+        <Button title="Disconnect To Websocket!" onPress={disconnectWs} />
+      </InnerContainer>
+      <WebsocketMsgSender ws={wsState} />
+      <WebsocketMsgReceiver ref={websocketMsgReceiver} />
+      {/* <DataView>
+        <H1>{data}</H1>
+      </DataView> */}
+      {/* <ConfettiCannon
+        count={45}
+        origin={{x: 0, y: 0}}
+        ref={confetti}
+        autoStart={false}
+        fadeOut={true}
+      /> */}
+    </Container>
   );
 }
-
-const styles = StyleSheet.create({
-  input: {
-    height: 40,
-    margin: 12,
-    borderWidth: 1,
-  },
-  sendButton: {
-    marginRight: 40,
-    marginLeft: 40,
-    marginTop: 10,
-    paddingTop: 20,
-    paddingBottom: 20,
-    backgroundColor: '#68a0cf',
-    borderRadius: 10,
-    borderWidth: 1,
-    borderColor: '#fff',
-  },
-  sendText: {
-    color: '#fff',
-    textAlign: 'center',
-  },
-  connectionText: {
-    textAlign: 'center',
-  },
-});
 
 export default Websocket;
