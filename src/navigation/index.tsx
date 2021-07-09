@@ -1,33 +1,14 @@
-import {Navigation} from 'react-native-navigation';
-import {name as appName} from '../../app.json';
-import {SCREENS} from '../constants/screen.tsx';
+import React from 'react';
+import {createStackNavigator} from '@react-navigation/stack';
+import Test from '../screens/Test.tsx';
 
-import App from '../screens/App.tsx';
-import DefaultReactScreen from '../screens/DefaultReactScreen.tsx';
-import ClockScreen from '../screens/ClockScreen.tsx';
-import HelloScreen from '../screens/HelloScreen.tsx';
-
-export function registerScreens(): void {
-  Navigation.registerComponent(SCREENS.Root, () => App);
-  Navigation.registerComponent(SCREENS.DefaultReact, () => DefaultReactScreen);
-  Navigation.registerComponent(SCREENS.Clock, () => ClockScreen);
-  Navigation.registerComponent(SCREENS.Hello, () => HelloScreen);
+function Navigation(): JSX.Element {
+  const Stack = createStackNavigator();
+  return (
+    <Stack.Navigator>
+      <Stack.Screen name="Test" component={Test} />
+    </Stack.Navigator>
+  );
 }
 
-export function registerRoot(): void {
-  Navigation.events().registerAppLaunchedListener(() => {
-    Navigation.setRoot({
-      root: {
-        stack: {
-          children: [
-            {
-              component: {
-                name: SCREENS.Root,
-              },
-            },
-          ],
-        },
-      },
-    });
-  });
-}
+export default Navigation;
