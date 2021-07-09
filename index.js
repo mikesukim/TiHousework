@@ -2,10 +2,8 @@
  * @format
  */
 
-import {registerScreens, registerRoot} from './src/navigation';
-import {configureGoogleLogin} from './src/services/googleSigninConfig.tsx';
+import {AppRegistry} from 'react-native';
+import {name as appName} from './app.json';
+import App from './src/screens/App.tsx';
 
-registerScreens();
-registerRoot();
-
-configureGoogleLogin();
+AppRegistry.registerComponent(appName, () => App);
