@@ -7,9 +7,9 @@ import SplashScreen from 'react-native-splash-screen';
 import {persistStore} from 'redux-persist';
 import {PersistGate} from 'redux-persist/integration/react';
 import {NavigationContainer} from '@react-navigation/native';
-import {createStackNavigator} from '@react-navigation/stack';
+
 import rootReducer from '../redux';
-import Test from '../screens/Test';
+import Navigation from '../navigation'
 import {configureGoogleLogin} from '../services/googleSigninConfig';
 
 const store = createStore(rootReducer);
@@ -21,15 +21,11 @@ function App(): JSX.Element {
     configureGoogleLogin();
   }, []);
 
-  const Stack = createStackNavigator();
-
   return (
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <NavigationContainer>
-          <Stack.Navigator>
-            <Stack.Screen name="Test" component={Test} />
-          </Stack.Navigator>
+          <Navigation />
         </NavigationContainer>
       </PersistGate>
     </Provider>
