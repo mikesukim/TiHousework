@@ -4,7 +4,6 @@
 <dict>
 	<key>com.apple.developer.associated-domains</key>
 	<array>
-		<string>applinks:kimnoh.page.link</string>
 		<string>applinks:tihouse.page.link</string>
 	</array>
 </dict>
