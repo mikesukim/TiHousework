@@ -5,24 +5,14 @@ import WelcomeScreen from '../screens/WelcomeScreen';
 import TodoScreenTemp from '../screens/TodoScreenTemp';
 
 function RoomCheckToScreenMW(): JSX.Element {
-  const {
-    isInvited,
-    roomID,
-    onUpdateIsInvited,
-    onUpdateRoomID,
-    onRemoveRoomID,
-  } = useUser();
-
-  useEffect(() => {
-    onUpdateIsInvited(false);
-    // onUpdateRoomID('123');
-    onRemoveRoomID();
-  }, []);
+  const {isInvited, roomID} = useUser();
 
   function inviteCheck() {
     return isInvited;
   }
 
+  // please change the function names so it can make sense in a sentence syntax.
+  // such as, checkRoom to roomExist. Then using this function in if statement, it will more make sense gramatically(readability).
   function checkRoom() {
     if (roomID) {
       return true;
