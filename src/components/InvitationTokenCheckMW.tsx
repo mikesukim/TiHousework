@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {Alert, Text, View} from 'react-native';
-import dynamicLinks from '@react-native-firebase/dynamic-links';
+import dynamicLinks, { firebase } from '@react-native-firebase/dynamic-links';
 import useUser from '../hooks/useUser';
 import useAuth from '../hooks/useAuth';
 import SocialLogin from './SocialLogin';
@@ -12,17 +12,15 @@ function InvitationTokenCheckMW(): JSX.Element {
 
   useEffect(() => {
     onUpdateEmail('myapp@gmail.com');
-    buildLink(email);
+    buildLink('sender', email);
+    // buildShortLink('sender', email);
     // test();
-    isFromLink();
+    // isFromLink();
   }, []);
 
-  async function buildLink(sender) {
-    // create a dynamic link (prefix + deep link)
+  async function buildLink(param: string, value: string) {
     const link = await dynamicLinks().buildLink({
-      // create a deep link
-      link: `https://appname.com/?sender=${sender}`,
-      // prefix on FB console
+      link: `com.kimnoh.busi.tihousework://invitation?${param}=${value}`,
       domainUriPrefix: 'https://tihouse.page.link',
     });
     console.log('링크 새로 만들었어요');
@@ -30,29 +28,29 @@ function InvitationTokenCheckMW(): JSX.Element {
     return link;
   }
 
-  // function buildShortLink()
+  // async function buildShortLink(param: string, value: string) {
+  //   const link = await firebase.dynamicLinks().buildShortLink({
+  //     link: `<your_link>/?${param}=${value}`,
+  //     domainUriPrefix: 'https://tihouse.page.link',
+  //   });
+  //   console.log(link);
+
+  //   return link;
+  // }
 
   // 앱이 꺼져있는 상태에서 처음 킬 때
   function isFromLink() {
+    // deep link를 parameter로 받아서 link에 포함되어 있는 sender param 뽑아올 수 없나?
     dynamicLinks()
       .getInitialLink()
       .then(link => {
         onUpdateIsInvited(true);
-        // Alert.alert('네 저 링크로 들어왔어요');
-        // link.url 이 정확히 뭔지 모르겠음
-        // console.log(link);
-        // console.log(link.url);
+        Alert.alert('네 저 링크로 들어왔어요');
         if (
           link.url.includes(
-            `https://tihouse.page.link/?link=https://appname.com/?sender`,
+            `https://tihouse.page.link/?link=https://myapp.com/?sender`,
           )
-          // link.url ===
-          // `https://tihouse.page.link/?link=https://appname.com/?sender=${sender}`
         ) {
-          // link.url에서 sender value 가져오기
-          const query = new URLSearchParams(link.url);
-          const sender = query.get('sender');
-          console.log(sender);
           Alert.alert('This is a manual home screen');
         }
         // Handle dynamic link inside your own application
