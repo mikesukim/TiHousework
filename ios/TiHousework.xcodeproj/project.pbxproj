@@ -18,6 +18,7 @@
 		955E7BD82633382F00A59767 /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 955E7BD72633382F00A59767 /* SafariServices.framework */; };
 		955E7BDA2633384000A59767 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 955E7BD92633384000A59767 /* SystemConfiguration.framework */; };
 		955E7BDC2633384900A59767 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 955E7BDB2633384900A59767 /* libz.tbd */; };
+		9575529B269A0A51007AB0B4 /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9575529A269A0A51007AB0B4 /* AVKit.framework */; };
 		95E14EF72635B31D00963F93 /* SwiftBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E14EF62635B31D00963F93 /* SwiftBridge.swift */; };
 		A0C741F79B15F9F608A5E60F /* libPods-TiHousework.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 604672816A7D2A8FAA96AC05 /* libPods-TiHousework.a */; };
 		B2EED9032672AAD0009E2845 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B2EED9022672AAD0009E2845 /* GoogleService-Info.plist */; };
@@ -54,6 +55,7 @@
 		955E7BD72633382F00A59767 /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
 		955E7BD92633384000A59767 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		955E7BDB2633384900A59767 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		9575529A269A0A51007AB0B4 /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
 		95E14EF52635B31C00963F93 /* TiHousework-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TiHousework-Bridging-Header.h"; sourceTree = "<group>"; };
 		95E14EF62635B31D00963F93 /* SwiftBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftBridge.swift; sourceTree = "<group>"; };
 		B2433E85266A8F1B00B5EEED /* TiHousework.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = TiHousework.entitlements; path = TiHousework/TiHousework.entitlements; sourceTree = "<group>"; };
@@ -75,6 +77,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9575529B269A0A51007AB0B4 /* AVKit.framework in Frameworks */,
 				955E7BDC2633384900A59767 /* libz.tbd in Frameworks */,
 				955E7BDA2633384000A59767 /* SystemConfiguration.framework in Frameworks */,
 				955E7BD82633382F00A59767 /* SafariServices.framework in Frameworks */,
@@ -121,6 +124,7 @@
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9575529A269A0A51007AB0B4 /* AVKit.framework */,
 				955E7BDB2633384900A59767 /* libz.tbd */,
 				955E7BD92633384000A59767 /* SystemConfiguration.framework */,
 				955E7BD72633382F00A59767 /* SafariServices.framework */,
@@ -643,7 +647,6 @@
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"\"$(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)\"",
-					"\"$(TOOLCHAIN_DIR)/usr/lib/swift-5.0/$(PLATFORM_NAME)\"",
 					"\"$(inherited)\"",
 				);
 				MTL_ENABLE_DEBUG_INFO = YES;
@@ -701,7 +704,6 @@
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"\"$(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)\"",
-					"\"$(TOOLCHAIN_DIR)/usr/lib/swift-5.0/$(PLATFORM_NAME)\"",
 					"\"$(inherited)\"",
 				);
 				MTL_ENABLE_DEBUG_INFO = NO;
