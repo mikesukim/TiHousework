@@ -15,7 +15,7 @@ function InvitationTokenCheckMW(): JSX.Element {
     buildLink('sender', email);
     // buildShortLink('sender', email);
     // test();
-    // isFromLink();
+    isFromLink();
   }, []);
 
   async function buildLink(param: string, value: string) {
