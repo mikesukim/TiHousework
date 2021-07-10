@@ -39,3 +39,21 @@ export function postLogin(email) {
       });
   });
 }
+
+export function postRegister(email) {
+  return new Promise((resolve, reject) => {
+    axios
+      .post(`${BASEURL}/${STAGE}/user/register`, {
+        email: email,
+        appkey: 'TiHousework_lala',
+      })
+      .then(function (response) {
+        // handle success
+        resolve(response);
+      })
+      .catch(function (error) {
+        // handle error
+        reject(error);
+      });
+  });
+}
