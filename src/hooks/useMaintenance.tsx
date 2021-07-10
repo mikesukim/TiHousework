@@ -15,7 +15,8 @@ export default function useAuth(): AuthProps {
   const dispatch = useDispatch();
 
   const onUpdateIsSocialLoggedIn = useCallback(
-    (isSocialLoggedIn: boolean) => dispatch(updateIsSocialLoggedIn(isSocialLoggedIn)),
+    (isSocialLoggedIn: boolean) =>
+      dispatch(updateIsSocialLoggedIn(isSocialLoggedIn)),
     [dispatch],
   );
 
