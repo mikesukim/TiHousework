@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import useUser from '../hooks/useUser.tsx';
 import TwoHouseWorkErrorScreen from '../screens/TwoHouseWorkErrorScreen';
 import WelcomeScreen from '../screens/WelcomeScreen';
@@ -11,7 +11,7 @@ function RoomCheckToScreenMW(): JSX.Element {
     return isInvited;
   }
 
-  // please change the function names so it can make sense in a sentence syntax.
+  // please change the function names so it can make sense as reading in a sentence.
   // such as, checkRoom to roomExist. Then using this function in if statement, it will more make sense gramatically(readability).
   function checkRoom() {
     if (roomID) {

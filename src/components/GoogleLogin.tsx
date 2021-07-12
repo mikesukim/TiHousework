@@ -24,18 +24,13 @@ class GoogleLogin extends React.Component<Props, State> {
 
   signIn = async () => {
     const useUser = this.props.userHook;
-    const {onCreateUser} = useUser;
+    const {onUpdateEmail} = useUser;
     const useMaintenance = this.props.maintenanceHook;
     const {onUpdateIsSocialLoggedIn} = useMaintenance;
     try {
       await GoogleSignin.hasPlayServices();
       const userInfo = await GoogleSignin.signIn();
-      onCreateUser({
-        email: userInfo.user.email,
-        roomID: '123123123',
-        isInvited: false,
-        inviterEmail: '',
-      });
+      onUpdateEmail(userInfo.user.email);
       onUpdateIsSocialLoggedIn(true);
     } catch (error) {
       onUpdateIsSocialLoggedIn(false);
@@ -71,9 +66,5 @@ class GoogleLogin extends React.Component<Props, State> {
     );
   }
 }
-
-GoogleLogin.defaultProps = {
-  name: 'John',
-};
 
 export default GoogleLogin;

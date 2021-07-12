@@ -1,15 +1,35 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import dynamicLinks from '@react-native-firebase/dynamic-links';
-import useUser from '../hooks/useUser';
 import useAuth from '../hooks/useAuth';
+import useUser from '../hooks/useUser';
 import useMaintenance from '../hooks/useMaintenance';
 import SocialLogin from './SocialLogin';
 import RoomCheckToScreenMW from './RoomCheckToScreenMW';
 import LoginRegisterMW from './LoginRegisterMW';
 
 function InvitationTokenCheckMW(): JSX.Element {
-  const {token, onRemoveToken, onAddToken} = useAuth();
+  const {token} = useAuth();
+  const {onUpdateIsInvited, onUpdateInviterEmail} = useUser();
   const {isSocialLoggedIn} = useMaintenance();
+
+  useEffect(() => {
+    const unsubscribe = dynamicLinks().onLink(handleDynamicLink);
+    return () => unsubscribe();
+  }, []);
+
+  const handleDynamicLink = link => {
+    if (link.url.includes('invitation')) {
+      const url = link.url;
+      const regex = /[?&]([^=#]+)=([^&#]*)/g;
+      const params = {};
+      let match;
+      while ((match = regex.exec(url))) {
+        params[match[1]] = match[2];
+      }
+      onUpdateIsInvited(true);
+      onUpdateInviterEmail(params.sender);
+    }
+  };
 
   function hasToken() {
     if (token) {
@@ -19,14 +39,11 @@ function InvitationTokenCheckMW(): JSX.Element {
   }
 
   if (hasToken()) {
-    console.log('토큰있어서 소셜 로그인 안함');
     return <RoomCheckToScreenMW />;
   }
   if (isSocialLoggedIn) {
-    console.log('토큰없고 소셜 로그인 됐삼');
     return <LoginRegisterMW />;
   }
-  // console.log('토큰없고 소셜 로그인 안됐삼');
   return <SocialLogin />;
 }
 

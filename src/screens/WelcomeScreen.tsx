@@ -1,5 +1,7 @@
-import React, {useEffect, useState} from 'react';
-import {StyleSheet, Text, View, Button, Alert} from 'react-native';
+import React from 'react';
+import dynamicLinks from '@react-native-firebase/dynamic-links';
+import {StyleSheet, Alert} from 'react-native';
+import Clipboard from '@react-native-clipboard/clipboard';
 import useUser from '../hooks/useUser.tsx';
 import {
   Container,
@@ -9,10 +11,10 @@ import {
   Header2,
   Header3,
   SendBtn,
-} from './StyledComps';
+} from '../styled-components/StyledComps';
 
 function WelcomeScreen(): JSX.Element {
-  const {isInvited, inviterEmail} = useUser();
+  const {email, isInvited, inviterEmail, onUpdateRoomID} = useUser();
 
   const styles = StyleSheet.create({
     text: {
@@ -21,11 +23,19 @@ function WelcomeScreen(): JSX.Element {
     },
   });
 
-  // isInvited = true
-  // inviteEmail = ''
+  async function buildLink(param: string, value: string) {
+    const link = await dynamicLinks().buildLink({
+      link: `https://tihouse.page.link/invitation?${param}=${value}`,
+      domainUriPrefix: 'https://tihouse.page.link',
+    });
+    console.log('링크 새로 만들었어요');
+    console.log(link);
+    return link;
+  }
+
   function Greeting(props) {
     const isInvited = props.isInvited;
-    console.log('Checking isInvited from Welcome = ' + isInvited);
+    // console.log('Checking isInvited from Welcome = ' + isInvited);
     if (isInvited) {
       return (
         <Container>
@@ -54,7 +64,19 @@ function WelcomeScreen(): JSX.Element {
           <Header3>우리의 집안 살림을 같이 티낼 방을 만들어볼래요?</Header3>
           <SendBtn
             title="방만들기"
-            onPress={() => Alert.alert('새방으로 입장')}
+            onPress={() => {
+              onUpdateRoomID('123');
+              Alert.alert('새로운 방 번호가 생성되었어요');
+            }}
+            bgColor="#e21a5f"
+          />
+          <SendBtn
+            title="초대 링크 복사하기"
+            onPress={async () => {
+              const link = buildLink('sender', email);
+              Clipboard.setString(await link);
+              Alert.alert('링크가 복사되었습니다');
+            }}
             bgColor="#e21a5f"
           />
         </BottomContainer>
