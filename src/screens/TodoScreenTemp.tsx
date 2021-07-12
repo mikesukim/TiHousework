@@ -1,11 +1,12 @@
 import React, {useEffect, useState} from 'react';
 import {Text, View} from 'react-native';
+import useUser from '../hooks/useUser';
 
 function TodoScreenTemp(): JSX.Element {
-  const [state, setState] = useState('initial state');
-
+  const {onRemoveIsInvited, onRemoveInviterEmail} = useUser();
   useEffect(() => {
-    setState('hello');
+    onRemoveIsInvited();
+    onRemoveInviterEmail();
   }, []);
 
   return (

@@ -1,6 +1,6 @@
 import React from 'react';
 import dynamicLinks from '@react-native-firebase/dynamic-links';
-import {StyleSheet, Alert} from 'react-native';
+import {StyleSheet, Alert, Button} from 'react-native';
 import Clipboard from '@react-native-clipboard/clipboard';
 import useUser from '../hooks/useUser.tsx';
 import {
@@ -35,7 +35,6 @@ function WelcomeScreen(): JSX.Element {
 
   function Greeting(props) {
     const isInvited = props.isInvited;
-    // console.log('Checking isInvited from Welcome = ' + isInvited);
     if (isInvited) {
       return (
         <Container>
@@ -62,22 +61,20 @@ function WelcomeScreen(): JSX.Element {
         <BottomContainer>
           <Header2>안녕하세요 티집살림이에요!</Header2>
           <Header3>우리의 집안 살림을 같이 티낼 방을 만들어볼래요?</Header3>
-          <SendBtn
+          <Button
             title="방만들기"
             onPress={() => {
               onUpdateRoomID('123');
               Alert.alert('새로운 방 번호가 생성되었어요');
             }}
-            bgColor="#e21a5f"
           />
-          <SendBtn
+          <Button
             title="초대 링크 복사하기"
             onPress={async () => {
               const link = buildLink('sender', email);
               Clipboard.setString(await link);
               Alert.alert('링크가 복사되었습니다');
             }}
-            bgColor="#e21a5f"
           />
         </BottomContainer>
       </Container>

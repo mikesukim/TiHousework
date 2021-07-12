@@ -3,12 +3,12 @@ import {useCallback} from 'react';
 import {RootState} from '../redux';
 import {updateIsSocialLoggedIn} from '../redux/maintenance.ts';
 
-interface AuthProps {
+interface MaintenanceProps {
   isSocialLoggedIn: boolean;
   onUpdateIsSocialLoggedIn: (isSocialLoggedIn: boolean) => void;
 }
 
-export default function useAuth(): AuthProps {
+export default function useMaintenance(): MaintenanceProps {
   const isSocialLoggedIn = useSelector(
     (state: RootState) => state.maintenance.isSocialLoggedIn,
   );
