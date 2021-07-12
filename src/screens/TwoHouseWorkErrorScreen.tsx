@@ -8,7 +8,7 @@ import {
   Header2,
   Header3,
   SendBtn,
-} from './StyledComps';
+} from '../styled-components/StyledComps';
 
 function TempHook(): JSX.Element {
   const [state, setState] = useState('initial state');

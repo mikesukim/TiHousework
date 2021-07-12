@@ -24,21 +24,18 @@ class GoogleLogin extends React.Component<Props, State> {
 
   signIn = async () => {
     const useUser = this.props.userHook;
-    const {onCreateUser} = useUser;
+    const {onUpdateEmail} = useUser;
     const useMaintenance = this.props.maintenanceHook;
     const {onUpdateIsSocialLoggedIn} = useMaintenance;
     try {
       await GoogleSignin.hasPlayServices();
       const userInfo = await GoogleSignin.signIn();
-      onCreateUser({
-        email: userInfo.user.email,
-        roomID: '123123123',
-        isInvited: false,
-        inviterEmail: '',
-      });
+      onUpdateEmail(userInfo.user.email);
       onUpdateIsSocialLoggedIn(true);
+      this.setState({isSigninInProgress: false});
     } catch (error) {
       onUpdateIsSocialLoggedIn(false);
+      this.setState({isSigninInProgress: false});
       if (error.code === statusCodes.SIGN_IN_CANCELLED) {
         Alert.alert('로그인 실패. 다시 시도해주세요');
         // user cancelled the login flow
@@ -71,9 +68,5 @@ class GoogleLogin extends React.Component<Props, State> {
     );
   }
 }
-
-GoogleLogin.defaultProps = {
-  name: 'John',
-};
 
 export default GoogleLogin;
