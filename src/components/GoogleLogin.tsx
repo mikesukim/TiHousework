@@ -32,8 +32,10 @@ class GoogleLogin extends React.Component<Props, State> {
       const userInfo = await GoogleSignin.signIn();
       onUpdateEmail(userInfo.user.email);
       onUpdateIsSocialLoggedIn(true);
+      this.setState({isSigninInProgress: false});
     } catch (error) {
       onUpdateIsSocialLoggedIn(false);
+      this.setState({isSigninInProgress: false});
       if (error.code === statusCodes.SIGN_IN_CANCELLED) {
         Alert.alert('로그인 실패. 다시 시도해주세요');
         // user cancelled the login flow
