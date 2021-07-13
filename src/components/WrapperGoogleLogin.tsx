@@ -1,8 +1,6 @@
-import React, {useEffect, useState} from 'react';
-import {Text, View} from 'react-native';
+import React from 'react';
 import GoogleLogin from './GoogleLogin';
 import useUser from '../hooks/useUser.tsx';
-import useAuth from '../hooks/useAuth.tsx';
 import useMaintenance from '../hooks/useMaintenance';
 
 function WrapperGoogleLogin(): JSX.Element {

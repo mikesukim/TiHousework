@@ -1,5 +1,5 @@
 import React from 'react';
-import {Alert, Button, Text, View} from 'react-native';
+import {Alert, View} from 'react-native';
 import {
   KakaoOAuthToken,
   KakaoProfile,
@@ -8,6 +8,11 @@ import {
   logout,
   unlink,
 } from '@react-native-seoul/kakao-login';
+import {
+  ButtonWrapper,
+  SocialLoginButton,
+  SocialLoginButtonText,
+} from '../styled-components/StyledComps';
 
 interface Props {
   name?: string;
@@ -16,11 +21,6 @@ interface State {
   value: number;
 }
 class KakaoLogin extends React.Component<Props, State> {
-  constructor(props: Props) {
-    super(props);
-    this.state = {value: 7};
-  }
-
   signInWithKakao = async (): Promise<void> => {
     const token: KakaoOAuthToken = await login()
       .then(function (token) {
@@ -50,15 +50,15 @@ class KakaoLogin extends React.Component<Props, State> {
 
   render(): JSX.Element {
     return (
-      <View>
-        <Button title="Kakao Login" onPress={this.getProfile} />
-      </View>
+      <>
+        <SocialLoginButton
+          style={{shadowOffset: {width: 3, height: 5}}}
+          onPress={this.getProfile}>
+          <SocialLoginButtonText>Continue with KakaoTalk</SocialLoginButtonText>
+        </SocialLoginButton>
+      </>
     );
   }
 }
-
-KakaoLogin.defaultProps = {
-  name: 'John',
-};
 
 export default KakaoLogin;

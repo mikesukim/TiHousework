@@ -7,7 +7,7 @@ export const Container = styled.View`
 `;
 
 export const InnerContainer = styled.View`
-  margin-top:50px;
+  margin-top: 50px;
   background-color: white;
 `;
 
