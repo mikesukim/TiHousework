@@ -34,6 +34,9 @@
 		9575529B269A0A51007AB0B4 /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9575529A269A0A51007AB0B4 /* AVKit.framework */; };
 		95E14EF72635B31D00963F93 /* SwiftBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E14EF62635B31D00963F93 /* SwiftBridge.swift */; };
 		A0C741F79B15F9F608A5E60F /* libPods-TiHousework.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 604672816A7D2A8FAA96AC05 /* libPods-TiHousework.a */; };
+		B2A31E89269E4FE00037177B /* GodoB.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B2A31E86269E4FE00037177B /* GodoB.ttf */; };
+		B2A31E8A269E4FE00037177B /* IropkeBatangM.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B2A31E87269E4FE00037177B /* IropkeBatangM.ttf */; };
+		B2A31E8B269E4FE00037177B /* GodoM.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B2A31E88269E4FE00037177B /* GodoM.ttf */; };
 		B2EED9032672AAD0009E2845 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B2EED9022672AAD0009E2845 /* GoogleService-Info.plist */; };
 		D20EEB89E4EE42ECA658EF56 /* Montserrat-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1E59F50697024F6692CB922B /* Montserrat-Black.ttf */; };
 		D2CC4CB1B09B4D06A0E67B80 /* Montserrat-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9205EFDBFACB45AD950B5AA4 /* Montserrat-Italic.ttf */; };
@@ -90,6 +93,9 @@
 		95E14EF62635B31D00963F93 /* SwiftBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftBridge.swift; sourceTree = "<group>"; };
 		AB3F505FF6FD4F998F6494D1 /* Montserrat-ExtraLightItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Montserrat-ExtraLightItalic.ttf"; path = "../assets/fonts/Montserrat-ExtraLightItalic.ttf"; sourceTree = "<group>"; };
 		B2433E85266A8F1B00B5EEED /* TiHousework.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = TiHousework.entitlements; path = TiHousework/TiHousework.entitlements; sourceTree = "<group>"; };
+		B2A31E86269E4FE00037177B /* GodoB.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = GodoB.ttf; path = ../assets/fonts/GodoB.ttf; sourceTree = "<group>"; };
+		B2A31E87269E4FE00037177B /* IropkeBatangM.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = IropkeBatangM.ttf; path = ../assets/fonts/IropkeBatangM.ttf; sourceTree = "<group>"; };
+		B2A31E88269E4FE00037177B /* GodoM.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = GodoM.ttf; path = ../assets/fonts/GodoM.ttf; sourceTree = "<group>"; };
 		B2EED9022672AAD0009E2845 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C007476CFCDA4C7F994904C6 /* Montserrat-ThinItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Montserrat-ThinItalic.ttf"; path = "../assets/fonts/Montserrat-ThinItalic.ttf"; sourceTree = "<group>"; };
 		CCB2568CD1A446399F1893ED /* Montserrat-MediumItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Montserrat-MediumItalic.ttf"; path = "../assets/fonts/Montserrat-MediumItalic.ttf"; sourceTree = "<group>"; };
@@ -183,6 +189,9 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				B2A31E86269E4FE00037177B /* GodoB.ttf */,
+				B2A31E88269E4FE00037177B /* GodoM.ttf */,
+				B2A31E87269E4FE00037177B /* IropkeBatangM.ttf */,
 				B2EED9022672AAD0009E2845 /* GoogleService-Info.plist */,
 				95E14EF62635B31D00963F93 /* SwiftBridge.swift */,
 				13B07FAE1A68108700A75B9A /* TiHousework */,
@@ -339,6 +348,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B2A31E89269E4FE00037177B /* GodoB.ttf in Resources */,
+				B2A31E8A269E4FE00037177B /* IropkeBatangM.ttf in Resources */,
+				B2A31E8B269E4FE00037177B /* GodoM.ttf in Resources */,
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				B2EED9032672AAD0009E2845 /* GoogleService-Info.plist in Resources */,
