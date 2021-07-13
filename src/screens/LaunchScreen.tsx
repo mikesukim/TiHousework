@@ -23,7 +23,7 @@ function LaunchScreen(): JSX.Element {
           <Header3>우리의 집안일을 같이 하러 가볼까요?</Header3>
         </View3>
         <View2>
-          <Image1 source={require('../img/1.jpeg')} />
+          <Image1 source={require('../img/11.jpeg')} />
         </View2>
         <View4>
           <SocialLogin />
