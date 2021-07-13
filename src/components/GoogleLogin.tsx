@@ -1,10 +1,14 @@
 import React from 'react';
 import {
   GoogleSignin,
-  GoogleSigninButton,
   statusCodes,
 } from '@react-native-google-signin/google-signin';
-import {Alert} from 'react-native';
+import {Alert, View} from 'react-native';
+import {
+  ButtonWrapper,
+  SocialLoginButton,
+  SocialLoginButtonText,
+} from '../styled-components/StyledComps';
 
 interface Props {
   name?: string;
@@ -54,17 +58,19 @@ class GoogleLogin extends React.Component<Props, State> {
 
   render(): JSX.Element {
     const {value, isSigninInProgress} = this.state;
+
     return (
-      <GoogleSigninButton
-        style={{width: 192, height: 48}}
-        size={GoogleSigninButton.Size.Wide}
-        color={GoogleSigninButton.Color.Dark}
-        onPress={() => {
-          this.signIn();
-          this.setState({isSigninInProgress: true});
-        }}
-        disabled={isSigninInProgress}
-      />
+      <>
+        <SocialLoginButton
+          style={{shadowOffset: {width:3, height: 5}}}
+          onPress={() => {
+            this.signIn();
+            this.setState({isSigninInProgress: true});
+          }}
+          disabled={isSigninInProgress}>
+          <SocialLoginButtonText>Continue with Google</SocialLoginButtonText>
+        </SocialLoginButton>
+      </>
     );
   }
 }

@@ -8,6 +8,7 @@ import {persistStore} from 'redux-persist';
 import {PersistGate} from 'redux-persist/integration/react';
 import {NavigationContainer} from '@react-navigation/native';
 
+import {SafeAreaProvider} from 'react-native-safe-area-context';
 import rootReducer from '../redux';
 import Navigation from '../navigation'
 import {configureGoogleLogin} from '../services/googleSigninConfig';
@@ -25,9 +26,11 @@ function App(): JSX.Element {
   return (
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
-        <NavigationContainer>
-          <Navigation />
-        </NavigationContainer>
+        <SafeAreaProvider>
+          <NavigationContainer>
+            <Navigation />
+          </NavigationContainer>
+        </SafeAreaProvider>
       </PersistGate>
     </Provider>
   );
