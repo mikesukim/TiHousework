@@ -1,12 +1,15 @@
 import React from 'react';
-import {ActivityIndicator, SafeAreaView, Text} from 'react-native';
+import Spinner from 'react-native-loading-spinner-overlay';
+import useMaintenance from '../hooks/useMaintenance';
 
 function Loading(): JSX.Element {
+  const {isLoginInProcess} = useMaintenance();
   return (
-    <SafeAreaView style={{flex: 1, justifyContent: 'center'}}>
-      <ActivityIndicator size="large" />
-      <Text>로딩중입니다</Text>
-    </SafeAreaView>
+    <Spinner
+      visible={isLoginInProcess}
+      textContent="Loading..."
+      textStyle={{color: '#FFF'}}
+    />
   );
 }
 

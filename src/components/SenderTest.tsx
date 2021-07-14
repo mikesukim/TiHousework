@@ -1,5 +1,3 @@
-import React, {useEffect, useState} from 'react';
-import {Text, View} from 'react-native';
 import firebase from 'react-native-firebase';
 
 async function SenderTest(): Promise<JSX.Element> {

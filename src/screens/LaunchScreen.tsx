@@ -1,6 +1,9 @@
 import React from 'react';
 import {SafeAreaView} from 'react-native-safe-area-context';
+import Loading from '../components/Loading';
+import LoginRegisterMW from '../components/LoginRegisterMW';
 import SocialLogin from '../components/SocialLogin';
+import useMaintenance from '../hooks/useMaintenance';
 import {
   Header2,
   Header3,
@@ -13,8 +16,11 @@ import {
 } from '../styled-components/StyledComps';
 
 function LaunchScreen(): JSX.Element {
+  const {isLoginInProcess} = useMaintenance();
   return (
     <SafeAreaView style={{flex: 1}}>
+      <LoginRegisterMW />
+      {isLoginInProcess ? <Loading /> : null}
       <View1>
         <View3>
           <LogoText>티집살림</LogoText>

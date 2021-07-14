@@ -2,15 +2,12 @@ import React, {useEffect} from 'react';
 import dynamicLinks from '@react-native-firebase/dynamic-links';
 import useAuth from '../hooks/useAuth';
 import useUser from '../hooks/useUser';
-import useMaintenance from '../hooks/useMaintenance';
 import RoomCheckToScreenMW from './RoomCheckToScreenMW';
-import LoginRegisterMW from './LoginRegisterMW';
 import LaunchScreen from '../screens/LaunchScreen';
 
 function InvitationTokenCheckMW(): JSX.Element {
   const {token} = useAuth();
   const {onUpdateIsInvited, onUpdateInviterEmail} = useUser();
-  const {isSocialLoggedIn} = useMaintenance();
 
   useEffect(() => {
     const unsubscribe = dynamicLinks().onLink(handleDynamicLink);
@@ -35,9 +32,6 @@ function InvitationTokenCheckMW(): JSX.Element {
 
   if (token) {
     return <RoomCheckToScreenMW />;
-  }
-  if (isSocialLoggedIn) {
-    return <LoginRegisterMW />;
   }
   return <LaunchScreen />;
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import {Alert, View} from 'react-native';
+import {Alert} from 'react-native';
 import {
   KakaoOAuthToken,
   KakaoProfile,
@@ -9,7 +9,6 @@ import {
   unlink,
 } from '@react-native-seoul/kakao-login';
 import {
-  ButtonWrapper,
   SocialLoginButton,
   SocialLoginButtonText,
 } from '../styled-components/StyledComps';
