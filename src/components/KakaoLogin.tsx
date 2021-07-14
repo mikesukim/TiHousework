@@ -27,7 +27,9 @@ class KakaoLogin extends React.Component<Props, State> {
         console.log('Kakao Login Succeed');
         console.log(JSON.stringify(token));
       })
-      .catch(error => console.log(error));
+      .catch(error => {
+        console.log(error);
+      });
   };
 
   getProfile = async (): Promise<void> => {
@@ -42,10 +44,8 @@ class KakaoLogin extends React.Component<Props, State> {
         })
         .catch(error => {
           onUpdateIsSocialLoggedIn(false);
-          if (error !== 'cancelled.') {
-            Alert.alert('로그인 실패. 다시 시도해주세요');
-          }
           console.log(error);
+          Alert.alert('로그인에 실패했어요. 다시 시도해주세요.');
         });
     });
   };

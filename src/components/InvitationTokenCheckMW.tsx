@@ -14,7 +14,9 @@ function InvitationTokenCheckMW(): JSX.Element {
 
   useEffect(() => {
     const unsubscribe = dynamicLinks().onLink(handleDynamicLink);
-    return () => unsubscribe();
+    return () => {
+      unsubscribe();
+    };
   }, []);
 
   const handleDynamicLink = link => {
@@ -42,8 +44,10 @@ function InvitationTokenCheckMW(): JSX.Element {
     return <RoomCheckToScreenMW />;
   }
   if (isSocialLoggedIn) {
+    console.log('미들웨어입니다');
     return <LoginRegisterMW />;
   }
+  console.log('런치스크린입니다');
   return <LaunchScreen />;
 }
 

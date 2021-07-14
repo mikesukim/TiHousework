@@ -1,11 +1,12 @@
 import React, {useEffect, useState} from 'react';
-import {ActivityIndicator, Alert} from 'react-native';
+import {ActivityIndicator, Alert, SafeAreaView} from 'react-native';
 import {postLogin, postRegister} from '../router';
 import useUser from '../hooks/useUser.tsx';
 import useAuth from '../hooks/useAuth';
 import RoomCheckToScreenMW from './RoomCheckToScreenMW';
-import SocialLogin from './SocialLogin';
 import LaunchScreen from '../screens/LaunchScreen';
+import { Text } from 'react-native';
+import { View } from 'react-native';
 
 function LoginRegisterMW(): JSX.Element {
   const [isLoginSucceeded, setIsLoginSucceeded] = useState(false);
@@ -69,11 +70,13 @@ function LoginRegisterMW(): JSX.Element {
   if (isLoginSucceeded) {
     return <RoomCheckToScreenMW />;
   }
-
   return (
     <>
-      {isSocialLoginInProcess ? <ActivityIndicator /> : null}
-      <LaunchScreen />
+      {/* {isSocialLoginInProcess ? <ActivityIndicator /> : null} */}
+      <SafeAreaView style={{flex: 1}}>
+        <ActivityIndicator />
+      </SafeAreaView>
+      {/* <LaunchScreen /> */}
     </>
   );
 }
