@@ -1,16 +1,15 @@
 import React, {useEffect, useState} from 'react';
-import {ActivityIndicator, Alert, SafeAreaView} from 'react-native';
+import {ActivityIndicator, Alert, View} from 'react-native';
 import {postLogin, postRegister} from '../router';
 import useUser from '../hooks/useUser.tsx';
 import useAuth from '../hooks/useAuth';
 import RoomCheckToScreenMW from './RoomCheckToScreenMW';
+import Loading from './Loading';
 import LaunchScreen from '../screens/LaunchScreen';
-import { Text } from 'react-native';
-import { View } from 'react-native';
 
 function LoginRegisterMW(): JSX.Element {
   const [isLoginSucceeded, setIsLoginSucceeded] = useState(false);
-  const [isSocialLoginInProcess, setIsSocialLoginInProcess] = useState(false);
+  const [isLoginInProcess, setIsLoginInProcess] = useState(false);
   const {onAddToken} = useAuth();
   const {email} = useUser();
 
@@ -20,7 +19,7 @@ function LoginRegisterMW(): JSX.Element {
       .then(function (response) {
         onAddToken(response.data.token);
         setIsLoginSucceeded(true);
-        setIsSocialLoginInProcess(false);
+        setIsLoginInProcess(false);
       })
       .catch(function (error) {
         // when a user has never been logged in to our app before
@@ -36,21 +35,21 @@ function LoginRegisterMW(): JSX.Element {
                 .then(function (r) {
                   onAddToken(r.data.token);
                   setIsLoginSucceeded(true);
-                  setIsSocialLoginInProcess(false);
+                  setIsLoginInProcess(false);
                 })
                 .catch(function (e) {
                   Alert.alert('로그인 실패. 다시 시도해주세요');
-                  setIsSocialLoginInProcess(false);
+                  setIsLoginInProcess(false);
                 });
             })
             .catch(function (e) {
               console.log(e.response.data);
               Alert.alert('로그인 실패. 다시 시도해주세요');
-              setIsSocialLoginInProcess(false);
+              setIsLoginInProcess(false);
             });
         } else {
           Alert.alert('로그인 실패. 다시 시도해주세요');
-          setIsSocialLoginInProcess(false);
+          setIsLoginInProcess(false);
         }
       });
   }
@@ -59,7 +58,7 @@ function LoginRegisterMW(): JSX.Element {
     let isMounted = true;
     if (isMounted) {
       // Login Register MW
-      setIsSocialLoginInProcess(true);
+      setIsLoginInProcess(true);
       requestLoginApi();
     }
     return () => {
@@ -72,11 +71,15 @@ function LoginRegisterMW(): JSX.Element {
   }
   return (
     <>
-      {/* {isSocialLoginInProcess ? <ActivityIndicator /> : null} */}
-      <SafeAreaView style={{flex: 1}}>
-        <ActivityIndicator />
-      </SafeAreaView>
-      {/* <LaunchScreen /> */}
+      <View
+        style={{
+          flex: 1,
+          justifyContent: 'center',
+          alignItems: 'center',
+          backgroundColor: '#F5FCFF',
+        }}>
+        <ActivityIndicator size="large" />
+      </View>
     </>
   );
 }
