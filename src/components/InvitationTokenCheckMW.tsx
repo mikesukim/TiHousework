@@ -33,14 +33,7 @@ function InvitationTokenCheckMW(): JSX.Element {
     }
   };
 
-  function hasToken() {
-    if (token) {
-      return true;
-    }
-    return false;
-  }
-
-  if (hasToken()) {
+  if (token) {
     return <RoomCheckToScreenMW />;
   }
   if (isSocialLoggedIn) {
