@@ -42,7 +42,9 @@ class KakaoLogin extends React.Component<Props, State> {
         })
         .catch(error => {
           onUpdateIsSocialLoggedIn(false);
-          Alert.alert('로그인 실패. 다시 시도해주세요');
+          if (error !== 'cancelled.') {
+            Alert.alert('로그인 실패. 다시 시도해주세요');
+          }
           console.log(error);
         });
     });

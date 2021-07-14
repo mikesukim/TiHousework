@@ -41,7 +41,7 @@ class GoogleLogin extends React.Component<Props, State> {
       onUpdateIsSocialLoggedIn(false);
       this.setState({isSigninInProgress: false});
       if (error.code === statusCodes.SIGN_IN_CANCELLED) {
-        Alert.alert('로그인 실패. 다시 시도해주세요');
+        // Alert.alert('로그인 실패. 다시 시도해주세요');
         // user cancelled the login flow
       } else if (error.code === statusCodes.IN_PROGRESS) {
         Alert.alert('로그인 실패. 다시 시도해주세요');
