@@ -3,9 +3,9 @@ import dynamicLinks from '@react-native-firebase/dynamic-links';
 import useAuth from '../hooks/useAuth';
 import useUser from '../hooks/useUser';
 import useMaintenance from '../hooks/useMaintenance';
-import SocialLogin from './SocialLogin';
 import RoomCheckToScreenMW from './RoomCheckToScreenMW';
 import LoginRegisterMW from './LoginRegisterMW';
+import LaunchScreen from '../screens/LaunchScreen';
 
 function InvitationTokenCheckMW(): JSX.Element {
   const {token} = useAuth();
@@ -44,7 +44,7 @@ function InvitationTokenCheckMW(): JSX.Element {
   if (isSocialLoggedIn) {
     return <LoginRegisterMW />;
   }
-  return <SocialLogin />;
+  return <LaunchScreen />;
 }
 
 export default InvitationTokenCheckMW;

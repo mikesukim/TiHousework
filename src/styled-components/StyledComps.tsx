@@ -68,7 +68,6 @@ export const LogoText = styled.Text`
   marginBottom: 20px;
 `;
 
-// make sure to create shadows
 export const SocialLoginButton = styled.Pressable`
   width: 90%;
   padding: 15px;

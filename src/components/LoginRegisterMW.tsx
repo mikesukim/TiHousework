@@ -5,6 +5,7 @@ import useUser from '../hooks/useUser.tsx';
 import useAuth from '../hooks/useAuth';
 import RoomCheckToScreenMW from './RoomCheckToScreenMW';
 import SocialLogin from './SocialLogin';
+import LaunchScreen from '../screens/LaunchScreen';
 
 function LoginRegisterMW(): JSX.Element {
   const [isLoginSucceeded, setIsLoginSucceeded] = useState(false);
@@ -72,7 +73,7 @@ function LoginRegisterMW(): JSX.Element {
   return (
     <>
       {isSocialLoginInProcess ? <ActivityIndicator /> : null}
-      <SocialLogin />
+      <LaunchScreen />
     </>
   );
 }
