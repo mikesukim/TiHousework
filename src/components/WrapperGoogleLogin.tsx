@@ -6,6 +6,7 @@ import useMaintenance from '../hooks/useMaintenance';
 function WrapperGoogleLogin(): JSX.Element {
   const useUserHook = useUser();
   const useMaintenanceHook = useMaintenance();
+
   return (
     <GoogleLogin userHook={useUserHook} maintenanceHook={useMaintenanceHook} />
   );

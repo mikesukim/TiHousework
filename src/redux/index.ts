@@ -16,7 +16,7 @@ const persistConfig = {
   // blacklist -> 그것만 제외합니다
 };
 
-const rootReducer = combineReducers({ 
+const rootReducer = combineReducers({
   counter,
   auth,
   user,

@@ -1,14 +1,12 @@
-import React, {useEffect, useState} from 'react';
-import {ActivityIndicator, Alert} from 'react-native';
+import React, {useEffect} from 'react';
+import {Alert} from 'react-native';
 import {postLogin, postRegister} from '../router';
 import useUser from '../hooks/useUser.tsx';
 import useAuth from '../hooks/useAuth';
-import RoomCheckToScreenMW from './RoomCheckToScreenMW';
-import SocialLogin from './SocialLogin';
+import useMaintenance from '../hooks/useMaintenance';
 
 function LoginRegisterMW(): JSX.Element {
-  const [isLoginSucceeded, setIsLoginSucceeded] = useState(false);
-  const [isSocialLoginInProcess, setIsSocialLoginInProcess] = useState(false);
+  const {isSocialLoggedIn, onUpdateIsLoginInProcess} = useMaintenance();
   const {onAddToken} = useAuth();
   const {email} = useUser();
 
@@ -16,9 +14,8 @@ function LoginRegisterMW(): JSX.Element {
     postLogin(email)
       // when succeed login to our app
       .then(function (response) {
+        onUpdateIsLoginInProcess(false);
         onAddToken(response.data.token);
-        setIsLoginSucceeded(true);
-        setIsSocialLoginInProcess(false);
       })
       .catch(function (error) {
         // when a user has never been logged in to our app before
@@ -32,23 +29,22 @@ function LoginRegisterMW(): JSX.Element {
               postLogin(email)
                 // when succeed login to our app after registration
                 .then(function (r) {
+                  onUpdateIsLoginInProcess(false);
                   onAddToken(r.data.token);
-                  setIsLoginSucceeded(true);
-                  setIsSocialLoginInProcess(false);
                 })
                 .catch(function (e) {
+                  onUpdateIsLoginInProcess(false);
                   Alert.alert('로그인 실패. 다시 시도해주세요');
-                  setIsSocialLoginInProcess(false);
                 });
             })
             .catch(function (e) {
+              onUpdateIsLoginInProcess(false);
               console.log(e.response.data);
               Alert.alert('로그인 실패. 다시 시도해주세요');
-              setIsSocialLoginInProcess(false);
             });
         } else {
+          onUpdateIsLoginInProcess(false);
           Alert.alert('로그인 실패. 다시 시도해주세요');
-          setIsSocialLoginInProcess(false);
         }
       });
   }
@@ -56,25 +52,18 @@ function LoginRegisterMW(): JSX.Element {
   useEffect(() => {
     let isMounted = true;
     if (isMounted) {
-      // Login Register MW
-      setIsSocialLoginInProcess(true);
-      requestLoginApi();
+      if (isSocialLoggedIn) {
+        // Login Register MW
+        onUpdateIsLoginInProcess(true);
+        requestLoginApi();
+      }
     }
     return () => {
       isMounted = false;
     };
-  }, []);
+  }, [isSocialLoggedIn]);
 
-  if (isLoginSucceeded) {
-    return <RoomCheckToScreenMW />;
-  }
-
-  return (
-    <>
-      {isSocialLoginInProcess ? <ActivityIndicator /> : null}
-      <SocialLogin />
-    </>
-  );
+  return <></>;
 }
 
 export default LoginRegisterMW;

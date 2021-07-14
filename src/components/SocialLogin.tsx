@@ -1,5 +1,4 @@
 import React from 'react';
-import {View} from 'react-native';
 import WrapperGoogleLogin from './WrapperGoogleLogin';
 import KakaoLogin from './KakaoLogin.tsx';
 import useMaintenance from '../hooks/useMaintenance';

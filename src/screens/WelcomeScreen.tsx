@@ -12,6 +12,7 @@ import {
   Header3,
   SendBtn,
 } from '../styled-components/StyledComps';
+import ResetRedux from '../components/ResetRedux';
 
 function WelcomeScreen(): JSX.Element {
   const {email, isInvited, inviterEmail, onUpdateRoomID} = useUser();
@@ -49,6 +50,7 @@ function WelcomeScreen(): JSX.Element {
               onPress={() => Alert.alert(`${inviterEmail} 의 방으로 입장`)}
               bgColor="#e21a5f"
             />
+            <ResetRedux />
           </BottomContainer>
         </Container>
       );
@@ -76,6 +78,7 @@ function WelcomeScreen(): JSX.Element {
               Alert.alert('링크가 복사되었습니다');
             }}
           />
+          <ResetRedux />
         </BottomContainer>
       </Container>
     );
