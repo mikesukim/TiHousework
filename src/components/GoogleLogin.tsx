@@ -4,10 +4,7 @@ import {
   statusCodes,
 } from '@react-native-google-signin/google-signin';
 import {Alert} from 'react-native';
-import {
-  SocialLoginButton,
-  SocialLoginButtonText,
-} from '../styled-components/StyledComps';
+import {CustomButton, CustomButtonText} from '../styled-components/StyledComps';
 
 interface Props {
   name?: string;
@@ -73,7 +70,7 @@ class GoogleLogin extends React.Component<Props, State> {
 
     return (
       <>
-        <SocialLoginButton
+        <CustomButton
           style={{shadowOffset: {width: 3, height: 5}}}
           onPress={() => {
             this.signIn();
@@ -82,8 +79,8 @@ class GoogleLogin extends React.Component<Props, State> {
             }
           }}
           disabled={isSigninInProgress}>
-          <SocialLoginButtonText>Continue with Google</SocialLoginButtonText>
-        </SocialLoginButton>
+          <CustomButtonText>구글로 계속 할래요</CustomButtonText>
+        </CustomButton>
       </>
     );
   }
