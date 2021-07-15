@@ -75,7 +75,7 @@ function WelcomeScreen(): JSX.Element {
           <Header2>가족들을 초대해보세요</Header2>
         </View3>
         <View2>
-          <Image1 source={require('../img/refer.png')} />
+          <Image1 source={require('../img/welcome.jpeg')} />
         </View2>
         <View4>
           <CustomButton

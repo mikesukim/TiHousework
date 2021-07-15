@@ -3,33 +3,22 @@ import useUser from '../hooks/useUser.tsx';
 import WelcomeScreen from '../screens/WelcomeScreen';
 import TodoScreenTemp from '../screens/TodoScreenTemp';
 import OopsErrorScreen from '../screens/OopsErrorScreen';
+import InvitationScreen from '../screens/InvitationScreen';
 
 function RoomCheckToScreenMW(): JSX.Element {
   const {isInvited, roomID} = useUser();
 
-  function inviteCheck() {
-    return isInvited;
-  }
-
-  // please change the function names so it can make sense as reading in a sentence.
-  // such as, checkRoom to roomExist. Then using this function in if statement, it will more make sense gramatically(readability).
-  function checkRoom() {
+  if (isInvited) {
     if (roomID) {
-      return true;
-    }
-    return false;
-  }
-
-  if (inviteCheck()) {
-    if (checkRoom()) {
       return <OopsErrorScreen />;
     }
+    // 아이콘있는 웰컴 스크린으로 가야함
     return <WelcomeScreen />;
   }
-  if (checkRoom()) {
+  if (roomID) {
     return <TodoScreenTemp />;
   }
-  return <WelcomeScreen />;
+  return <InvitationScreen />;
 }
 
 export default RoomCheckToScreenMW;
