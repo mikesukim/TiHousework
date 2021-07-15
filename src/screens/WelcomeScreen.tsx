@@ -39,7 +39,8 @@ function WelcomeScreen(): JSX.Element {
         <View1>
           <View3>
             <LogoText>환영합니다</LogoText>
-            <Header2>{inviterEmail} 님이 초대하셨네요</Header2>
+            <Header2>{inviterEmail} 님이</Header2>
+            <Header2>초대하셨네요</Header2>
           </View3>
           <View2>
             <Image1 source={require('../img/welcome.jpeg')} />
