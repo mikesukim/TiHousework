@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import ResetRedux from '../components/ResetRedux';
 import {
@@ -16,6 +16,11 @@ import {
 import TodoScreenTemp from './TodoScreenTemp';
 
 function OopsErrorScreen(): JSX.Element {
+  const [isClicked, setIsClicked] = useState(false);
+
+  if (isClicked) {
+    return <TodoScreenTemp />;
+  }
   return (
     <SafeAreaView style={{flex: 1}}>
       <View1>
@@ -33,7 +38,7 @@ function OopsErrorScreen(): JSX.Element {
         <View4>
           <CustomButton
             style={{shadowOffset: {width: 3, height: 5}}}
-            onPress={() => {}}>
+            onPress={() => setIsClicked(true)}>
             <CustomButtonText>본가로 돌아가기</CustomButtonText>
           </CustomButton>
         </View4>
