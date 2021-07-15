@@ -8,10 +8,7 @@ import {
   logout,
   unlink,
 } from '@react-native-seoul/kakao-login';
-import {
-  SocialLoginButton,
-  SocialLoginButtonText,
-} from '../styled-components/StyledComps';
+import {CustomButton, CustomButtonText} from '../styled-components/StyledComps';
 
 interface Props {
   name?: string;
@@ -52,11 +49,11 @@ class KakaoLogin extends React.Component<Props, State> {
   render(): JSX.Element {
     return (
       <>
-        <SocialLoginButton
+        <CustomButton
           style={{shadowOffset: {width: 3, height: 5}}}
           onPress={this.getProfile}>
-          <SocialLoginButtonText>Continue with KakaoTalk</SocialLoginButtonText>
-        </SocialLoginButton>
+          <CustomButtonText>카카오톡으로 계속 할래요</CustomButtonText>
+        </CustomButton>
       </>
     );
   }

@@ -24,7 +24,7 @@ function LaunchScreen(): JSX.Element {
       <View1>
         <View3>
           <LogoText>티집살림</LogoText>
-          <Header2>티집살림에 오신 것을 환영합니다</Header2>
+          <Header2>티 안나는 집안일, 티나게 하자!</Header2>
           <Header3>우리의 집안일을 같이 하러 가볼까요?</Header3>
         </View3>
         <View2>

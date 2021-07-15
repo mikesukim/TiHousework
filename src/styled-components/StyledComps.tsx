@@ -27,7 +27,7 @@ export const Header1 = styled.Text`
 export const Header2 = styled.Text`
   font-size: ${RFPercentage(3)};
   color: rgb(35, 50, 56);
-  font-family: 'IropkeBatangM';
+  font-family: 'Montserrat-Light';
   text-align: center;
   marginBottom: 10px;
 `;
@@ -35,7 +35,7 @@ export const Header2 = styled.Text`
 export const Header3 = styled.Text`
   font-size: ${RFPercentage(3)};
   color: rgb(35, 50, 56);
-  font-family: 'IropkeBatangM';
+  font-family: 'Montserrat-Light';
   text-align: center;
   marginBottom: 10px;
 `;
@@ -68,7 +68,7 @@ export const LogoText = styled.Text`
   marginBottom: 20px;
 `;
 
-export const SocialLoginButton = styled.Pressable`
+export const CustomButton = styled.Pressable`
   width: 90%;
   padding: 15px;
   marginBottom: 15px;
@@ -83,7 +83,7 @@ export const SocialLoginButton = styled.Pressable`
   elevation: 4;
 `;
 
-export const SocialLoginButtonText = styled.Text`
+export const CustomButtonText = styled.Text`
   fontSize: 16px;
   width: 100%;
   textAlign: center;
@@ -126,6 +126,6 @@ export const View4 = styled.View`
   height: 20%;
   width: 100%;
   zIndex: 2;
-  bottom: 0;
+  bottom: 5px;
   justifyContent: center;
 `;

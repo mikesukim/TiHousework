@@ -1,8 +1,8 @@
 import React from 'react';
 import useUser from '../hooks/useUser.tsx';
-import TwoHouseWorkErrorScreen from '../screens/TwoHouseWorkErrorScreen';
 import WelcomeScreen from '../screens/WelcomeScreen';
 import TodoScreenTemp from '../screens/TodoScreenTemp';
+import OopsErrorScreen from '../screens/OopsErrorScreen';
 
 function RoomCheckToScreenMW(): JSX.Element {
   const {isInvited, roomID} = useUser();
@@ -22,7 +22,7 @@ function RoomCheckToScreenMW(): JSX.Element {
 
   if (inviteCheck()) {
     if (checkRoom()) {
-      return <TwoHouseWorkErrorScreen />;
+      return <OopsErrorScreen />;
     }
     return <WelcomeScreen />;
   }
