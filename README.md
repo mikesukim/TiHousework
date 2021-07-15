@@ -1,7 +1,11 @@
-# TiHousework
+# TiHousework, 티집살림
 
-**[뱃지나 프로젝트에 관한 이미지들이 이 위치에 들어가면 좋습니다]**  
-티 안나는 집안일, 티나게 하자!
+
+**[Tihousework Image placeholder 티집살림 이미지 위치]**  
+티 안나는 집안일, 티나게 하자! <br>
+
+## About The Project
+**Notion Page : https://witty-anorak-6de.notion.site/Ti-housework-719f750188634296a050f2d110016df1**
 
 ## Getting Started / 어떻게 시작하나요?
 ### Prerequisites / 선행 조건
@@ -9,34 +13,23 @@
 - react-native
 - Xcode 12.5 version
 
-### Installing / 설치
+### Installation / 설치
 ```
 git clone
 npm install
 cd ios && pod install
 
-credentials폴더 를 src에 포함시켜함!
+* credentials폴더 를 src에 포함시켜함!
 credentials폴더를 얻으려면 성언한테 연락하세요!
 ```
-## Running the tests / 테스트의 실행
-
-어떻게 테스트가 이 시스템에서 돌아가는지에 대한 설명을 합니다
-
-### 테스트는 이런 식으로 동작합니다
-
-왜 이렇게 동작하는지, 설명합니다
-
+### Running / 실행
+run project on simulator
 ```
 npm run ios
 혹은
 npm run android
 ```
 
-### 테스트는 이런 식으로 작성하시면 됩니다
-
-```
-예시
-```
 
 ## Deployment / 배포
 
