@@ -1,6 +1,5 @@
 import React from 'react';
 import {Alert, SafeAreaView} from 'react-native';
-import {useNavigation} from '@react-navigation/native';
 import useUser from '../hooks/useUser.tsx';
 import {
   Header2,
@@ -17,7 +16,6 @@ import ResetRedux from '../components/ResetRedux';
 
 function WelcomeReceiverScreen(): JSX.Element {
   const {isInvited, inviterEmail, onUpdateIsInvited} = useUser();
-  const navigation = useNavigation();
 
   if (isInvited) {
     return (
@@ -43,7 +41,6 @@ function WelcomeReceiverScreen(): JSX.Element {
               style={{shadowOffset: {width: 3, height: 5}}}
               onPress={() => {
                 onUpdateIsInvited(false);
-                navigation.goBack();
               }}>
               <CustomButtonText>아니요, 새로운 방을 만들래요</CustomButtonText>
             </CustomButton>

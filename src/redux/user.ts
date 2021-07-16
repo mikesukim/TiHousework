@@ -7,6 +7,8 @@ const UPDATE_ROOMID = 'user/UPDATE_ROOMID' as const;
 const REMOVE_ROOMID = 'user/REMOVE_ROOMID' as const;
 const UPDATE_ISINVITED = 'user/UPDATE_ISINVITED' as const;
 const REMOVE_ISINVITED = 'user/REMOVE_ISINVITED' as const;
+const UPDATE_ISSENDER = 'user/UPDATE_ISSENDER' as const;
+const REMOVE_ISSENDER = 'user/UPDATE_ISSENDER' as const;
 const UPDATE_INVITEREMAIL = 'user/UPDATE_INVITEREMAIL' as const;
 const REMOVE_INVITEREMAIL = 'user/REMOVE_INVITEREMAIL' as const;
 
@@ -40,6 +42,12 @@ export const updateIsInvited = (isInvited: boolean): actionType => ({
 });
 export const removeIsInvited = (): actionType => ({type: REMOVE_ISINVITED});
 
+export const updateIsSender = (isSender: boolean): actionType => ({
+  type: UPDATE_ISSENDER,
+  payload: isSender,
+});
+export const removeIsSender = (): actionType => ({type: REMOVE_ISSENDER});
+
 export const updateInviterEmail = (inviterEmail: string): actionType => ({
   type: UPDATE_INVITEREMAIL,
   payload: inviterEmail,
@@ -55,6 +63,7 @@ export type UserState = {
   email: string;
   roomID: string;
   isInvited: boolean;
+  isSender: boolean;
   inviterEmail: string;
 };
 
@@ -62,6 +71,7 @@ const initialState: UserState = {
   email: '',
   roomID: 0,
   isInvited: false,
+  isSender: false,
   inviterEmail: '',
 };
 
@@ -72,6 +82,7 @@ function user(state: UserState = initialState, action: UserAction): UserState {
         email: action.payload.email,
         roomID: action.payload.roomID,
         isInvited: action.payload.isInvited,
+        isSender: action.payload.isSender,
         inviterEmail: action.payload.inviterEmail,
       };
     case REMOVE_USER:
@@ -79,6 +90,7 @@ function user(state: UserState = initialState, action: UserAction): UserState {
         email: '',
         roomID: '',
         isInvited: false,
+        isSender: false,
         inviterEmail: '',
       };
     case UPDATE_EMAIL:
@@ -110,6 +122,16 @@ function user(state: UserState = initialState, action: UserAction): UserState {
       return {
         ...state,
         isInvited: false,
+      };
+    case UPDATE_ISSENDER:
+      return {
+        ...state,
+        isSender: action.payload,
+      };
+    case REMOVE_ISSENDER:
+      return {
+        ...state,
+        isSender: false,
       };
     case UPDATE_INVITEREMAIL:
       return {

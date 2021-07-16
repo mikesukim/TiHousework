@@ -1,6 +1,6 @@
 import React from 'react';
 import dynamicLinks from '@react-native-firebase/dynamic-links';
-import {Alert, SafeAreaView} from 'react-native';
+import {Alert, SafeAreaView, Text} from 'react-native';
 import Clipboard from '@react-native-clipboard/clipboard';
 import useUser from '../hooks/useUser.tsx';
 import {
@@ -15,24 +15,38 @@ import {
   CustomButtonText,
 } from '../styled-components/StyledComps';
 import ResetRedux from '../components/ResetRedux';
+import TodoScreenTemp from './TodoScreenTemp';
+import InvitationScreen from './InvitationScreen';
 
-function WelcomeScreen(): JSX.Element {
-  const {
-    email,
-    isInvited,
-    inviterEmail,
-    onUpdateRoomID,
-    onUpdateIsInvited,
-  } = useUser();
-
-  async function buildLink(param: string, value: string) {
-    const link = await dynamicLinks().buildLink({
-      link: `https://tihouse.page.link/invitation?${param}=${value}`,
-      domainUriPrefix: 'https://tihouse.page.link',
-    });
-    return link;
+function WelcomeScreen({isSender}): JSX.Element {
+  const {isInvited, inviterEmail, onUpdateIsInvited} = useUser();
+  if (isSender) {
+    return (
+      <SafeAreaView style={{flex: 1}}>
+        <View1>
+          <View3>
+            <LogoText>환영합니다</LogoText>
+            <Header2>초대 링크가 복사되었어요</Header2>
+            <Header2>가족들에게 공유하고</Header2>
+            <Header2>방에 입장하세요</Header2>
+          </View3>
+          <View2>
+            <Image1 source={require('../img/welcome.jpeg')} />
+          </View2>
+          <View4>
+            <CustomButton
+              style={{shadowOffset: {width: 3, height: 5}}}
+              onPress={() => {
+                return <TodoScreenTemp />;
+              }}>
+              <CustomButtonText>방에 들어갈게요</CustomButtonText>
+            </CustomButton>
+            <ResetRedux />
+          </View4>
+        </View1>
+      </SafeAreaView>
+    );
   }
-
   if (isInvited) {
     return (
       <SafeAreaView style={{flex: 1}}>
@@ -57,6 +71,7 @@ function WelcomeScreen(): JSX.Element {
               style={{shadowOffset: {width: 3, height: 5}}}
               onPress={() => {
                 onUpdateIsInvited(false);
+                return <InvitationScreen />;
               }}>
               <CustomButtonText>아니요, 새로운 방을 만들래요</CustomButtonText>
             </CustomButton>
@@ -71,31 +86,13 @@ function WelcomeScreen(): JSX.Element {
       <View1>
         <View3>
           <LogoText>환영합니다</LogoText>
-          <Header2>집안일을 같이 관리할 방을 만들고</Header2>
-          <Header2>가족들을 초대해보세요</Header2>
+          <Header2>가족의 초대 링크를 통해서</Header2>
+          <Header2>들어와주세요</Header2>
         </View3>
         <View2>
           <Image1 source={require('../img/welcome.jpeg')} />
         </View2>
         <View4>
-          <CustomButton
-            style={{shadowOffset: {width: 3, height: 5}}}
-            onPress={() => {
-              // room ID는 어떻게 만들어줄건지?
-              onUpdateRoomID('1');
-              Alert.alert('새로운 방이 만들어졌어요');
-            }}>
-            <CustomButtonText>우리 가족의 방을 만들래요</CustomButtonText>
-          </CustomButton>
-          <CustomButton
-            style={{shadowOffset: {width: 3, height: 5}}}
-            onPress={async () => {
-              const link = buildLink('sender', email);
-              Clipboard.setString(await link);
-              Alert.alert('링크가 복사되었어요. 가족들에게 공유해보세요');
-            }}>
-            <CustomButtonText>우리 가족을 초대할래요</CustomButtonText>
-          </CustomButton>
           <ResetRedux />
         </View4>
       </View1>
