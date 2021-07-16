@@ -16,7 +16,7 @@ function ResetRedux(): JSX.Element {
     onRemoveToken();
     onUpdateIsSocialLoggedIn(false);
     if (navigation.canGoBack()) {
-      navigation.goBack();
+      navigation.popToTop();
     }
   }
 
