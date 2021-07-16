@@ -10,8 +10,10 @@ import {
   removeRoomID,
   updateIsInvited,
   removeIsInvited,
-  updateInviterEmail,
-  removeInviterEmail,
+  updateIsSender,
+  removeIsSender,
+  updateSenderEmail,
+  removeSenderEmail,
   UserState,
 } from '../redux/user.ts';
 
@@ -20,7 +22,8 @@ interface UserProps {
   email: string;
   roomID: string;
   isInvited: boolean;
-  inviterEmail: string;
+  isSender: boolean;
+  senderEmail: string;
   onCreateUser: (user: UserState) => void;
   onRemoveUser: () => void;
   onUpdateEmail: (email: string) => void;
@@ -29,8 +32,10 @@ interface UserProps {
   onRemoveRoomID: () => void;
   onUpdateIsInvited: (isInvited: boolean) => void;
   onRemoveIsInvited: () => void;
-  onUpdateInviterEmail: (inviterEmail: string) => void;
-  onRemoveInviterEmail: () => void;
+  onUpdateIsSender: (isSender: boolean) => void;
+  onRemoveIsSender: () => void;
+  onUpdateSenderEmail: (senderEmail: string) => void;
+  onRemoveSenderEmail: () => void;
 }
 
 export default function useUser(): UserProps {
@@ -38,9 +43,8 @@ export default function useUser(): UserProps {
   const email = useSelector((state: RootState) => state.user.email);
   const roomID = useSelector((state: RootState) => state.user.roomID);
   const isInvited = useSelector((state: RootState) => state.user.isInvited);
-  const inviterEmail = useSelector(
-    (state: RootState) => state.user.inviterEmail,
-  );
+  const isSender = useSelector((state: RootState) => state.user.isSender);
+  const senderEmail = useSelector((state: RootState) => state.user.senderEmail);
 
   const dispatch = useDispatch();
   const onCreateUser = useCallback(
@@ -57,27 +61,38 @@ export default function useUser(): UserProps {
     (roomID: string) => dispatch(updateRoomID(roomID)),
     [dispatch],
   );
-  const onRemoveRoomID = useCallback(() => dispatch(removeRoomID()), [dispatch]);
+  const onRemoveRoomID = useCallback(() => dispatch(removeRoomID()), [
+    dispatch,
+  ]);
   const onUpdateIsInvited = useCallback(
     (isInvited: boolean) => dispatch(updateIsInvited(isInvited)),
     [dispatch],
   );
-  const onRemoveIsInvited = useCallback(() => dispatch(removeIsInvited()), [dispatch]);
-  const onUpdateInviterEmail = useCallback(
-    (inviterEmail: string) => dispatch(updateInviterEmail(inviterEmail)),
+  const onRemoveIsInvited = useCallback(() => dispatch(removeIsInvited()), [
+    dispatch,
+  ]);
+  const onUpdateIsSender = useCallback(
+    (isSender: boolean) => dispatch(updateIsSender(isSender)),
     [dispatch],
   );
-  const onRemoveInviterEmail = useCallback(
-    () => dispatch(removeInviterEmail()),
+  const onRemoveIsSender = useCallback(() => dispatch(removeIsSender()), [
+    dispatch,
+  ]);
+  const onUpdateSenderEmail = useCallback(
+    (senderEmail: string) => dispatch(updateSenderEmail(senderEmail)),
     [dispatch],
   );
+  const onRemoveSenderEmail = useCallback(() => dispatch(removeSenderEmail()), [
+    dispatch,
+  ]);
 
   return {
     user,
     email,
     roomID,
     isInvited,
-    inviterEmail,
+    isSender,
+    senderEmail,
     onCreateUser,
     onRemoveUser,
     onUpdateEmail,
@@ -86,7 +101,9 @@ export default function useUser(): UserProps {
     onRemoveRoomID,
     onUpdateIsInvited,
     onRemoveIsInvited,
-    onUpdateInviterEmail,
-    onRemoveInviterEmail,
+    onUpdateIsSender,
+    onRemoveIsSender,
+    onUpdateSenderEmail,
+    onRemoveSenderEmail,
   };
 }

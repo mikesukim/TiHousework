@@ -5,10 +5,11 @@ import useUser from '../hooks/useUser';
 import {BottomContainer, Container} from '../styled-components/StyledComps';
 
 function TodoScreenTemp(): JSX.Element {
-  const {onRemoveIsInvited, onRemoveInviterEmail} = useUser();
+  const {onRemoveIsInvited, onRemoveSenderEmail, onUpdateRoomID} = useUser();
   useEffect(() => {
     onRemoveIsInvited();
-    onRemoveInviterEmail();
+    onRemoveSenderEmail();
+    onUpdateRoomID('1');
   }, []);
 
   return (

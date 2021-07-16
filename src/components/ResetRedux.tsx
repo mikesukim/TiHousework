@@ -15,7 +15,7 @@ function ResetRedux(): JSX.Element {
     onUpdateIsSocialLoggedIn(false);
   }
 
-  return <Button title="Reset Redux" onPress={ResetReduxButton} />;
+  return <Button title="데이터 초기화" onPress={ResetReduxButton} />;
 }
 
 export default ResetRedux;
