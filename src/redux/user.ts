@@ -9,8 +9,8 @@ const UPDATE_ISINVITED = 'user/UPDATE_ISINVITED' as const;
 const REMOVE_ISINVITED = 'user/REMOVE_ISINVITED' as const;
 const UPDATE_ISSENDER = 'user/UPDATE_ISSENDER' as const;
 const REMOVE_ISSENDER = 'user/UPDATE_ISSENDER' as const;
-const UPDATE_INVITEREMAIL = 'user/UPDATE_INVITEREMAIL' as const;
-const REMOVE_INVITEREMAIL = 'user/REMOVE_INVITEREMAIL' as const;
+const UPDATE_SENDEREMAIL = 'user/UPDATE_SENDEREMAIL' as const;
+const REMOVE_SENDEREMAIL = 'user/REMOVE_SENDEREMAIL' as const;
 
 // Declare Action type for Redux
 interface actionType {
@@ -48,12 +48,12 @@ export const updateIsSender = (isSender: boolean): actionType => ({
 });
 export const removeIsSender = (): actionType => ({type: REMOVE_ISSENDER});
 
-export const updateInviterEmail = (inviterEmail: string): actionType => ({
-  type: UPDATE_INVITEREMAIL,
-  payload: inviterEmail,
+export const updateSenderEmail = (senderEmail: string): actionType => ({
+  type: UPDATE_SENDEREMAIL,
+  payload: senderEmail,
 });
-export const removeInviterEmail = (): actionType => ({
-  type: REMOVE_INVITEREMAIL,
+export const removeSenderEmail = (): actionType => ({
+  type: REMOVE_SENDEREMAIL,
 });
 
 // Declare Reducers
@@ -64,7 +64,7 @@ export type UserState = {
   roomID: string;
   isInvited: boolean;
   isSender: boolean;
-  inviterEmail: string;
+  senderEmail: string;
 };
 
 const initialState: UserState = {
@@ -72,7 +72,7 @@ const initialState: UserState = {
   roomID: 0,
   isInvited: false,
   isSender: false,
-  inviterEmail: '',
+  senderEmail: '',
 };
 
 function user(state: UserState = initialState, action: UserAction): UserState {
@@ -83,7 +83,7 @@ function user(state: UserState = initialState, action: UserAction): UserState {
         roomID: action.payload.roomID,
         isInvited: action.payload.isInvited,
         isSender: action.payload.isSender,
-        inviterEmail: action.payload.inviterEmail,
+        senderEmail: action.payload.senderEmail,
       };
     case REMOVE_USER:
       return {
@@ -91,7 +91,7 @@ function user(state: UserState = initialState, action: UserAction): UserState {
         roomID: '',
         isInvited: false,
         isSender: false,
-        inviterEmail: '',
+        senderEmail: '',
       };
     case UPDATE_EMAIL:
       return {
@@ -133,15 +133,15 @@ function user(state: UserState = initialState, action: UserAction): UserState {
         ...state,
         isSender: false,
       };
-    case UPDATE_INVITEREMAIL:
+    case UPDATE_SENDEREMAIL:
       return {
         ...state,
-        inviterEmail: action.payload,
+        senderEmail: action.payload,
       };
-    case REMOVE_INVITEREMAIL:
+    case REMOVE_SENDEREMAIL:
       return {
         ...state,
-        inviterEmail: '',
+        senderEmail: '',
       };
     default:
       return state;

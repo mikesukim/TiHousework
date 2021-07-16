@@ -7,7 +7,7 @@ import LaunchScreen from '../screens/LaunchScreen';
 
 function InvitationTokenCheckMW(): JSX.Element {
   const {token} = useAuth();
-  const {onUpdateIsInvited, onUpdateInviterEmail} = useUser();
+  const {onUpdateIsInvited, onUpdateSenderEmail} = useUser();
 
   useEffect(() => {
     const unsubscribe = dynamicLinks().onLink(handleDynamicLink);
@@ -26,7 +26,7 @@ function InvitationTokenCheckMW(): JSX.Element {
         params[match[1]] = match[2];
       }
       onUpdateIsInvited(true);
-      onUpdateInviterEmail(params.sender);
+      onUpdateSenderEmail(params.sender);
     }
   };
 

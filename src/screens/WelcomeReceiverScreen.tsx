@@ -15,7 +15,7 @@ import {
 import ResetRedux from '../components/ResetRedux';
 
 function WelcomeReceiverScreen(): JSX.Element {
-  const {isInvited, inviterEmail, onUpdateIsInvited} = useUser();
+  const {isInvited, senderEmail, onUpdateIsInvited} = useUser();
 
   if (isInvited) {
     return (
@@ -23,7 +23,7 @@ function WelcomeReceiverScreen(): JSX.Element {
         <View1>
           <View3>
             <LogoText>환영합니다</LogoText>
-            <Header2>{inviterEmail} 님이</Header2>
+            <Header2>{senderEmail} 님이</Header2>
             <Header2>초대하셨네요</Header2>
           </View3>
           <View2>
@@ -33,7 +33,7 @@ function WelcomeReceiverScreen(): JSX.Element {
             <CustomButton
               style={{shadowOffset: {width: 3, height: 5}}}
               onPress={() => {
-                Alert.alert(`${inviterEmail} 의 방으로 입장`);
+                Alert.alert(`${senderEmail} 의 방으로 입장`);
               }}>
               <CustomButtonText>가족의 방으로 들어갈래요</CustomButtonText>
             </CustomButton>

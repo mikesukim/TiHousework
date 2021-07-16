@@ -51,7 +51,8 @@ class KakaoLogin extends React.Component<Props, State> {
       <>
         <CustomButton
           style={{shadowOffset: {width: 3, height: 5}}}
-          onPress={this.getProfile}>
+          // onPress={this.getProfile}
+          onPress={Alert.alert('준비중입니다..')}>
           <CustomButtonText>카카오톡으로 계속 할래요</CustomButtonText>
         </CustomButton>
       </>
