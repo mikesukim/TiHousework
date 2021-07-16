@@ -1,6 +1,6 @@
 import React from 'react';
 import dynamicLinks from '@react-native-firebase/dynamic-links';
-import {SafeAreaView} from 'react-native';
+import {Alert, SafeAreaView, Share} from 'react-native';
 import Clipboard from '@react-native-clipboard/clipboard';
 import {useState} from 'react';
 import useUser from '../hooks/useUser.tsx';
@@ -31,6 +31,28 @@ function InvitationScreen(): JSX.Element {
     return link;
   }
 
+  const onShare = async (link: string) => {
+    try {
+      const result = await Share.share({
+        message: link,
+      });
+      if (result.action === Share.sharedAction) {
+        console.log('Share was successful');
+      } else if (result.action === Share.dismissedAction) {
+        Alert.alert('다시 시도해주세요');
+      }
+    } catch (error) {
+      Alert.alert('다시 시도해주세요');
+    }
+  };
+
+  async function onCreateShareLink() {
+    const link = buildLink('sender', email);
+    // Clipboard.setString( link);
+    // Alert.alert('링크가 복사되었어요');
+    onShare(await link);
+  }
+
   if (!isClicked) {
     return (
       <SafeAreaView style={{flex: 1}}>
@@ -46,9 +68,8 @@ function InvitationScreen(): JSX.Element {
           <View4>
             <CustomButton
               style={{shadowOffset: {width: 3, height: 5}}}
-              onPress={async () => {
-                const link = buildLink('sender', email);
-                Clipboard.setString(await link);
+              onPress={() => {
+                onCreateShareLink();
                 setIsClicked(true);
                 onUpdateIsSender(true);
               }}>
