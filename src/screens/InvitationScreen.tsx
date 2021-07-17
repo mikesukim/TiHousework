@@ -1,8 +1,8 @@
 import React from 'react';
 import dynamicLinks from '@react-native-firebase/dynamic-links';
-import {Alert, SafeAreaView, Share} from 'react-native';
-import Clipboard from '@react-native-clipboard/clipboard';
+import {Alert, Share} from 'react-native';
 import {useState} from 'react';
+import SafeAreaView from 'react-native-safe-area-view';
 import useUser from '../hooks/useUser.tsx';
 import {
   Header2,
@@ -55,7 +55,7 @@ function InvitationScreen(): JSX.Element {
 
   if (!isClicked) {
     return (
-      <SafeAreaView style={{flex: 1}}>
+      <SafeAreaView style={{flex: 1}} forceInset={{top: 'always'}}>
         <View1>
           <View3>
             <LogoText>안녕하세요</LogoText>

@@ -1,5 +1,5 @@
 import React from 'react';
-import {SafeAreaView} from 'react-native';
+import SafeAreaView from 'react-native-safe-area-view';
 import {
   Header2,
   Image1,
@@ -19,7 +19,7 @@ function WelcomeSenderScreen(): JSX.Element {
   const {roomID, onUpdateRoomID} = useUser();
   if (!roomID) {
     return (
-      <SafeAreaView style={{flex: 1}}>
+      <SafeAreaView style={{flex: 1}} forceInset={{top: 'always'}}>
         <View1>
           <View3>
             <LogoText>환영합니다</LogoText>
