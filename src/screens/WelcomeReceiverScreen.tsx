@@ -1,5 +1,6 @@
 import React from 'react';
-import {Alert, SafeAreaView} from 'react-native';
+import {Alert} from 'react-native';
+import SafeAreaView from 'react-native-safe-area-view';
 import useUser from '../hooks/useUser.tsx';
 import {
   Header2,
@@ -19,7 +20,7 @@ function WelcomeReceiverScreen(): JSX.Element {
 
   if (isInvited) {
     return (
-      <SafeAreaView style={{flex: 1}}>
+      <SafeAreaView style={{flex: 1}} forceInset={{top: 'always'}}>
         <View1>
           <View3>
             <LogoText>환영합니다</LogoText>
