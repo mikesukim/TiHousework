@@ -25,12 +25,12 @@ export const Header3 = styled.Text`
   marginBottom: 10px;
 `;
 
+// marginTop: 40px;
 export const LogoText = styled.Text`
   alignSelf: center;
   font-family: 'Montserrat-Black';
   font-size: ${RFPercentage(4)};
   color: rgb(35, 50, 56);
-  marginTop: 40px;
   marginBottom: 20px;
 `;
 
@@ -61,31 +61,37 @@ export const View1 = styled.View`
   position: relative;
 `;
 
-export const View2 = styled.View`
-  flex: 1;
-  marginTop: 100;
-  marginBottom: 50;
-`;
-
-export const Image1 = styled.Image`
+export const IntroImage = styled.Image`
   width: 170%;
   height: 100%;
   resizeMode: contain;
   alignSelf: center;
 `;
 
-export const View3 = styled.View`
+export const IntroTopView = styled.View`
   position: absolute;
   height: 25%;
   width: 100%;
   zIndex: 2;
+  paddingTop: 40px;
 `;
 
-export const View4 = styled.View`
+export const IntroMiddleView = styled.View`
+  flex: 1;
+  marginTop: 100;
+  marginBottom: 50;
+`;
+
+export const IntroBottomView = styled.View`
   position: absolute;
   height: 20%;
   width: 100%;
   zIndex: 2;
   bottom: 5px;
   justifyContent: center;
+`;
+
+export const IntroTextContainer = styled.View`
+  alignSelf: center;
+  marginBottom: 15px;
 `;

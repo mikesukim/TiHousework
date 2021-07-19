@@ -8,13 +8,7 @@ import {
 import React, {useEffect, useState} from 'react';
 import {Button, Text, View} from 'react-native';
 import SafeAreaView from 'react-native-safe-area-view';
-import {
-  AnimatedText,
-  Header1,
-  Header2,
-  View1,
-  View2,
-} from '../styled-components/StyledComps';
+import {Header1, Header2, View1, View2} from '../styled-components/StyledComps';
 
 // function SpringTest(): JSX.Element {
 //   // const [flip, set] = useState(false);
