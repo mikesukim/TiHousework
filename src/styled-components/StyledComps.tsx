@@ -1,20 +1,5 @@
 import styled from 'styled-components/native';
-import React from 'react';
 import {RFPercentage} from 'react-native-responsive-fontsize';
-
-export const Container = styled.View`
-  padding: 8%;
-`;
-
-export const TopContainer = styled.View`
-  border-bottom-color: black;
-  border-bottom-width: 0.4px;
-  padding-bottom: 7%;
-`;
-
-export const BottomContainer = styled.View`
-  padding-top: 6%;
-`;
 
 export const Header1 = styled.Text`
   font-weight: bold;
@@ -38,25 +23,6 @@ export const Header3 = styled.Text`
   font-family: 'Montserrat-Light';
   text-align: center;
   marginBottom: 10px;
-`;
-
-const BtnContainer = styled.TouchableOpacity`
-  margin-right: 70px;
-  margin-top: 140px;
-  padding: 25px;
-  position: absolute;
-  border-radius: 10px;
-  border-width: 1px;
-  border-color: #fff;
-  background-color: ${props => props.bgColor};
-`;
-
-const BtnText = styled.Text`
-  font-family: 'Montserrat-Light';
-  font-size: ${RFPercentage(2)};
-  text-align: center;
-  font-weight: bold;
-  color: white;
 `;
 
 export const LogoText = styled.Text`
@@ -89,12 +55,6 @@ export const CustomButtonText = styled.Text`
   textAlign: center;
   color: rgb(35, 50, 56);
 `;
-
-export const SendBtn = ({onPress, title, bgColor}) => (
-  <BtnContainer onPress={onPress} bgColor={bgColor}>
-    <BtnText>{title}</BtnText>
-  </BtnContainer>
-);
 
 export const View1 = styled.View`
   flex: 1;
