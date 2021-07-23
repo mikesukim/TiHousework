@@ -34,7 +34,7 @@ export const LogoText = styled.Text`
   marginBottom: 20px;
 `;
 
-export const CustomButton = styled.Pressable`
+export const CustomButton = styled.TouchableOpacity`
   width: 90%;
   padding: 15px;
   marginBottom: 15px;

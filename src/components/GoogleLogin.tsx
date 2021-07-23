@@ -72,6 +72,7 @@ class GoogleLogin extends React.Component<Props, State> {
       <>
         <CustomButton
           style={{shadowOffset: {width: 3, height: 5}}}
+          activeOpacity={0.8}
           onPress={() => {
             this.signIn();
             if (isMounted) {

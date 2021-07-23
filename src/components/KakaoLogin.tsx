@@ -51,6 +51,7 @@ class KakaoLogin extends React.Component<Props, State> {
       <>
         <CustomButton
           style={{shadowOffset: {width: 3, height: 5}}}
+          activeOpacity={0.8}
           // onPress={this.getProfile}
           onPress={() => {
             Alert.alert('준비중입니다..');
