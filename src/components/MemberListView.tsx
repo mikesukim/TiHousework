@@ -89,6 +89,7 @@ function MemberListView({callbackFromParent}): JSX.Element {
     return null;
   });
   const renderItem = ({item}) => {
+    console.log(item.id);
     return <Item name={item.name} item={item} src={item.src} />;
   };
 
