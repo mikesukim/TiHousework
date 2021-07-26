@@ -1,5 +1,7 @@
-import React, {useState} from 'react';
-import {FlatList, Image, Text, TouchableOpacity, View} from 'react-native';
+import React, {useImperativeHandle, useState} from 'react';
+import {useRef} from 'react';
+import {useEffect} from 'react';
+import {FlatList, Image, TouchableOpacity, View} from 'react-native';
 
 function MemberListView({callbackFromParent}): JSX.Element {
   const [selectedId, setSelectedId] = useState(null);
@@ -30,44 +32,47 @@ function MemberListView({callbackFromParent}): JSX.Element {
       src: require('../img/11.jpeg'),
     },
   ];
-  const Item = ({name, onPress, borderColor, borderWidth, src}) => {
+  const Item = ({name, item, src}) => {
+    const tempChildComp = useRef();
+    const handle = () => {
+      tempChildComp.current.hi();
+    };
     return (
       <>
         <TouchableOpacity
-          onPress={onPress}
+          onPress={handle}
           style={{
-            height: 80,
-            width: 80,
+            height: 70,
+            width: 70,
             marginLeft: 10,
             borderRadius: 40,
           }}>
           <Image
             source={src}
-            style={[
-              {width: 80, height: 80, borderRadius: 40},
-              borderColor,
-              borderWidth,
-            ]}
+            style={[{width: 70, height: 70, borderRadius: 40}]}
           />
+          <TempView ref={tempChildComp} />
         </TouchableOpacity>
       </>
     );
   };
+  const TempView = React.forwardRef((props, ref) => {
+    const [isClicked, setIsClicked] = useState(false);
+    useImperativeHandle(ref, () => ({
+      hi() {
+        setIsClicked(state => !state);
+      },
+    }));
+    // item.id === redux
+    if (isClicked) {
+      return (
+        <View style={{backgroundColor: 'yellow', height: 70, width: 70}} />
+      );
+    }
+    return null;
+  });
   const renderItem = ({item}) => {
-    const borderColor = item.id === selectedId ? 'red' : null;
-    const borderWidth = item.id === selectedId ? 2 : null;
-    return (
-      <Item
-        name={item.name}
-        onPress={() => {
-          setSelectedId(item.id);
-          callbackFromParent(item.name);
-        }}
-        borderColor={{borderColor}}
-        borderWidth={{borderWidth}}
-        src={item.src}
-      />
-    );
+    return <Item name={item.name} item={item} src={item.src} />;
   };
 
   return (
