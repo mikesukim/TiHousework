@@ -1,6 +1,6 @@
 // Declare Action type for typescript
-const UPDATE_ISPROFILECLICKED = 'view/UPDATE_ISPROFILECLICKED' as const;
-const REMOVE_ISPROFILECLICKED = 'view/REMOVE_ISPROFILECLICKED' as const;
+const UPDATE_CLICKEDUSERID = 'view/UPDATE_CLICKEDUSERID' as const;
+const REMOVE_CLICKEDUSERID = 'view/REMOVE_CLICKEDUSERID' as const;
 
 // Declare Action type for Redux
 interface actionType {
@@ -8,35 +8,33 @@ interface actionType {
   payload?: any;
 }
 
-export const updateIsProfileClicked = (
-  isProfileClicked: boolean,
-): actionType => ({
-  type: UPDATE_ISPROFILECLICKED,
-  payload: isProfileClicked,
+export const updateClickedUserId = (clickedUserId: string): actionType => ({
+  type: UPDATE_CLICKEDUSERID,
+  payload: clickedUserId,
 });
-export const removeIsProfileClicked = (): actionType => ({
-  type: REMOVE_ISPROFILECLICKED,
+export const removeClickedUserId = (): actionType => ({
+  type: REMOVE_CLICKEDUSERID,
 });
 
 // Declare Reducers
 type ViewAction =
-  | ReturnType<typeof updateIsProfileClicked>
-  | ReturnType<typeof removeIsProfileClicked>;
+  | ReturnType<typeof updateClickedUserId>
+  | ReturnType<typeof removeClickedUserId>;
 
 type ViewState = {
-  isProfileClicked: boolean;
+  clickedUserId: string;
 };
 
 const initialState: ViewState = {
-  isProfileClicked: false,
+  clickedUserId: '',
 };
 
 function view(state: ViewState = initialState, action: ViewAction): ViewState {
   switch (action.type) {
-    case UPDATE_ISPROFILECLICKED:
-      return {isProfileClicked: action.payload};
-    case REMOVE_ISPROFILECLICKED:
-      return {isProfileClicked: false};
+    case UPDATE_CLICKEDUSERID:
+      return {clickedUserId: action.payload};
+    case REMOVE_CLICKEDUSERID:
+      return {clickedUserId: ''};
     default:
       return state;
   }

@@ -1,34 +1,33 @@
 import {useSelector, useDispatch} from 'react-redux';
 import {useCallback} from 'react';
 import {RootState} from '../redux';
-import {updateIsProfileClicked, removeIsProfileClicked} from '../redux/view.ts';
+import {updateClickedUserId, removeClickedUserId} from '../redux/view.ts';
 
 interface ViewProps {
-  isProfileClicked: boolean;
-  onUpdateIsProfileClicked: (isProfileClicked: boolean) => void;
-  onRemoveIsProfileClicked: () => void;
+  clickedUserId: string;
+  onUpdateClickedUserId: (clickedUserId: string) => void;
+  onRemoveClickedUserId: () => void;
 }
 
 export default function useView(): ViewProps {
-  const isProfileClicked = useSelector(
-    (state: RootState) => state.view.isProfileClicked,
+  const clickedUserId = useSelector(
+    (state: RootState) => state.view.clickedUserId,
   );
 
   const dispatch = useDispatch();
 
-  const onUpdateIsProfileClicked = useCallback(
-    (isProfileClicked: boolean) =>
-      dispatch(updateIsProfileClicked(isProfileClicked)),
+  const onUpdateClickedUserId = useCallback(
+    (clickedUserId: string) => dispatch(updateClickedUserId(clickedUserId)),
     [dispatch],
   );
-  const onRemoveIsProfileClicked = useCallback(
-    () => dispatch(removeIsProfileClicked()),
+  const onRemoveClickedUserId = useCallback(
+    () => dispatch(removeClickedUserId()),
     [dispatch],
   );
 
   return {
-    isProfileClicked,
-    onUpdateIsProfileClicked,
-    onRemoveIsProfileClicked,
+    clickedUserId,
+    onUpdateClickedUserId,
+    onRemoveClickedUserId,
   };
 }
