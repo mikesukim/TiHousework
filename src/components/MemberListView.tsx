@@ -46,6 +46,7 @@ function MemberListView({callbackFromParent}): JSX.Element {
             marginLeft: 10,
             borderRadius: 40,
             justifyContent: 'center',
+            alignItems: 'center',
           }}>
           <Image
             source={src}
@@ -55,7 +56,6 @@ function MemberListView({callbackFromParent}): JSX.Element {
                 height: 70,
                 borderRadius: 40,
                 zIndex: 2,
-                marginLeft: 3,
               },
             ]}
           />
