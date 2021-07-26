@@ -1,6 +1,5 @@
 import React, {useImperativeHandle, useState} from 'react';
 import {useRef} from 'react';
-import {useEffect} from 'react';
 import {FlatList, Image, TouchableOpacity, View} from 'react-native';
 
 function MemberListView({callbackFromParent}): JSX.Element {
@@ -9,17 +8,17 @@ function MemberListView({callbackFromParent}): JSX.Element {
     {
       id: '1',
       name: 'Jiyun',
-      src: require('../img/11.jpeg'),
+      src: require('../img/jiyun.jpg'),
     },
     {
       id: '2',
       name: 'Michael',
-      src: require('../img/cannotFind.png'),
+      src: require('../img/mike.jpg'),
     },
     {
       id: '3',
       name: 'Yunho',
-      src: require('../img/refer.png'),
+      src: require('../img/logojiyun.png'),
     },
     {
       id: '4',
@@ -42,14 +41,23 @@ function MemberListView({callbackFromParent}): JSX.Element {
         <TouchableOpacity
           onPress={handle}
           style={{
-            height: 70,
-            width: 70,
+            height: 76,
+            width: 76,
             marginLeft: 10,
             borderRadius: 40,
+            justifyContent: 'center',
           }}>
           <Image
             source={src}
-            style={[{width: 70, height: 70, borderRadius: 40}]}
+            style={[
+              {
+                width: 70,
+                height: 70,
+                borderRadius: 40,
+                zIndex: 2,
+                marginLeft: 3,
+              },
+            ]}
           />
           <TempView ref={tempChildComp} />
         </TouchableOpacity>
@@ -66,7 +74,16 @@ function MemberListView({callbackFromParent}): JSX.Element {
     // item.id === redux
     if (isClicked) {
       return (
-        <View style={{backgroundColor: 'yellow', height: 70, width: 70}} />
+        <View
+          style={{
+            backgroundColor: 'red',
+            height: 76,
+            width: 76,
+            position: 'absolute',
+            borderRadius: 40,
+            zIndex: 1,
+          }}
+        />
       );
     }
     return null;
