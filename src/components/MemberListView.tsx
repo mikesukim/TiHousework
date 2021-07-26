@@ -2,7 +2,7 @@ import React, {useImperativeHandle, useState} from 'react';
 import {useRef} from 'react';
 import {FlatList, Image, TouchableOpacity, View} from 'react-native';
 
-function MemberListView({callbackFromParent}): JSX.Element {
+function MemberListView(): JSX.Element {
   const [selectedId, setSelectedId] = useState(null);
   const profile = [
     {
