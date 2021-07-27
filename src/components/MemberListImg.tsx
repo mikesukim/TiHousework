@@ -5,7 +5,6 @@ function MemberListImg({src}): JSX.Element {
   return (
     <>
       <Image
-        {...console.log('이미지')}
         source={src}
         style={[
           {

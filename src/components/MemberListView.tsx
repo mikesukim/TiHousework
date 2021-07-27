@@ -6,7 +6,6 @@ import MemberListImg from './MemberListImg';
 
 function MemberListView(): JSX.Element {
   // const [selectedId, setSelectedId] = useState(null);
-  {console.log('엄마')}
   const profile = [
     {
       id: '1',
@@ -50,18 +49,6 @@ function MemberListView(): JSX.Element {
             justifyContent: 'center',
             alignItems: 'center',
           }}>
-          {/* <Image
-          {...console.log('이미지')}
-            source={src}
-            style={[
-              {
-                width: 70,
-                height: 70,
-                borderRadius: 40,
-                zIndex: 2,
-              },
-            ]}
-          /> */}
           <MemberListImg src={src} />
           <ClickedMemberHighlight item={item} />
         </TouchableOpacity>
@@ -85,4 +72,4 @@ function MemberListView(): JSX.Element {
   );
 }
 
-export default React.memo(MemberListView);
+export default MemberListView;
