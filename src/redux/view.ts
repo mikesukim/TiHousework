@@ -32,9 +32,9 @@ const initialState: ViewState = {
 function view(state: ViewState = initialState, action: ViewAction): ViewState {
   switch (action.type) {
     case UPDATE_CLICKEDUSERID:
-      return {clickedUserId: action.payload};
+      return {...state, clickedUserId: action.payload};
     case REMOVE_CLICKEDUSERID:
-      return {clickedUserId: ''};
+      return {...state, clickedUserId: ''};
     default:
       return state;
   }

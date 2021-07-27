@@ -1,9 +1,12 @@
-import React, {useImperativeHandle, useState} from 'react';
-import {useRef} from 'react';
-import {FlatList, Image, TouchableOpacity, View} from 'react-native';
+import React, {useState} from 'react';
+import {FlatList, Image, TouchableOpacity} from 'react-native';
+import useView from '../hooks/useView';
+import ClickedMemberHighlight from './ClickedMemberHighlight';
+import MemberListImg from './MemberListImg';
 
 function MemberListView(): JSX.Element {
-  const [selectedId, setSelectedId] = useState(null);
+  // const [selectedId, setSelectedId] = useState(null);
+  {console.log('엄마')}
   const profile = [
     {
       id: '1',
@@ -31,15 +34,14 @@ function MemberListView(): JSX.Element {
       src: require('../img/11.jpeg'),
     },
   ];
-  const Item = ({name, item, src}) => {
-    const tempChildComp = useRef();
-    const handle = () => {
-      tempChildComp.current.hi();
-    };
+  const Item = ({item, src}) => {
+    const {onUpdateClickedUserId} = useView();
     return (
       <>
         <TouchableOpacity
-          onPress={handle}
+          onPress={() => {
+            onUpdateClickedUserId(item.id);
+          }}
           style={{
             height: 76,
             width: 76,
@@ -48,7 +50,8 @@ function MemberListView(): JSX.Element {
             justifyContent: 'center',
             alignItems: 'center',
           }}>
-          <Image
+          {/* <Image
+          {...console.log('이미지')}
             source={src}
             style={[
               {
@@ -58,39 +61,15 @@ function MemberListView(): JSX.Element {
                 zIndex: 2,
               },
             ]}
-          />
-          <TempView ref={tempChildComp} />
+          /> */}
+          <MemberListImg src={src} />
+          <ClickedMemberHighlight item={item} />
         </TouchableOpacity>
       </>
     );
   };
-  const TempView = React.forwardRef((props, ref) => {
-    const [isClicked, setIsClicked] = useState(false);
-    useImperativeHandle(ref, () => ({
-      hi() {
-        setIsClicked(state => !state);
-      },
-    }));
-    // item.id === redux
-    if (isClicked) {
-      return (
-        <View
-          style={{
-            backgroundColor: 'red',
-            height: 76,
-            width: 76,
-            position: 'absolute',
-            borderRadius: 40,
-            zIndex: 1,
-          }}
-        />
-      );
-    }
-    return null;
-  });
   const renderItem = ({item}) => {
-    console.log(item.id);
-    return <Item name={item.name} item={item} src={item.src} />;
+    return <Item item={item} src={item.src} />;
   };
 
   return (
@@ -101,9 +80,9 @@ function MemberListView(): JSX.Element {
       data={profile}
       renderItem={renderItem}
       keyExtractor={item => item.id}
-      extraData={selectedId}
+      // extraData={selectedId}
     />
   );
 }
 
-export default MemberListView;
+export default React.memo(MemberListView);
