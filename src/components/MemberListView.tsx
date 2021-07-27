@@ -1,10 +1,10 @@
-import React, {useState} from 'react';
-import {FlatList, Image, TouchableOpacity} from 'react-native';
+import React from 'react';
+import {FlatList, TouchableOpacity} from 'react-native';
 import useView from '../hooks/useView';
 import ClickedMemberHighlight from './ClickedMemberHighlight';
 import MemberListImg from './MemberListImg';
 
-function MemberListView(): JSX.Element {
+function MemberListView({callbackFromParent}): JSX.Element {
   // const [selectedId, setSelectedId] = useState(null);
   const profile = [
     {
@@ -40,10 +40,11 @@ function MemberListView(): JSX.Element {
         <TouchableOpacity
           onPress={() => {
             onUpdateClickedUserId(item.id);
+            callbackFromParent(item.name);
           }}
           style={{
-            height: 76,
-            width: 76,
+            height: 66,
+            width: 66,
             marginLeft: 10,
             borderRadius: 40,
             justifyContent: 'center',
@@ -60,6 +61,8 @@ function MemberListView(): JSX.Element {
   };
 
   return (
+    <>
+    {console.log('heheh')}
     <FlatList
       style={{height: 100, flexGrow: 0}}
       horizontal
@@ -69,6 +72,7 @@ function MemberListView(): JSX.Element {
       keyExtractor={item => item.id}
       // extraData={selectedId}
     />
+    </>
   );
 }
 

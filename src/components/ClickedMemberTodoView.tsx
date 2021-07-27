@@ -1,7 +1,7 @@
 import React from 'react';
 import {Text, View} from 'react-native';
 
-function SelectedView({nameFromParent}): JSX.Element {
+function ClickedMemberTodoView({nameFromParent}): JSX.Element {
   return (
     <>
       {nameFromParent ? (
@@ -13,4 +13,4 @@ function SelectedView({nameFromParent}): JSX.Element {
   );
 }
 
-export default SelectedView;
+export default ClickedMemberTodoView;
