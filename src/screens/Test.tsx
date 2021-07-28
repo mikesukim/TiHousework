@@ -1,5 +1,5 @@
 import React from 'react';
-import Cards from '../components/Cards';
+import SafeAreaView from 'react-native-safe-area-view';
 import InvitationTokenCheckMW from '../components/InvitationTokenCheckMW';
 import TodoHomeScreen from './TodoHomeScreen';
 
