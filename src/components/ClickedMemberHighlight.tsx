@@ -8,12 +8,14 @@ function ClickedMemberHighlight({item}): JSX.Element {
     return (
       <View
         style={{
-          backgroundColor: 'red',
-          height: 66,
-          width: 66,
+          backgroundColor: '#EBE9E0',
+          height: 70,
+          width: 70,
           position: 'absolute',
           borderRadius: 40,
           zIndex: 1,
+          borderWidth: 3,
+          borderColor: 'red',
         }}
       />
     );

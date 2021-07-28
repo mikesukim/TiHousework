@@ -8,6 +8,11 @@ function MemberListView(): JSX.Element {
   // const [selectedId, setSelectedId] = useState(null);
   const profile = [
     {
+      id: '0',
+      name: 'Home',
+      src: require('../img/cannotFind.png'),
+    },
+    {
       id: '1',
       name: 'Jiyun',
       src: require('../img/jiyun.jpg'),
@@ -43,9 +48,9 @@ function MemberListView(): JSX.Element {
             onUpdateClickedUserName(item.name);
           }}
           style={{
-            height: 66,
-            width: 66,
-            marginLeft: 10,
+            height: 70,
+            width: 70,
+            marginLeft: 8,
             borderRadius: 40,
             justifyContent: 'center',
             alignItems: 'center',
@@ -63,7 +68,12 @@ function MemberListView(): JSX.Element {
   return (
     <>
       <FlatList
-        style={{height: 100, flexGrow: 0}}
+        style={{
+          height: 80,
+          flexGrow: 0,
+          borderBottomWidth: 1,
+          borderColor: '#484848',
+        }}
         horizontal
         showsHorizontalScrollIndicator={false}
         data={profile}

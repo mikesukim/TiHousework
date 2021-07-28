@@ -8,8 +8,8 @@ function MemberListImg({src}): JSX.Element {
         source={src}
         style={[
           {
-            width: 60,
-            height: 60,
+            width: 58,
+            height: 58,
             borderRadius: 40,
             zIndex: 2,
           },
