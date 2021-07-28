@@ -40,6 +40,7 @@ function MemberListView(): JSX.Element {
   ];
   const Item = ({item, src}) => {
     const {onUpdateClickedUserId, onUpdateClickedUserName} = useView();
+
     return (
       <>
         <TouchableOpacity
