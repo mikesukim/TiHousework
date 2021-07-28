@@ -22,8 +22,8 @@ function TodoList(): JSX.Element {
       <>
         <TouchableOpacity
           style={{
-            height: 65,
-            width: '85%',
+            height: 60,
+            width: '84%',
             marginBottom: 20,
             justifyContent: 'center',
             alignItems: 'center',
@@ -49,7 +49,7 @@ function TodoList(): JSX.Element {
     <>
       <FlatList
         style={{paddingTop: 40}}
-        // showsVerticalScrollIndicator={false}
+        showsVerticalScrollIndicator={false}
         data={todolist}
         renderItem={renderItem}
         keyExtractor={item => item.id}

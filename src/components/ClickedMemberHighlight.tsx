@@ -9,8 +9,8 @@ function ClickedMemberHighlight({item}): JSX.Element {
       <View
         style={{
           backgroundColor: '#EBE9E0',
-          height: 70,
-          width: 70,
+          height: 74,
+          width: 74,
           position: 'absolute',
           borderRadius: 40,
           zIndex: 1,

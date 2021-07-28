@@ -48,9 +48,9 @@ function MemberListView(): JSX.Element {
             onUpdateClickedUserName(item.name);
           }}
           style={{
-            height: 70,
-            width: 70,
-            marginLeft: 8,
+            height: 74,
+            width: 74,
+            marginLeft: 10,
             borderRadius: 40,
             justifyContent: 'center',
             alignItems: 'center',
@@ -69,7 +69,7 @@ function MemberListView(): JSX.Element {
     <>
       <FlatList
         style={{
-          height: 80,
+          height: 90,
           flexGrow: 0,
           borderBottomWidth: 1,
           borderColor: '#484848',

@@ -1,5 +1,4 @@
 import React from 'react';
-import SafeAreaView from 'react-native-safe-area-view';
 import InvitationTokenCheckMW from '../components/InvitationTokenCheckMW';
 import TodoHomeScreen from './TodoHomeScreen';
 
