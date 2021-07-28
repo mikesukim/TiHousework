@@ -4,7 +4,7 @@ import useView from '../hooks/useView';
 import ClickedMemberHighlight from './ClickedMemberHighlight';
 import MemberListImg from './MemberListImg';
 
-function MemberListView({callbackFromParent}): JSX.Element {
+function MemberListView(): JSX.Element {
   // const [selectedId, setSelectedId] = useState(null);
   const profile = [
     {
@@ -34,13 +34,13 @@ function MemberListView({callbackFromParent}): JSX.Element {
     },
   ];
   const Item = ({item, src}) => {
-    const {onUpdateClickedUserId} = useView();
+    const {onUpdateClickedUserId, onUpdateClickedUserName} = useView();
     return (
       <>
         <TouchableOpacity
           onPress={() => {
             onUpdateClickedUserId(item.id);
-            callbackFromParent(item.name);
+            onUpdateClickedUserName(item.name);
           }}
           style={{
             height: 66,
@@ -62,16 +62,15 @@ function MemberListView({callbackFromParent}): JSX.Element {
 
   return (
     <>
-    {console.log('heheh')}
-    <FlatList
-      style={{height: 100, flexGrow: 0}}
-      horizontal
-      showsHorizontalScrollIndicator={false}
-      data={profile}
-      renderItem={renderItem}
-      keyExtractor={item => item.id}
-      // extraData={selectedId}
-    />
+      <FlatList
+        style={{height: 100, flexGrow: 0}}
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        data={profile}
+        renderItem={renderItem}
+        keyExtractor={item => item.id}
+        // extraData={selectedId}
+      />
     </>
   );
 }
