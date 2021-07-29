@@ -1,6 +1,6 @@
 import React from 'react';
 import {Alert, Image, Platform, TouchableOpacity} from 'react-native';
-import ReactNativeHapticFeedback from "react-native-haptic-feedback";
+import ReactNativeHapticFeedback from 'react-native-haptic-feedback';
 
 function AddFloatingButton(): JSX.Element {
   const options = {
@@ -36,8 +36,7 @@ function AddFloatingButton(): JSX.Element {
         ReactNativeHapticFeedback.trigger(hapticTriggerType, options);
         Alert.alert('길게 누르셨네요');
       }}
-      delayLongPress={200}
-      >
+      delayLongPress={200}>
       <Image
         style={{resizeMode: 'contain', width: 30, height: 30}}
         source={require('../img/plus.png')}

@@ -1,56 +1,23 @@
-import React, {useRef} from 'react';
+import React from 'react';
 import {useState} from 'react';
-import {
-  FlatList,
-  Image,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import {FlatList, Image, Platform, Text, TouchableOpacity} from 'react-native';
 import Swipeable from 'react-native-swipeable';
-import {RNCamera} from 'react-native-camera';
-import ReactNativeHapticFeedback from "react-native-haptic-feedback";
+import ReactNativeHapticFeedback from 'react-native-haptic-feedback';
 import AddFloatingButton from './AddFloatingButton';
+import Camera from './Camera';
 
 function TodoList(): JSX.Element {
-  const [imgUri, setImgUri] = useState('');
   const [cameraOn, setCameraOn] = useState(false);
-
-  const camera = useRef();
-  const takePicture = async () => {
-    if (camera.current) {
-      const options = {quality: 0.5, base64: true};
-      const data = await camera.current.takePictureAsync(options);
-      setImgUri(data.uri);
-      console.log(data.uri);
-    }
-  };
-  const renderCamera = () => {
-    return (
-      <>
-        <RNCamera style={{flex: 1, alignItems: 'center'}} ref={camera} />
-        <View style={{flex: 0, flexDirection: 'row', justifyContent: 'center'}}>
-          <TouchableOpacity
-            onPress={() => takePicture()}
-            style={styles.capture}>
-            <Text style={{fontSize: 14}}> SNAP </Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => setCameraOn(false)}
-            style={styles.capture}>
-            <Text style={{fontSize: 14}}> DONE </Text>
-          </TouchableOpacity>
-        </View>
-      </>
-    );
-  };
 
   // haptic feedback
   const options = {
     enableVibrateFallback: true,
     ignoreAndroidSystemSettings: false,
   };
+  const hapticTriggerType = Platform.select({
+    ios: 'selection',
+    android: 'impactMedium',
+  });
 
   const todolist = [
     {
@@ -126,12 +93,12 @@ function TodoList(): JSX.Element {
           rightActionActivationDistance={100}
           onLeftActionActivate={() => {
             setLeftActionActivated(true);
-            ReactNativeHapticFeedback.trigger('impactMedium', options);
+            ReactNativeHapticFeedback.trigger(hapticTriggerType, options);
           }}
           onLeftActionDeactivate={() => setLeftActionActivated(false)}
           onLeftActionComplete={() => setToggle(prevState => !prevState)}
           onRightActionActivate={() => {
-            ReactNativeHapticFeedback.trigger('impactMedium', options);
+            ReactNativeHapticFeedback.trigger(hapticTriggerType, options);
           }}
           onRightActionComplete={() => setCameraOn(true)}
           leftContent={leftContent}
@@ -163,7 +130,7 @@ function TodoList(): JSX.Element {
   };
 
   if (cameraOn) {
-    return renderCamera();
+    return <Camera setStateFromParent={setCameraOn} />;
   }
   return (
     <>
@@ -182,25 +149,3 @@ function TodoList(): JSX.Element {
 }
 
 export default TodoList;
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    flexDirection: 'column',
-    backgroundColor: 'black',
-  },
-  preview: {
-    flex: 1,
-    justifyContent: 'flex-end',
-    alignItems: 'center',
-  },
-  capture: {
-    flex: 0,
-    backgroundColor: '#fff',
-    borderRadius: 5,
-    padding: 15,
-    paddingHorizontal: 20,
-    alignSelf: 'center',
-    margin: 20,
-  },
-});
