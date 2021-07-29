@@ -10,7 +10,8 @@ import {
 } from 'react-native';
 import Swipeable from 'react-native-swipeable';
 import {RNCamera} from 'react-native-camera';
-import SafeAreaView from 'react-native-safe-area-view';
+import ReactNativeHapticFeedback from "react-native-haptic-feedback";
+import AddFloatingButton from './AddFloatingButton';
 
 function TodoList(): JSX.Element {
   const [imgUri, setImgUri] = useState('');
@@ -44,27 +45,13 @@ function TodoList(): JSX.Element {
       </>
     );
   };
-  const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      flexDirection: 'column',
-      backgroundColor: 'black',
-    },
-    preview: {
-      flex: 1,
-      justifyContent: 'flex-end',
-      alignItems: 'center',
-    },
-    capture: {
-      flex: 0,
-      backgroundColor: '#fff',
-      borderRadius: 5,
-      padding: 15,
-      paddingHorizontal: 20,
-      alignSelf: 'center',
-      margin: 20,
-    },
-  });
+
+  // haptic feedback
+  const options = {
+    enableVibrateFallback: true,
+    ignoreAndroidSystemSettings: false,
+  };
+
   const todolist = [
     {
       id: '0',
@@ -137,9 +124,15 @@ function TodoList(): JSX.Element {
         <Swipeable
           leftActionActivationDistance={50}
           rightActionActivationDistance={100}
-          onLeftActionActivate={() => setLeftActionActivated(true)}
+          onLeftActionActivate={() => {
+            setLeftActionActivated(true);
+            ReactNativeHapticFeedback.trigger('impactMedium', options);
+          }}
           onLeftActionDeactivate={() => setLeftActionActivated(false)}
           onLeftActionComplete={() => setToggle(prevState => !prevState)}
+          onRightActionActivate={() => {
+            ReactNativeHapticFeedback.trigger('impactMedium', options);
+          }}
           onRightActionComplete={() => setCameraOn(true)}
           leftContent={leftContent}
           rightContent={rightContent}>
@@ -183,8 +176,31 @@ function TodoList(): JSX.Element {
         keyExtractor={item => item.id}
         // extraData={selectedId}
       />
+      <AddFloatingButton />
     </>
   );
 }
 
 export default TodoList;
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    flexDirection: 'column',
+    backgroundColor: 'black',
+  },
+  preview: {
+    flex: 1,
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+  },
+  capture: {
+    flex: 0,
+    backgroundColor: '#fff',
+    borderRadius: 5,
+    padding: 15,
+    paddingHorizontal: 20,
+    alignSelf: 'center',
+    margin: 20,
+  },
+});
