@@ -8,7 +8,7 @@ import {
   logout,
   unlink,
 } from '@react-native-seoul/kakao-login';
-import {CustomButton, CustomButtonText} from '../styled-components/StyledComps';
+import {CustomButton, CustomButtonText} from '../styles/StyledComps';
 
 interface Props {
   name?: string;

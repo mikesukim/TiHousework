@@ -1,6 +1,7 @@
 import React, {useRef, useState} from 'react';
-import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {Text, TouchableOpacity, View} from 'react-native';
 import {RNCamera} from 'react-native-camera';
+import styles from '../styles';
 
 function Camera({setStateFromParent}): JSX.Element {
   const [imgUri, setImgUri] = useState('');
@@ -31,25 +32,3 @@ function Camera({setStateFromParent}): JSX.Element {
 }
 
 export default Camera;
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    flexDirection: 'column',
-    backgroundColor: 'black',
-  },
-  preview: {
-    flex: 1,
-    justifyContent: 'flex-end',
-    alignItems: 'center',
-  },
-  capture: {
-    flex: 0,
-    backgroundColor: '#fff',
-    borderRadius: 5,
-    padding: 15,
-    paddingHorizontal: 20,
-    alignSelf: 'center',
-    margin: 20,
-  },
-});

@@ -1,6 +1,7 @@
 import React from 'react';
 import {Alert, Image, Platform, TouchableOpacity} from 'react-native';
 import ReactNativeHapticFeedback from 'react-native-haptic-feedback';
+import styles from '../styles';
 
 function AddFloatingButton(): JSX.Element {
   const options = {
@@ -14,21 +15,7 @@ function AddFloatingButton(): JSX.Element {
 
   return (
     <TouchableOpacity
-      style={{
-        position: 'absolute',
-        width: 60,
-        height: 60,
-        alignItems: 'center',
-        justifyContent: 'center',
-        right: 20,
-        bottom: 50,
-        borderRadius: 25,
-        backgroundColor: 'white',
-        shadowColor: '#000000',
-        shadowRadius: 4,
-        shadowOpacity: 0.3,
-        shadowOffset: {width: 0, height: 2},
-      }}
+      style={styles.floatingBtn}
       onPress={() => {
         Alert.alert('새 집안일을 추가해주세요');
       }}

@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import {Text} from 'react-native';
 import ResetRedux from '../components/ResetRedux';
 import useUser from '../hooks/useUser';
-import {BottomContainer, Container} from '../styled-components/StyledComps';
+import {BottomContainer, Container} from '../styles/StyledComps';
 
 function TodoScreenTemp(): JSX.Element {
   const {onRemoveIsInvited, onRemoveSenderEmail, onUpdateRoomID} = useUser();

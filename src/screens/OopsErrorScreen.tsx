@@ -12,7 +12,7 @@ import {
   View2,
   View3,
   View4,
-} from '../styled-components/StyledComps';
+} from '../styles/StyledComps';
 import TodoScreenTemp from './TodoScreenTemp';
 
 function OopsErrorScreen(): JSX.Element {

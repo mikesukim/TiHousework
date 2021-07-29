@@ -4,7 +4,7 @@ import {
   statusCodes,
 } from '@react-native-google-signin/google-signin';
 import {Alert} from 'react-native';
-import {CustomButton, CustomButtonText} from '../styled-components/StyledComps';
+import {CustomButton, CustomButtonText} from '../styles/StyledComps';
 
 interface Props {
   name?: string;

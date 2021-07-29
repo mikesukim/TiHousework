@@ -12,7 +12,7 @@ import {
   View4,
   CustomButton,
   CustomButtonText,
-} from '../styled-components/StyledComps';
+} from '../styles/StyledComps';
 import ResetRedux from '../components/ResetRedux';
 
 function WelcomeReceiverScreen(): JSX.Element {

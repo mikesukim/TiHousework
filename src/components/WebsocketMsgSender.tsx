@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
-import { SendBtn, TextInputBox } from '../styled-components';
+import { SendBtn, TextInputBox } from '../styles/index-jungi';
 
 function WebsocketMsgSender(props): JSX.Element {
   const [text, setText] = useState('');

@@ -1,7 +1,7 @@
 import React, {useEffect, useState, useRef} from 'react';
 import {Button, Text} from 'react-native';
 import ConfettiCannon from 'react-native-confetti-cannon';
-import {Container, InnerContainer} from '../styled-components';
+import {Container, InnerContainer} from '../styles/index-jungi';
 import WebsocketMsgSender from './WebsocketMsgSender';
 import WebsocketMsgReceiver from './WebsocketMsgReceiver';
 

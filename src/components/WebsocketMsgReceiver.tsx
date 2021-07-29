@@ -1,6 +1,6 @@
 import React, {useEffect, useImperativeHandle, useState} from 'react';
 import {useSpring, animated, config} from '@react-spring/native';
-import {DataView, H1} from '../styled-components';
+import {DataView, H1} from '../styles/index-jungi';
 
 function WebsocketMsgReceiver(props, ref): JSX.Element {
   const [text, setText] = useState('no data yet');

@@ -5,6 +5,7 @@ import Swipeable from 'react-native-swipeable';
 import ReactNativeHapticFeedback from 'react-native-haptic-feedback';
 import AddFloatingButton from './AddFloatingButton';
 import Camera from './Camera';
+import styles from '../styles';
 
 function TodoList(): JSX.Element {
   const [cameraOn, setCameraOn] = useState(false);
@@ -62,12 +63,7 @@ function TodoList(): JSX.Element {
     const [leftActionActivated, setLeftActionActivated] = useState(false);
     const [toggle, setToggle] = useState(false);
     const leftContent = [
-      <TouchableOpacity
-        style={{
-          height: 60,
-          flexDirection: 'row',
-          justifyContent: 'flex-end',
-        }}>
+      <TouchableOpacity style={styles.swipeLeftContent}>
         <Image
           style={{width: 35, height: 35, alignSelf: 'center'}}
           source={require('../img/done.png')}
@@ -75,11 +71,7 @@ function TodoList(): JSX.Element {
       </TouchableOpacity>,
     ];
     const rightContent = [
-      <TouchableOpacity
-        style={{
-          height: 60,
-          justifyContent: 'center',
-        }}>
+      <TouchableOpacity style={styles.swipeRightContent}>
         <Image
           style={{width: 35, height: 35}}
           source={require('../img/camera.png')}
@@ -104,20 +96,10 @@ function TodoList(): JSX.Element {
           leftContent={leftContent}
           rightContent={rightContent}>
           <TouchableOpacity
-            style={{
-              height: 60,
-              width: '84%',
-              marginBottom: 20,
-              justifyContent: 'center',
-              alignItems: 'center',
-              alignSelf: 'center',
-              borderRadius: 5,
-              shadowColor: '#000000',
-              shadowRadius: 3,
-              shadowOpacity: 0.2,
-              shadowOffset: {width: 2, height: 4},
-              backgroundColor: toggle ? 'darkseagreen' : 'white',
-            }}>
+            style={[
+              styles.todoListItem,
+              {backgroundColor: toggle ? 'darkseagreen' : 'white'},
+            ]}>
             <Text style={{fontFamily: 'NotoSerifKR-SemiBold'}}>{title}</Text>
           </TouchableOpacity>
         </Swipeable>

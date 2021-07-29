@@ -13,7 +13,7 @@ import {
   View2,
   View3,
   View4,
-} from '../styled-components/StyledComps';
+} from '../styles/StyledComps';
 
 function LaunchScreen(): JSX.Element {
   const {isLoginInProcess} = useMaintenance();

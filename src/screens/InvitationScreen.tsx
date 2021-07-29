@@ -14,7 +14,7 @@ import {
   View4,
   CustomButton,
   CustomButtonText,
-} from '../styled-components/StyledComps';
+} from '../styles/StyledComps';
 import ResetRedux from '../components/ResetRedux';
 import WelcomeSenderScreen from './WelcomeSenderScreen';
 import WelcomeReceiverScreen from './WelcomeReceiverScreen';
