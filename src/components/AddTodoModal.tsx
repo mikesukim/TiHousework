@@ -1,9 +1,11 @@
-import React from 'react';
-import {Modal, Text, TouchableOpacity, View} from 'react-native';
+import React, {useState} from 'react';
+import {KeyboardAvoidingView, Modal, TouchableOpacity} from 'react-native';
+import {TextInput} from 'react-native-gesture-handler';
 import useView from '../hooks/useView';
 import styles from '../styles';
 
 function AddTodoModal(): JSX.Element {
+  const [text, setText] = useState('');
   const {isAddBtnClicked, onUpdateIsAddBtnClicked} = useView();
   return (
     <Modal animationType="slide" transparent visible={isAddBtnClicked}>
@@ -18,11 +20,21 @@ function AddTodoModal(): JSX.Element {
         onPressIn={() => {
           onUpdateIsAddBtnClicked(false);
         }}>
-        <TouchableOpacity
-          activeOpacity={1}
+        <KeyboardAvoidingView
           style={[styles.todoListItem, styles.addTodoModal]}>
-          <Text>새 집안일을 추가해주세요...</Text>
-        </TouchableOpacity>
+          <TextInput
+            placeholder="새 집안일을 추가해주세요..."
+            autoFocus
+            returnKeyType="done"
+            onChangeText={value => setText(value)}
+            value={text}
+            enablesReturnKeyAutomatically
+            onSubmitEditing={() => {
+              onUpdateIsAddBtnClicked(false);
+              setText('');
+            }}
+          />
+        </KeyboardAvoidingView>
       </TouchableOpacity>
     </Modal>
   );

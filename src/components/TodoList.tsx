@@ -38,26 +38,6 @@ function TodoList(): JSX.Element {
       id: '3',
       title: '설거지 하기',
     },
-    {
-      id: '4',
-      title: '성심이 산책시키기',
-    },
-    {
-      id: '5',
-      title: '화장실 청소하기',
-    },
-    {
-      id: '6',
-      title: '설거지 하기',
-    },
-    {
-      id: '7',
-      title: '성심이 산책시키기',
-    },
-    {
-      id: '8',
-      title: '화장실 청소하기',
-    },
   ];
 
   const Item = ({title}) => {

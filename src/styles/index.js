@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
   addTodoModal: {
     backgroundColor: 'white',
     position: 'absolute',
-    bottom: 50,
+    bottom: 350,
   },
   swipeLeftContent: {
     height: 60,
@@ -98,8 +98,13 @@ const styles = StyleSheet.create({
     height: 90,
     borderBottomWidth: 1,
     borderColor: '#484848',
+    shadowColor: '#484848',
+    shadowOffset: {width: 0, height: 2},
+    shadowRadius: 2,
+    shadowOpacity: 0.6,
     justifyContent: 'center',
     alignContent: 'center',
+    zIndex: 2,
   },
   memberListView: {
     height: 90,
