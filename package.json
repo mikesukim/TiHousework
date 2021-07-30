@@ -39,6 +39,7 @@
     "react-native-screens": "^3.4.0",
     "react-native-shadow-cards": "^1.0.2",
     "react-native-splash-screen": "^3.2.0",
+    "react-native-status-bar-height": "^2.6.0",
     "react-native-swipeable": "^0.6.0",
     "react-redux": "^7.2.3",
     "redux": "^4.0.5",

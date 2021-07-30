@@ -5,8 +5,7 @@ import useView from '../hooks/useView';
 import styles from '../styles';
 
 function AddFloatingButton(): JSX.Element {
-  const {onUpdateCameraOn} = useView();
-  const {onUpdateIsAddBtnClicked} = useView();
+  const {onUpdateCameraOn, onUpdateIsAddBtnClicked} = useView();
   const options = {
     enableVibrateFallback: true,
     ignoreAndroidSystemSettings: false,
