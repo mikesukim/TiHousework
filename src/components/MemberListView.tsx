@@ -1,5 +1,5 @@
 import React from 'react';
-import {FlatList, TouchableOpacity} from 'react-native';
+import {FlatList, TouchableOpacity, View} from 'react-native';
 import useView from '../hooks/useView';
 import styles from '../styles';
 import ClickedMemberHighlight from './ClickedMemberHighlight';
@@ -62,15 +62,21 @@ function MemberListView(): JSX.Element {
 
   return (
     <>
-      <FlatList
-        style={styles.flatList}
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        data={profile}
-        renderItem={renderItem}
-        keyExtractor={item => item.id}
-        // extraData={selectedId}
-      />
+      <View style={styles.memberListViewWrapper}>
+        <FlatList
+          style={styles.memberListView}
+          contentContainerStyle={{
+            alignItems: 'center',
+            paddingRight: 10,
+          }}
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          data={profile}
+          renderItem={renderItem}
+          keyExtractor={item => item.id}
+          // extraData={selectedId}
+        />
+      </View>
     </>
   );
 }

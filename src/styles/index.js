@@ -94,11 +94,16 @@ const styles = StyleSheet.create({
     borderWidth: 3,
     borderColor: 'red',
   },
-  memberListImg: {
-    width: 62,
-    height: 62,
-    borderRadius: 40,
-    zIndex: 2,
+  memberListViewWrapper: {
+    height: 90,
+    borderBottomWidth: 1,
+    borderColor: '#484848',
+    justifyContent: 'center',
+    alignContent: 'center',
+  },
+  memberListView: {
+    height: 90,
+    flexGrow: 0,
   },
   memberListItem: {
     height: 74,
@@ -108,11 +113,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  flatList: {
-    height: 90,
-    flexGrow: 0,
-    borderBottomWidth: 1,
-    borderColor: '#484848',
+  memberListImg: {
+    width: 62,
+    height: 62,
+    borderRadius: 40,
+    zIndex: 2,
   },
 });
 
