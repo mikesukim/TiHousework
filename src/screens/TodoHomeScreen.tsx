@@ -5,21 +5,17 @@ import {Button, Modal, Text, View} from 'react-native';
 import MemberListView from '../components/MemberListView';
 import ClickedMemberTodoView from '../components/ClickedMemberTodoView';
 import styles from '../styles';
+import AddTodoModal from '../components/AddTodoModal';
+import useView from '../hooks/useView';
 
 function TodoHomeScreen(): JSX.Element {
-  const [modalVisible, setModalVisible] = useState(false);
+  const {isAddBtnClicked} = useView();
   return (
     <>
       <SafeAreaView style={styles.safeAreaView} forceInset={{top: 'always'}}>
-        {modalVisible ? <View style={styles.greyOutView} /> : null}
+        {isAddBtnClicked ? <View style={styles.greyOutView} /> : null}
         <MemberListView />
-        {/* 여기 state랑 addFloatingButton state랑 같으면 됨. */}
-        <Modal animationType="slide" transparent visible={modalVisible}>
-          <View style={[styles.todoListItem, styles.addTodoModal]}>
-            <Text>새 집안일을 추가해주세요...</Text>
-          </View>
-        </Modal>
-        <Button title="click" onPress={() => setModalVisible(true)} />
+        <AddTodoModal />
         <ClickedMemberTodoView />
       </SafeAreaView>
     </>

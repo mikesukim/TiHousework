@@ -1,5 +1,4 @@
 import React from 'react';
-import {useState} from 'react';
 import {Image, Platform, TouchableOpacity} from 'react-native';
 import ReactNativeHapticFeedback from 'react-native-haptic-feedback';
 import useView from '../hooks/useView';
@@ -7,7 +6,7 @@ import styles from '../styles';
 
 function AddFloatingButton(): JSX.Element {
   const {onUpdateCameraOn} = useView();
-  const [isAddBtnClicked, setIsAddBtnClicked] = useState(false);
+  const {onUpdateIsAddBtnClicked} = useView();
   const options = {
     enableVibrateFallback: true,
     ignoreAndroidSystemSettings: false,
@@ -21,7 +20,7 @@ function AddFloatingButton(): JSX.Element {
     <TouchableOpacity
       style={styles.floatingBtn}
       onPress={() => {
-        setIsAddBtnClicked(true);
+        onUpdateIsAddBtnClicked(true);
       }}
       onLongPress={() => {
         ReactNativeHapticFeedback.trigger(hapticTriggerType, options);

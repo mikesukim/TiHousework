@@ -5,6 +5,8 @@ const UPDATE_CLICKEDUSERNAME = 'view/UPDATE_CLICKEDUSERNAME' as const;
 const REMOVE_CLICKEDUSERNAME = 'view/REMOVE_CLICKEDUSERNAME' as const;
 const UPDATE_CAMERAON = 'view/UPDATE_CAMERAON' as const;
 const REMOVE_CAMERAON = 'view/REMOVE_CAMERAON' as const;
+const UPDATE_ISADDBTNCLICKED = 'view/UPDATE_ISADDBTNCLICKED' as const;
+const REMOVE_ISADDBTNCLICKED = 'view/REMOVE_ISADDBTNCLICKED' as const;
 
 // Declare Action type for Redux
 interface actionType {
@@ -33,6 +35,15 @@ export const updateCameraOn = (cameraOn: boolean): actionType => ({
 export const removeCameraOn = (): actionType => ({
   type: REMOVE_CAMERAON,
 });
+export const updateIsAddBtnClicked = (
+  isAddBtnClicked: boolean,
+): actionType => ({
+  type: UPDATE_ISADDBTNCLICKED,
+  payload: isAddBtnClicked,
+});
+export const removeIsAddBtnClicked = (): actionType => ({
+  type: REMOVE_ISADDBTNCLICKED,
+});
 
 // Declare Reducers
 type ViewAction =
@@ -41,18 +52,22 @@ type ViewAction =
   | ReturnType<typeof updateClickedUserName>
   | ReturnType<typeof removeClickedUserName>
   | ReturnType<typeof updateCameraOn>
-  | ReturnType<typeof removeCameraOn>;
+  | ReturnType<typeof removeCameraOn>
+  | ReturnType<typeof updateIsAddBtnClicked>
+  | ReturnType<typeof removeIsAddBtnClicked>;
 
 type ViewState = {
   clickedUserId: string;
   clickedUserName: string;
   cameraOn: boolean;
+  isAddBtnClicked: boolean;
 };
 
 const initialState: ViewState = {
   clickedUserId: '',
   clickedUserName: '',
   cameraOn: false,
+  isAddBtnClicked: false,
 };
 
 function view(state: ViewState = initialState, action: ViewAction): ViewState {
@@ -69,6 +84,10 @@ function view(state: ViewState = initialState, action: ViewAction): ViewState {
       return {...state, cameraOn: action.payload};
     case REMOVE_CAMERAON:
       return {...state, cameraOn: false};
+    case UPDATE_ISADDBTNCLICKED:
+      return {...state, isAddBtnClicked: action.payload};
+    case REMOVE_ISADDBTNCLICKED:
+      return {...state, isAddBtnClicked: false};
     default:
       return state;
   }
