@@ -1,5 +1,11 @@
 import React, {useRef, useState} from 'react';
-import {Modal, Text, TouchableOpacity, View} from 'react-native';
+import {
+  Image,
+  ImageBackground,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import {RNCamera} from 'react-native-camera';
 import useView from '../hooks/useView';
 import styles from '../styles';
@@ -16,12 +22,25 @@ function Camera(): JSX.Element {
       console.log(data.uri);
     }
   };
+
   return (
     <>
-      <RNCamera style={{flex: 1, alignItems: 'center'}} ref={camera} />
+      {imgUri ? (
+        <Image source={{uri: imgUri}} style={{flex: 1}} />
+      ) : (
+        <RNCamera style={{flex: 1, alignItems: 'center'}} ref={camera} />
+      )}
       <View style={{flex: 0, flexDirection: 'row', justifyContent: 'center'}}>
-        <TouchableOpacity onPress={() => takePicture()} style={styles.capture}>
-          <Text style={{fontSize: 14}}> SNAP </Text>
+        <TouchableOpacity
+          onPress={() => {
+            imgUri ? setImgUri('') : takePicture();
+          }}
+          style={styles.capture}>
+          {imgUri ? (
+            <Text style={{fontSize: 14}}> RETRY </Text>
+          ) : (
+            <Text style={{fontSize: 14}}> SNAP </Text>
+          )}
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => onUpdateCameraOn(false)}
