@@ -1,12 +1,14 @@
 import React, {useState} from 'react';
 import {KeyboardAvoidingView, Modal, TouchableOpacity} from 'react-native';
 import {TextInput} from 'react-native-gesture-handler';
+import useKeyboardHeight from 'react-native-use-keyboard-height';
 import useView from '../hooks/useView';
 import styles from '../styles';
 
 function AddTodoModal(): JSX.Element {
   const [text, setText] = useState('');
   const {isAddBtnClicked, onUpdateIsAddBtnClicked} = useView();
+  const keyboardHeight = useKeyboardHeight();
   return (
     <Modal animationType="slide" transparent visible={isAddBtnClicked}>
       <TouchableOpacity
@@ -21,7 +23,7 @@ function AddTodoModal(): JSX.Element {
           onUpdateIsAddBtnClicked(false);
         }}>
         <KeyboardAvoidingView
-          style={[styles.todoListItem, styles.addTodoModal]}>
+          style={[styles.todoListItem, styles.addTodoModal(keyboardHeight)]}>
           <TextInput
             placeholder="새 집안일을 추가해주세요..."
             autoFocus

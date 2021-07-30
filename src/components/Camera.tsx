@@ -28,7 +28,11 @@ function Camera(): JSX.Element {
       {imgUri ? (
         <Image source={{uri: imgUri}} style={{flex: 1}} />
       ) : (
-        <RNCamera style={{flex: 1, alignItems: 'center'}} ref={camera} />
+        <RNCamera
+          style={{flex: 1, alignItems: 'center'}}
+          ref={camera}
+          captureAudio={false}
+        />
       )}
       <View style={{flex: 0, flexDirection: 'row', justifyContent: 'center'}}>
         <TouchableOpacity

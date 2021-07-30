@@ -33,11 +33,11 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.2,
     shadowOffset: {width: 2, height: 4},
   },
-  addTodoModal: {
+  addTodoModal: keyboardHeight => ({
     backgroundColor: 'white',
     position: 'absolute',
-    bottom: 350,
-  },
+    bottom: keyboardHeight,
+  }),
   swipeLeftContent: {
     height: 60,
     flexDirection: 'row',
