@@ -14,12 +14,13 @@ import {
 import ResetRedux from '../components/ResetRedux';
 import useUser from '../hooks/useUser';
 import TodoScreenTemp from './TodoScreenTemp';
+import styles from '../styles';
 
 function WelcomeSenderScreen(): JSX.Element {
   const {roomID, onUpdateRoomID} = useUser();
   if (!roomID) {
     return (
-      <SafeAreaView style={{flex: 1}} forceInset={{top: 'always'}}>
+      <SafeAreaView style={styles.safeAreaView} forceInset={{top: 'always'}}>
         <View1>
           <View3>
             <LogoText>환영합니다</LogoText>

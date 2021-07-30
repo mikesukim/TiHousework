@@ -1,9 +1,13 @@
 import React from 'react';
-import {Alert, Image, Platform, TouchableOpacity} from 'react-native';
+import {useState} from 'react';
+import {Image, Platform, TouchableOpacity} from 'react-native';
 import ReactNativeHapticFeedback from 'react-native-haptic-feedback';
+import useView from '../hooks/useView';
 import styles from '../styles';
 
 function AddFloatingButton(): JSX.Element {
+  const {onUpdateCameraOn} = useView();
+  const [isAddBtnClicked, setIsAddBtnClicked] = useState(false);
   const options = {
     enableVibrateFallback: true,
     ignoreAndroidSystemSettings: false,
@@ -17,11 +21,11 @@ function AddFloatingButton(): JSX.Element {
     <TouchableOpacity
       style={styles.floatingBtn}
       onPress={() => {
-        Alert.alert('새 집안일을 추가해주세요');
+        setIsAddBtnClicked(true);
       }}
       onLongPress={() => {
         ReactNativeHapticFeedback.trigger(hapticTriggerType, options);
-        Alert.alert('길게 누르셨네요');
+        onUpdateCameraOn(true);
       }}
       delayLongPress={200}>
       <Image

@@ -1,6 +1,7 @@
 import React from 'react';
 import {FlatList, TouchableOpacity} from 'react-native';
 import useView from '../hooks/useView';
+import styles from '../styles';
 import ClickedMemberHighlight from './ClickedMemberHighlight';
 import MemberListImg from './MemberListImg';
 
@@ -48,14 +49,7 @@ function MemberListView(): JSX.Element {
             onUpdateClickedUserId(item.id);
             onUpdateClickedUserName(item.name);
           }}
-          style={{
-            height: 74,
-            width: 74,
-            marginLeft: 10,
-            borderRadius: 40,
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}>
+          style={styles.memberListItem}>
           <MemberListImg src={src} />
           <ClickedMemberHighlight item={item} />
         </TouchableOpacity>
@@ -69,12 +63,7 @@ function MemberListView(): JSX.Element {
   return (
     <>
       <FlatList
-        style={{
-          height: 90,
-          flexGrow: 0,
-          borderBottomWidth: 1,
-          borderColor: '#484848',
-        }}
+        style={styles.flatList}
         horizontal
         showsHorizontalScrollIndicator={false}
         data={profile}
@@ -86,4 +75,4 @@ function MemberListView(): JSX.Element {
   );
 }
 
-export default MemberListView;
+export default React.memo(MemberListView);

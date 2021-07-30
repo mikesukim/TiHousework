@@ -6,10 +6,11 @@ import ReactNativeHapticFeedback from 'react-native-haptic-feedback';
 import AddFloatingButton from './AddFloatingButton';
 import Camera from './Camera';
 import styles from '../styles';
+import useView from '../hooks/useView';
 
 function TodoList(): JSX.Element {
-  const [cameraOn, setCameraOn] = useState(false);
-
+  // 리덕스 때문에 불필요하게 리렌더되는 부분 없나?
+  const {cameraOn, onUpdateCameraOn} = useView();
   // haptic feedback
   const options = {
     enableVibrateFallback: true,
@@ -60,7 +61,6 @@ function TodoList(): JSX.Element {
   ];
 
   const Item = ({title}) => {
-    const [leftActionActivated, setLeftActionActivated] = useState(false);
     const [toggle, setToggle] = useState(false);
     const leftContent = [
       <TouchableOpacity style={styles.swipeLeftContent}>
@@ -84,15 +84,13 @@ function TodoList(): JSX.Element {
           leftActionActivationDistance={50}
           rightActionActivationDistance={100}
           onLeftActionActivate={() => {
-            setLeftActionActivated(true);
             ReactNativeHapticFeedback.trigger(hapticTriggerType, options);
           }}
-          onLeftActionDeactivate={() => setLeftActionActivated(false)}
           onLeftActionComplete={() => setToggle(prevState => !prevState)}
           onRightActionActivate={() => {
             ReactNativeHapticFeedback.trigger(hapticTriggerType, options);
           }}
-          onRightActionComplete={() => setCameraOn(true)}
+          onRightActionComplete={() => onUpdateCameraOn(true)}
           leftContent={leftContent}
           rightContent={rightContent}>
           <TouchableOpacity
@@ -112,7 +110,7 @@ function TodoList(): JSX.Element {
   };
 
   if (cameraOn) {
-    return <Camera setStateFromParent={setCameraOn} />;
+    return <Camera />;
   }
   return (
     <>

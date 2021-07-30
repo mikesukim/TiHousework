@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import SafeAreaView from 'react-native-safe-area-view';
 import ResetRedux from '../components/ResetRedux';
+import styles from '../styles';
 import {
   CustomButton,
   CustomButtonText,
@@ -22,7 +23,7 @@ function OopsErrorScreen(): JSX.Element {
     return <TodoScreenTemp />;
   }
   return (
-    <SafeAreaView style={{flex: 1}} forceInset={{top: 'always'}}>
+    <SafeAreaView style={styles.safeAreaView} forceInset={{top: 'always'}}>
       <View1>
         <View3>
           <LogoText>두집살림?</LogoText>

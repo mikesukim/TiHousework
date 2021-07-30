@@ -1,10 +1,12 @@
 import React, {useRef, useState} from 'react';
-import {Text, TouchableOpacity, View} from 'react-native';
+import {Modal, Text, TouchableOpacity, View} from 'react-native';
 import {RNCamera} from 'react-native-camera';
+import useView from '../hooks/useView';
 import styles from '../styles';
 
-function Camera({setStateFromParent}): JSX.Element {
+function Camera(): JSX.Element {
   const [imgUri, setImgUri] = useState('');
+  const {onUpdateCameraOn} = useView();
   const camera = useRef();
   const takePicture = async () => {
     if (camera.current) {
@@ -22,7 +24,7 @@ function Camera({setStateFromParent}): JSX.Element {
           <Text style={{fontSize: 14}}> SNAP </Text>
         </TouchableOpacity>
         <TouchableOpacity
-          onPress={() => setStateFromParent(false)}
+          onPress={() => onUpdateCameraOn(false)}
           style={styles.capture}>
           <Text style={{fontSize: 14}}> DONE </Text>
         </TouchableOpacity>

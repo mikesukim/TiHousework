@@ -4,6 +4,7 @@ import Loading from '../components/Loading';
 import LoginRegisterMW from '../components/LoginRegisterMW';
 import SocialLogin from '../components/SocialLogin';
 import useMaintenance from '../hooks/useMaintenance';
+import styles from '../styles';
 import {
   Header2,
   Header3,
@@ -18,7 +19,7 @@ import {
 function LaunchScreen(): JSX.Element {
   const {isLoginInProcess} = useMaintenance();
   return (
-    <SafeAreaView style={{flex: 1}} forceInset={{top: 'always'}}>
+    <SafeAreaView style={styles.safeAreaView} forceInset={{top: 'always'}}>
       <LoginRegisterMW />
       {isLoginInProcess ? <Loading /> : null}
       <View1>

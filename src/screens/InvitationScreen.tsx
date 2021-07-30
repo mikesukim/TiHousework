@@ -18,6 +18,7 @@ import {
 import ResetRedux from '../components/ResetRedux';
 import WelcomeSenderScreen from './WelcomeSenderScreen';
 import WelcomeReceiverScreen from './WelcomeReceiverScreen';
+import styles from '../styles';
 
 function InvitationScreen(): JSX.Element {
   const {email, isSender, onUpdateIsSender} = useUser();
@@ -55,7 +56,7 @@ function InvitationScreen(): JSX.Element {
 
   if (!isClicked) {
     return (
-      <SafeAreaView style={{flex: 1}} forceInset={{top: 'always'}}>
+      <SafeAreaView style={styles.safeAreaView} forceInset={{top: 'always'}}>
         <View1>
           <View3>
             <LogoText>안녕하세요</LogoText>

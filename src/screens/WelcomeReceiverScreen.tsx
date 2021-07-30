@@ -14,13 +14,14 @@ import {
   CustomButtonText,
 } from '../styles/StyledComps';
 import ResetRedux from '../components/ResetRedux';
+import styles from '../styles';
 
 function WelcomeReceiverScreen(): JSX.Element {
   const {isInvited, senderEmail, onUpdateIsInvited} = useUser();
 
   if (isInvited) {
     return (
-      <SafeAreaView style={{flex: 1}} forceInset={{top: 'always'}}>
+      <SafeAreaView style={styles.safeAreaView} forceInset={{top: 'always'}}>
         <View1>
           <View3>
             <LogoText>환영합니다</LogoText>

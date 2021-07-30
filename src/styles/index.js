@@ -1,6 +1,10 @@
 import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
+  safeAreaView: {
+    flex: 1,
+    backgroundColor: '#EBE9E0',
+  },
   floatingBtn: {
     position: 'absolute',
     width: 60,
@@ -29,6 +33,11 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.2,
     shadowOffset: {width: 2, height: 4},
   },
+  addTodoModal: {
+    backgroundColor: 'white',
+    position: 'absolute',
+    bottom: 50,
+  },
   swipeLeftContent: {
     height: 60,
     flexDirection: 'row',
@@ -56,6 +65,45 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     alignSelf: 'center',
     margin: 20,
+  },
+  greyOutView: {
+    backgroundColor: 'rgba(72, 72, 72, 0.3)',
+    position: 'absolute',
+    top: 0,
+    bottom: 0,
+    left: 0,
+    right: 0,
+    zIndex: 10,
+  },
+  highlight: {
+    backgroundColor: '#EBE9E0',
+    height: 74,
+    width: 74,
+    position: 'absolute',
+    borderRadius: 40,
+    zIndex: 1,
+    borderWidth: 3,
+    borderColor: 'red',
+  },
+  memberListImg: {
+    width: 62,
+    height: 62,
+    borderRadius: 40,
+    zIndex: 2,
+  },
+  memberListItem: {
+    height: 74,
+    width: 74,
+    marginLeft: 10,
+    borderRadius: 40,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  flatList: {
+    height: 90,
+    flexGrow: 0,
+    borderBottomWidth: 1,
+    borderColor: '#484848',
   },
 });
 
