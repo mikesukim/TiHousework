@@ -1,5 +1,7 @@
 import React, {useEffect, useState} from 'react';
-import {Text, View} from 'react-native';
+import {Text} from 'react-native';
+import SafeAreaView from 'react-native-safe-area-view';
+import styles from '../styles';
 
 function TempHook(): JSX.Element {
   const [state, setState] = useState('initial state');
@@ -9,9 +11,9 @@ function TempHook(): JSX.Element {
   }, []);
 
   return (
-    <View>
+    <SafeAreaView style={styles.safeAreaView} forceInset={{top: 'always'}}>
       <Text>{state}</Text>
-    </View>
+    </SafeAreaView>
   );
 }
 
