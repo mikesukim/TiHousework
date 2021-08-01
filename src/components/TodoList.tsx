@@ -19,6 +19,7 @@ function TodoList(): JSX.Element {
   // 리덕스 때문에 불필요하게 리렌더되는 부분 없나?
   const {cameraOn} = useView();
   const {todoItem} = useTodo();
+
   // haptic feedback
   const options = {
     enableVibrateFallback: true,
@@ -32,7 +33,8 @@ function TodoList(): JSX.Element {
   const Item = ({item, index}) => {
     const [toggle, setToggle] = useState(false);
     const {onUpdateCameraOn} = useView();
-    const {onRemoveTodoItem} = useTodo();
+    const {onRemoveTodoItem, onToggleTodoDone} = useTodo();
+    {console.log(item);}
     const leftContent = [
       <TouchableOpacity style={styles.swipeLeftContent}>
         <Image
@@ -58,8 +60,8 @@ function TodoList(): JSX.Element {
             ReactNativeHapticFeedback.trigger(hapticTriggerType, options);
           }}
           onLeftActionComplete={() => {
-            setToggle(prevState => !prevState);
-            console.log(index);
+            // setToggle(prevState => !prevState);
+            onToggleTodoDone(item.id);
           }}
           onRightActionActivate={() => {
             ReactNativeHapticFeedback.trigger(hapticTriggerType, options);
@@ -70,7 +72,7 @@ function TodoList(): JSX.Element {
           <TouchableOpacity
             style={[
               styles.todoListItem,
-              {backgroundColor: toggle ? 'darkseagreen' : 'white'},
+              {backgroundColor: item.done ? 'darkseagreen' : 'white'},
             ]}>
             <Text style={{fontFamily: 'NotoSerifKR-SemiBold'}}>
               {item.title}

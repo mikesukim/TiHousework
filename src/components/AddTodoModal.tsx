@@ -9,13 +9,16 @@ import styles from '../styles';
 function AddTodoModal(): JSX.Element {
   const [text, setText] = useState('');
   const {isAddBtnClicked, onUpdateIsAddBtnClicked} = useView();
-  const {onAddTodoItem} = useTodo();
+  const {todoItem, onAddTodoItem} = useTodo();
   const keyboardHeight = useKeyboardHeight();
   const addNewItem = text => {
+    let id = 0;
+    if (todoItem.length !== 0) {
+      id = Math.max(...todoItem.map(item => item.id)) + 1;
+    }
     onAddTodoItem([
       {
-        id: Math.random(),
-        // Math.max(...state.map(todo => todo.id)) + 1
+        id: id,
         title: text,
         name: '지윤',
         done: false,

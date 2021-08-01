@@ -1,7 +1,7 @@
 import {useSelector, useDispatch} from 'react-redux';
 import {useCallback} from 'react';
 import {RootState} from '../redux';
-import {addTodoItem, removeTodoItem} from '../redux/todo.ts';
+import {addTodoItem, removeTodoItem, toggleTodoDone} from '../redux/todo.ts';
 
 interface TodoProps {
   todoItem: Array<{id: number; title: string; name: string; done: boolean}>;
@@ -9,6 +9,7 @@ interface TodoProps {
     todoItem: Array<{id: number; title: string; name: string; done: boolean}>,
   ) => void;
   onRemoveTodoItem: (id: number) => void;
+  onToggleTodoDone: (id: number) => void;
 }
 
 export default function useTodo(): TodoProps {
@@ -26,10 +27,15 @@ export default function useTodo(): TodoProps {
     (id: number) => dispatch(removeTodoItem(id)),
     [dispatch],
   );
+  const onToggleTodoDone = useCallback(
+    (id: number) => dispatch(toggleTodoDone(id)),
+    [dispatch],
+  );
 
   return {
     todoItem,
     onAddTodoItem,
     onRemoveTodoItem,
+    onToggleTodoDone,
   };
 }
