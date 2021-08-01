@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import Swipeable from 'react-native-swipeable';
 import ReactNativeHapticFeedback from 'react-native-haptic-feedback';
+import {useNavigation} from '@react-navigation/native';
 import AddFloatingButton from './AddFloatingButton';
 import Camera from './Camera';
 import styles from '../styles';
@@ -19,6 +20,7 @@ function TodoList(): JSX.Element {
   // 리덕스 때문에 불필요하게 리렌더되는 부분 없나?
   const {cameraOn} = useView();
   const {todoItem} = useTodo();
+  const navigation = useNavigation();
 
   // haptic feedback
   const options = {
@@ -34,7 +36,6 @@ function TodoList(): JSX.Element {
     const [toggle, setToggle] = useState(false);
     const {onUpdateCameraOn} = useView();
     const {onRemoveTodoItem, onToggleTodoDone} = useTodo();
-    {console.log(item);}
     const leftContent = [
       <TouchableOpacity style={styles.swipeLeftContent}>
         <Image
@@ -60,7 +61,6 @@ function TodoList(): JSX.Element {
             ReactNativeHapticFeedback.trigger(hapticTriggerType, options);
           }}
           onLeftActionComplete={() => {
-            // setToggle(prevState => !prevState);
             onToggleTodoDone(item.id);
           }}
           onRightActionActivate={() => {
@@ -73,7 +73,8 @@ function TodoList(): JSX.Element {
             style={[
               styles.todoListItem,
               {backgroundColor: item.done ? 'darkseagreen' : 'white'},
-            ]}>
+            ]}
+            onPress={() => navigation.navigate('Details')}>
             <Text style={{fontFamily: 'NotoSerifKR-SemiBold'}}>
               {item.title}
             </Text>

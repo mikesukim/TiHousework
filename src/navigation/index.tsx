@@ -22,7 +22,7 @@ function Navigation(): JSX.Element {
           headerShown: false,
         }}>
         <HomeStack.Screen name="Home" component={Test} />
-        {/* <HomeStack.Screen name="Details" component={DetailsScreen} /> */}
+        <HomeStack.Screen name="Details" component={HelloScreen} />
       </HomeStack.Navigator>
     );
   }
