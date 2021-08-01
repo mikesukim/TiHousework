@@ -15,6 +15,7 @@ function AddTodoModal(): JSX.Element {
     onAddTodoItem([
       {
         id: Math.random(),
+        // Math.max(...state.map(todo => todo.id)) + 1
         title: text,
         name: '지윤',
         done: false,

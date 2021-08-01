@@ -29,9 +29,7 @@ type TodoState = {
 };
 
 const initialState: TodoState = {
-  todoItem: [
-    {id: Math.random(), title: '설거지 하기', name: '지윤', done: false},
-  ],
+  todoItem: [{id: 0, title: '설거지 하기', name: '지윤', done: false}],
 };
 
 function todo(state: TodoState = initialState, action: TodoAction): TodoState {

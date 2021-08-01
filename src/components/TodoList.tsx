@@ -29,10 +29,10 @@ function TodoList(): JSX.Element {
     android: 'impactMedium',
   });
 
-  const Item = ({title, id, done}) => {
+  const Item = ({item, index}) => {
     const [toggle, setToggle] = useState(false);
     const {onUpdateCameraOn} = useView();
-    const {isTodoDone, onRemoveTodoItem, onUpdateIsTodoDone} = useTodo();
+    const {onRemoveTodoItem} = useTodo();
     const leftContent = [
       <TouchableOpacity style={styles.swipeLeftContent}>
         <Image
@@ -59,6 +59,7 @@ function TodoList(): JSX.Element {
           }}
           onLeftActionComplete={() => {
             setToggle(prevState => !prevState);
+            console.log(index);
           }}
           onRightActionActivate={() => {
             ReactNativeHapticFeedback.trigger(hapticTriggerType, options);
@@ -71,12 +72,14 @@ function TodoList(): JSX.Element {
               styles.todoListItem,
               {backgroundColor: toggle ? 'darkseagreen' : 'white'},
             ]}>
-            <Text style={{fontFamily: 'NotoSerifKR-SemiBold'}}>{title}</Text>
+            <Text style={{fontFamily: 'NotoSerifKR-SemiBold'}}>
+              {item.title}
+            </Text>
           </TouchableOpacity>
           <Button
             title="삭제"
             onPress={() => {
-              onRemoveTodoItem(id);
+              onRemoveTodoItem(item.id);
             }}
           />
         </Swipeable>
@@ -84,8 +87,8 @@ function TodoList(): JSX.Element {
     );
   };
 
-  const renderItem = ({item}) => {
-    return <Item title={item.title} id={item.id} done={item.done} />;
+  const renderItem = ({item, index}) => {
+    return <Item item={item} index={index} />;
   };
 
   if (cameraOn) {
