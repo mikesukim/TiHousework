@@ -83,7 +83,7 @@ const initialState: ViewState = {
   clickedUserName: '',
   cameraOn: false,
   isAddBtnClicked: false,
-  todoItem: [],
+  todoItem: [{id: Math.random(), title: '설거지 하기', name: '지윤'}],
 };
 
 function view(state: ViewState = initialState, action: ViewAction): ViewState {

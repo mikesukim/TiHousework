@@ -1,6 +1,12 @@
-import React from 'react';
-import {useState} from 'react';
-import {FlatList, Image, Platform, Text, TouchableOpacity} from 'react-native';
+import React, {useState, useEffect} from 'react';
+import {
+  Button,
+  FlatList,
+  Image,
+  Platform,
+  Text,
+  TouchableOpacity,
+} from 'react-native';
 import Swipeable from 'react-native-swipeable';
 import ReactNativeHapticFeedback from 'react-native-haptic-feedback';
 import AddFloatingButton from './AddFloatingButton';
@@ -10,7 +16,7 @@ import useView from '../hooks/useView';
 
 function TodoList(): JSX.Element {
   // 리덕스 때문에 불필요하게 리렌더되는 부분 없나?
-  const {cameraOn, onUpdateCameraOn} = useView();
+  const {cameraOn, todoItem, onUpdateCameraOn, onRemoveTodoItem} = useView();
   // haptic feedback
   const options = {
     enableVibrateFallback: true,
@@ -21,26 +27,7 @@ function TodoList(): JSX.Element {
     android: 'impactMedium',
   });
 
-  const todolist = [
-    {
-      id: '0',
-      title: '설거지 하기',
-    },
-    {
-      id: '1',
-      title: '성심이 산책시키기',
-    },
-    {
-      id: '2',
-      title: '화장실 청소하기',
-    },
-    {
-      id: '3',
-      title: '설거지 하기',
-    },
-  ];
-
-  const Item = ({title}) => {
+  const Item = ({title, id}) => {
     const [toggle, setToggle] = useState(false);
     const leftContent = [
       <TouchableOpacity style={styles.swipeLeftContent}>
@@ -80,13 +67,19 @@ function TodoList(): JSX.Element {
             ]}>
             <Text style={{fontFamily: 'NotoSerifKR-SemiBold'}}>{title}</Text>
           </TouchableOpacity>
+          <Button
+            title="삭제"
+            onPress={() => {
+              onRemoveTodoItem(id);
+            }}
+          />
         </Swipeable>
       </>
     );
   };
 
   const renderItem = ({item}) => {
-    return <Item title={item.title} />;
+    return <Item title={item.title} id={item.id} />;
   };
 
   if (cameraOn) {
@@ -98,9 +91,9 @@ function TodoList(): JSX.Element {
         style={{paddingTop: 40}}
         contentContainerStyle={{paddingBottom: 40}}
         showsVerticalScrollIndicator={false}
-        data={todolist}
+        data={todoItem}
         renderItem={renderItem}
-        keyExtractor={item => item.id}
+        // keyExtractor={item => item.id}
         // extraData={selectedId}
       />
       <AddFloatingButton />
