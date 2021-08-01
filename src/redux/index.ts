@@ -7,6 +7,7 @@ import auth from './auth.ts';
 import user from './user.ts';
 import maintenance from './maintenance.ts';
 import view from './view.ts';
+import todo from './todo.ts';
 
 const persistConfig = {
   key: 'root',
@@ -23,6 +24,7 @@ const rootReducer = combineReducers({
   user,
   maintenance,
   view,
+  todo,
 });
 
 // 루트 리듀서를 내보내주세요.

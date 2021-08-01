@@ -7,8 +7,6 @@ const UPDATE_CAMERAON = 'view/UPDATE_CAMERAON' as const;
 const REMOVE_CAMERAON = 'view/REMOVE_CAMERAON' as const;
 const UPDATE_ISADDBTNCLICKED = 'view/UPDATE_ISADDBTNCLICKED' as const;
 const REMOVE_ISADDBTNCLICKED = 'view/REMOVE_ISADDBTNCLICKED' as const;
-const ADD_TODOITEM = 'view/ADD_TODOITEM' as const;
-const REMOVE_TODOITEM = 'view/REMOVE_TODOITEM' as const;
 
 // Declare Action type for Redux
 interface actionType {
@@ -46,16 +44,6 @@ export const updateIsAddBtnClicked = (
 export const removeIsAddBtnClicked = (): actionType => ({
   type: REMOVE_ISADDBTNCLICKED,
 });
-export const addTodoItem = (
-  todoItem: Array<{id: number; title: string; name: string}>,
-): actionType => ({
-  type: ADD_TODOITEM,
-  payload: todoItem,
-});
-export const removeTodoItem = (id: number): actionType => ({
-  type: REMOVE_TODOITEM,
-  payload: id,
-});
 
 // Declare Reducers
 type ViewAction =
@@ -66,16 +54,13 @@ type ViewAction =
   | ReturnType<typeof updateCameraOn>
   | ReturnType<typeof removeCameraOn>
   | ReturnType<typeof updateIsAddBtnClicked>
-  | ReturnType<typeof removeIsAddBtnClicked>
-  | ReturnType<typeof addTodoItem>
-  | ReturnType<typeof removeTodoItem>;
+  | ReturnType<typeof removeIsAddBtnClicked>;
 
 type ViewState = {
   clickedUserId: string;
   clickedUserName: string;
   cameraOn: boolean;
   isAddBtnClicked: boolean;
-  todoItem: Array<{id: number; title: string; name: string}>;
 };
 
 const initialState: ViewState = {
@@ -83,7 +68,6 @@ const initialState: ViewState = {
   clickedUserName: '',
   cameraOn: false,
   isAddBtnClicked: false,
-  todoItem: [{id: Math.random(), title: '설거지 하기', name: '지윤'}],
 };
 
 function view(state: ViewState = initialState, action: ViewAction): ViewState {
@@ -104,13 +88,6 @@ function view(state: ViewState = initialState, action: ViewAction): ViewState {
       return {...state, isAddBtnClicked: action.payload};
     case REMOVE_ISADDBTNCLICKED:
       return {...state, isAddBtnClicked: false};
-    case ADD_TODOITEM:
-      return {...state, todoItem: state.todoItem.concat(action.payload)};
-    case REMOVE_TODOITEM:
-      return {
-        ...state,
-        todoItem: state.todoItem.filter(item => item.id !== action.payload),
-      };
     default:
       return state;
   }

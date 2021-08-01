@@ -10,8 +10,6 @@ import {
   removeCameraOn,
   updateIsAddBtnClicked,
   removeIsAddBtnClicked,
-  addTodoItem,
-  removeTodoItem,
 } from '../redux/view.ts';
 
 interface ViewProps {
@@ -19,7 +17,6 @@ interface ViewProps {
   clickedUserName: string;
   cameraOn: boolean;
   isAddBtnClicked: boolean;
-  todoItem: Array<{id: number; title: string; name: string}>;
   onUpdateClickedUserId: (clickedUserId: string) => void;
   onRemoveClickedUserId: () => void;
   onUpdateClickedUserName: (clickedUserName: string) => void;
@@ -28,10 +25,6 @@ interface ViewProps {
   onRemoveCameraOn: () => void;
   onUpdateIsAddBtnClicked: (isAddBtnClicked: boolean) => void;
   onRemoveIsAddBtnClicked: () => void;
-  onAddTodoItem: (
-    todoItem: Array<{id: number; title: string; name: string}>,
-  ) => void;
-  onRemoveTodoItem: (id: number) => void;
 }
 
 export default function useView(): ViewProps {
@@ -45,7 +38,6 @@ export default function useView(): ViewProps {
   const isAddBtnClicked = useSelector(
     (state: RootState) => state.view.isAddBtnClicked,
   );
-  const todoItem = useSelector((state: RootState) => state.view.todoItem);
 
   const dispatch = useDispatch();
 
@@ -82,22 +74,12 @@ export default function useView(): ViewProps {
     () => dispatch(removeIsAddBtnClicked()),
     [dispatch],
   );
-  const onAddTodoItem = useCallback(
-    (todoItem: Array<{id: number; title: string; name: string}>) =>
-      dispatch(addTodoItem(todoItem)),
-    [dispatch],
-  );
-  const onRemoveTodoItem = useCallback(
-    (id: number) => dispatch(removeTodoItem(id)),
-    [dispatch],
-  );
 
   return {
     clickedUserId,
     clickedUserName,
     cameraOn,
     isAddBtnClicked,
-    todoItem,
     onUpdateClickedUserId,
     onRemoveClickedUserId,
     onUpdateClickedUserName,
@@ -106,7 +88,5 @@ export default function useView(): ViewProps {
     onRemoveCameraOn,
     onUpdateIsAddBtnClicked,
     onRemoveIsAddBtnClicked,
-    onAddTodoItem,
-    onRemoveTodoItem,
   };
 }

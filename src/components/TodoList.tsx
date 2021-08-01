@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import {
   Button,
   FlatList,
@@ -13,10 +13,12 @@ import AddFloatingButton from './AddFloatingButton';
 import Camera from './Camera';
 import styles from '../styles';
 import useView from '../hooks/useView';
+import useTodo from '../hooks/useTodo';
 
 function TodoList(): JSX.Element {
   // 리덕스 때문에 불필요하게 리렌더되는 부분 없나?
-  const {cameraOn, todoItem, onUpdateCameraOn, onRemoveTodoItem} = useView();
+  const {cameraOn} = useView();
+  const {todoItem} = useTodo();
   // haptic feedback
   const options = {
     enableVibrateFallback: true,
@@ -27,8 +29,10 @@ function TodoList(): JSX.Element {
     android: 'impactMedium',
   });
 
-  const Item = ({title, id}) => {
+  const Item = ({title, id, done}) => {
     const [toggle, setToggle] = useState(false);
+    const {onUpdateCameraOn} = useView();
+    const {isTodoDone, onRemoveTodoItem, onUpdateIsTodoDone} = useTodo();
     const leftContent = [
       <TouchableOpacity style={styles.swipeLeftContent}>
         <Image
@@ -53,7 +57,9 @@ function TodoList(): JSX.Element {
           onLeftActionActivate={() => {
             ReactNativeHapticFeedback.trigger(hapticTriggerType, options);
           }}
-          onLeftActionComplete={() => setToggle(prevState => !prevState)}
+          onLeftActionComplete={() => {
+            setToggle(prevState => !prevState);
+          }}
           onRightActionActivate={() => {
             ReactNativeHapticFeedback.trigger(hapticTriggerType, options);
           }}
@@ -79,7 +85,7 @@ function TodoList(): JSX.Element {
   };
 
   const renderItem = ({item}) => {
-    return <Item title={item.title} id={item.id} />;
+    return <Item title={item.title} id={item.id} done={item.done} />;
   };
 
   if (cameraOn) {

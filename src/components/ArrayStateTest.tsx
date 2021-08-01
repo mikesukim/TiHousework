@@ -1,23 +1,14 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import {Button, Text, View} from 'react-native';
 import {TextInput} from 'react-native-gesture-handler';
 import SafeAreaView from 'react-native-safe-area-view';
-import useView from '../hooks/useView';
+import useTodo from '../hooks/useTodo';
 import styles from '../styles';
 
 function ArrayStateTest(): JSX.Element {
-  const {todoItem, onAddTodoItem, onRemoveTodoItem} = useView();
+  const {todoItem, onAddTodoItem, onRemoveTodoItem} = useTodo();
   const [title, onChangeTitle] = useState('');
 
-  const onAddItem = () => {
-    onAddTodoItem([
-      {
-        id: 0,
-        title: '안녕',
-        name: '지윤',
-      },
-    ]);
-  };
   const onRemoveItem = item => {
     onRemoveTodoItem(item.id);
   };
@@ -32,6 +23,7 @@ function ArrayStateTest(): JSX.Element {
         id: Math.random(),
         title: text,
         name: '지윤',
+        done: false,
       },
     ]);
   };

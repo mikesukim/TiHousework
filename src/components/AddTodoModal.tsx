@@ -1,19 +1,15 @@
 import React, {useState} from 'react';
-import {KeyboardAvoidingView, Modal, Text, TouchableOpacity} from 'react-native';
+import {KeyboardAvoidingView, Modal, TouchableOpacity} from 'react-native';
 import {TextInput} from 'react-native-gesture-handler';
 import useKeyboardHeight from 'react-native-use-keyboard-height';
+import useTodo from '../hooks/useTodo';
 import useView from '../hooks/useView';
 import styles from '../styles';
 
 function AddTodoModal(): JSX.Element {
   const [text, setText] = useState('');
-  const {
-    isAddBtnClicked,
-    todoItem,
-    onUpdateIsAddBtnClicked,
-    onAddTodoItem,
-    onRemoveTodoItem,
-  } = useView();
+  const {isAddBtnClicked, onUpdateIsAddBtnClicked} = useView();
+  const {onAddTodoItem} = useTodo();
   const keyboardHeight = useKeyboardHeight();
   const addNewItem = text => {
     onAddTodoItem([
@@ -21,6 +17,7 @@ function AddTodoModal(): JSX.Element {
         id: Math.random(),
         title: text,
         name: '지윤',
+        done: false,
       },
     ]);
   };
