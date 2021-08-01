@@ -1,3 +1,5 @@
+// This Component connects to AWS Serverless
+
 import React, {useEffect, useState, useRef} from 'react';
 import {Button, Text} from 'react-native';
 import ConfettiCannon from 'react-native-confetti-cannon';
