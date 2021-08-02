@@ -1,12 +1,7 @@
 import React, {useRef, useState} from 'react';
-import {
-  Image,
-  ImageBackground,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import {Image, Text, TouchableOpacity, View} from 'react-native';
 import {RNCamera} from 'react-native-camera';
+import Icon from 'react-native-vector-icons/Ionicons';
 import useView from '../hooks/useView';
 import styles from '../styles';
 
@@ -35,22 +30,39 @@ function Camera(): JSX.Element {
         />
       )}
       <View style={{flex: 0, flexDirection: 'row', justifyContent: 'center'}}>
-        <TouchableOpacity
-          onPress={() => {
-            imgUri ? setImgUri('') : takePicture();
-          }}
-          style={styles.capture}>
-          {imgUri ? (
-            <Text style={{fontSize: 14}}> RETRY </Text>
-          ) : (
-            <Text style={{fontSize: 14}}> SNAP </Text>
-          )}
-        </TouchableOpacity>
-        <TouchableOpacity
-          onPress={() => onUpdateCameraOn(false)}
-          style={styles.capture}>
-          <Text style={{fontSize: 14}}> DONE </Text>
-        </TouchableOpacity>
+        {imgUri ? (
+          <>
+            <TouchableOpacity
+              onPress={() => setImgUri('')}
+              style={styles.capture}>
+              <Text style={{fontSize: 14}}> RETRY </Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => onUpdateCameraOn(false)}
+              style={styles.capture}>
+              <Text style={{fontSize: 14}}> DONE </Text>
+            </TouchableOpacity>
+          </>
+        ) : (
+          <>
+            <TouchableOpacity
+              onPress={() => takePicture()}
+              style={styles.capture}>
+              <Text style={{fontSize: 14}}> SNAP </Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => onUpdateCameraOn(false)}
+              style={{
+                position: 'absolute',
+                right: 30,
+                backgroundColor: '#fff',
+                borderRadius: 20,
+                alignSelf: 'center',
+              }}>
+              <Icon name="close-outline" size={33} />
+            </TouchableOpacity>
+          </>
+        )}
       </View>
     </>
   );
