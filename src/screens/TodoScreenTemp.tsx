@@ -4,21 +4,32 @@ import ResetRedux from '../components/ResetRedux';
 import useUser from '../hooks/useUser';
 import {BottomContainer, Container} from '../styled-components/StyledComps';
 
+import {ChatScreen} from './ChatScreen';
+import Websocket from './../components/Websocket.tsx';
+import useWebsocket from '../hooks/useWebsocket.tsx';
+
 function TodoScreenTemp(): JSX.Element {
-  const {onRemoveIsInvited, onRemoveSenderEmail, onUpdateRoomID} = useUser();
+  const {email, roomID, onRemoveIsInvited, onRemoveSenderEmail} = useUser();
   useEffect(() => {
-    onRemoveIsInvited();
-    onRemoveSenderEmail();
-    onUpdateRoomID('1');
+    // onRemoveIsInvited();
+    // onRemoveSenderEmail();
+    return () => {
+      ws.close();
+    };
   }, []);
 
+  const ws = useWebsocket(roomID,email);
   return (
-    <Container>
-      <BottomContainer>
-        <Text>TodoList Screen</Text>
-        <ResetRedux />
-      </BottomContainer>
-    </Container>
+    // <Container>
+    //   <BottomContainer>
+    //     <Text>TodoList Screen</Text>
+    //     <ResetRedux />
+    //   </BottomContainer>
+    // </Container>
+  <>
+    <ChatScreen ws={ws} />
+    <ResetRedux />
+  </>
   );
 }
 
