@@ -118,6 +118,13 @@
 		<string>GodoB.otf</string>
 		<string>Iropke Batang-medium.ttf</string>
 		<string>IropkeBatangM.ttf</string>
+		<string>NotoSerifKR-Black.otf</string>
+		<string>NotoSerifKR-Bold.otf</string>
+		<string>NotoSerifKR-ExtraLight.otf</string>
+		<string>NotoSerifKR-Light.otf</string>
+		<string>NotoSerifKR-Medium.otf</string>
+		<string>NotoSerifKR-Regular.otf</string>
+		<string>NotoSerifKR-SemiBold.otf</string>
 	</array>
 </dict>
 </plist>
