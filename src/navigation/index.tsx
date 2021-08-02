@@ -6,6 +6,7 @@ import Test from '../screens/Test.tsx';
 import ClockScreen from '../screens/ClockScreen.tsx';
 import HelloScreen from '../screens/HelloScreen.tsx';
 import OopsErrorScreen from '../screens/OopsErrorScreen.tsx';
+import TodoDetailsScreen from '../screens/TodoDetailsScreen.tsx';
 
 function Navigation(): JSX.Element {
   const HomeStack = createStackNavigator();
@@ -22,7 +23,7 @@ function Navigation(): JSX.Element {
           headerShown: false,
         }}>
         <HomeStack.Screen name="Home" component={Test} />
-        <HomeStack.Screen name="Details" component={HelloScreen} />
+        <HomeStack.Screen name="Details" component={TodoDetailsScreen} />
       </HomeStack.Navigator>
     );
   }

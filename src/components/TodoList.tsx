@@ -20,7 +20,6 @@ function TodoList(): JSX.Element {
   // 리덕스 때문에 불필요하게 리렌더되는 부분 없나?
   const {cameraOn} = useView();
   const {todoItem} = useTodo();
-  const navigation = useNavigation();
 
   // haptic feedback
   const options = {
@@ -33,9 +32,9 @@ function TodoList(): JSX.Element {
   });
 
   const Item = ({item, index}) => {
-    const [toggle, setToggle] = useState(false);
     const {onUpdateCameraOn} = useView();
     const {onRemoveTodoItem, onToggleTodoDone} = useTodo();
+    const navigation = useNavigation();
     const leftContent = [
       <TouchableOpacity style={styles.swipeLeftContent}>
         <Image
@@ -74,17 +73,13 @@ function TodoList(): JSX.Element {
               styles.todoListItem,
               {backgroundColor: item.done ? 'darkseagreen' : 'white'},
             ]}
-            onPress={() => navigation.navigate('Details')}>
+            onPress={() => {
+              navigation.navigate('Details', {item: item});
+            }}>
             <Text style={{fontFamily: 'NotoSerifKR-SemiBold'}}>
               {item.title}
             </Text>
           </TouchableOpacity>
-          <Button
-            title="삭제"
-            onPress={() => {
-              onRemoveTodoItem(item.id);
-            }}
-          />
         </Swipeable>
       </>
     );
