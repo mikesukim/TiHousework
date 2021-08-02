@@ -1,12 +1,5 @@
-import React, {useState} from 'react';
-import {
-  Button,
-  FlatList,
-  Image,
-  Platform,
-  Text,
-  TouchableOpacity,
-} from 'react-native';
+import React from 'react';
+import {FlatList, Image, Platform, Text, TouchableOpacity} from 'react-native';
 import Swipeable from 'react-native-swipeable';
 import ReactNativeHapticFeedback from 'react-native-haptic-feedback';
 import {useNavigation} from '@react-navigation/native';
@@ -33,7 +26,7 @@ function TodoList(): JSX.Element {
 
   const Item = ({item, index}) => {
     const {onUpdateCameraOn} = useView();
-    const {onRemoveTodoItem, onToggleTodoDone} = useTodo();
+    const {onToggleTodoDone} = useTodo();
     const navigation = useNavigation();
     const leftContent = [
       <TouchableOpacity style={styles.swipeLeftContent}>

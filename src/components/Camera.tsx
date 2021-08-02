@@ -2,12 +2,14 @@ import React, {useRef, useState} from 'react';
 import {Image, Text, TouchableOpacity, View} from 'react-native';
 import {RNCamera} from 'react-native-camera';
 import Icon from 'react-native-vector-icons/Ionicons';
+import useTodo from '../hooks/useTodo';
 import useView from '../hooks/useView';
 import styles from '../styles';
 
 function Camera(): JSX.Element {
   const [imgUri, setImgUri] = useState('');
   const {onUpdateCameraOn} = useView();
+  const {todoItem, onAddTodoItem} = useTodo();
   const camera = useRef();
   const takePicture = async () => {
     if (camera.current) {
@@ -16,6 +18,21 @@ function Camera(): JSX.Element {
       setImgUri(data.uri);
       console.log(data.uri);
     }
+  };
+  const addNewItem = imgUri => {
+    let id = 0;
+    if (todoItem.length !== 0) {
+      id = Math.max(...todoItem.map(item => item.id)) + 1;
+    }
+    const title = <Icon name="image-outline" size={25} />;
+    onAddTodoItem([
+      {
+        id: id,
+        title: title,
+        name: '지윤',
+        done: false,
+      },
+    ]);
   };
 
   return (
@@ -38,7 +55,10 @@ function Camera(): JSX.Element {
               <Text style={{fontSize: 14}}> RETRY </Text>
             </TouchableOpacity>
             <TouchableOpacity
-              onPress={() => onUpdateCameraOn(false)}
+              onPress={() => {
+                onUpdateCameraOn(false);
+                addNewItem(imgUri);
+              }}
               style={styles.capture}>
               <Text style={{fontSize: 14}}> DONE </Text>
             </TouchableOpacity>
