@@ -2,6 +2,8 @@
 const ADD_TODOITEM = 'todo/ADD_TODOITEM' as const;
 const REMOVE_TODOITEM = 'todo/REMOVE_TODOITEM' as const;
 const TOGGLE_TODODONE = 'todo/TOGGLE_TODODONE' as const;
+const UPDATE_AFTERIMGURI = 'todo/UPDATE_AFTERIMGURI' as const;
+const REMOVE_AFTERIMGURI = 'todo/REMOVE_AFTERIMGURI' as const;
 
 // Declare Action type for Redux
 interface actionType {
@@ -30,12 +32,28 @@ export const toggleTodoDone = (id: number): actionType => ({
   type: TOGGLE_TODODONE,
   payload: id,
 });
+export const updateAfterImgUri = (
+  id: number,
+  afterImgUri: string,
+): actionType => ({
+  type: UPDATE_AFTERIMGURI,
+  payload: {id, afterImgUri},
+});
+export const removeAfterImgUri = (
+  id: number,
+  afterImgUri: string,
+): actionType => ({
+  type: REMOVE_AFTERIMGURI,
+  payload: {id, afterImgUri},
+});
 
 // Declare Reducers
 type TodoAction =
   | ReturnType<typeof addTodoItem>
   | ReturnType<typeof removeTodoItem>
-  | ReturnType<typeof toggleTodoDone>;
+  | ReturnType<typeof toggleTodoDone>
+  | ReturnType<typeof updateAfterImgUri>
+  | ReturnType<typeof removeAfterImgUri>;
 
 type TodoState = {
   todoItem: Array<{
@@ -75,6 +93,22 @@ function todo(state: TodoState = initialState, action: TodoAction): TodoState {
         ...state,
         todoItem: state.todoItem.map(item =>
           item.id === action.payload ? {...item, done: !item.done} : item,
+        ),
+      };
+    case UPDATE_AFTERIMGURI:
+      return {
+        ...state,
+        todoItem: state.todoItem.map(item =>
+          item.id === action.payload.id
+            ? {...item, afterImgUri: action.payload.afterImgUri}
+            : item,
+        ),
+      };
+    case REMOVE_AFTERIMGURI:
+      return {
+        ...state,
+        todoItem: state.todoItem.map(item =>
+          item.id === action.payload.id ? {...item, afterImgUri: ''} : item,
         ),
       };
     default:

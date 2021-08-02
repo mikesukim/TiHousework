@@ -1,7 +1,13 @@
 import {useSelector, useDispatch} from 'react-redux';
 import {useCallback} from 'react';
 import {RootState} from '../redux';
-import {addTodoItem, removeTodoItem, toggleTodoDone} from '../redux/todo.ts';
+import {
+  addTodoItem,
+  removeTodoItem,
+  toggleTodoDone,
+  updateAfterImgUri,
+  removeAfterImgUri,
+} from '../redux/todo.ts';
 
 interface TodoProps {
   todoItem: Array<{
@@ -24,6 +30,8 @@ interface TodoProps {
   ) => void;
   onRemoveTodoItem: (id: number) => void;
   onToggleTodoDone: (id: number) => void;
+  onUpdateAfterImgUri: (id: number, afterImgUri: string) => void;
+  onRemoveAfterImgUri: (id: number, afterImgUri: string) => void;
 }
 
 export default function useTodo(): TodoProps {
@@ -52,11 +60,23 @@ export default function useTodo(): TodoProps {
     (id: number) => dispatch(toggleTodoDone(id)),
     [dispatch],
   );
+  const onUpdateAfterImgUri = useCallback(
+    (id: number, afterImgUri: string) =>
+      dispatch(updateAfterImgUri(id, afterImgUri)),
+    [dispatch],
+  );
+  const onRemoveAfterImgUri = useCallback(
+    (id: number, afterImgUri: string) =>
+      dispatch(removeAfterImgUri(id, afterImgUri)),
+    [dispatch],
+  );
 
   return {
     todoItem,
     onAddTodoItem,
     onRemoveTodoItem,
     onToggleTodoDone,
+    onUpdateAfterImgUri,
+    onRemoveAfterImgUri,
   };
 }

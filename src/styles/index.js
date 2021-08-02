@@ -21,9 +21,9 @@ const styles = StyleSheet.create({
     shadowOffset: {width: 0, height: 2},
   },
   todoListItem: {
-    height: 60,
+    height: 65,
     width: '84%',
-    marginBottom: 20,
+    marginBottom: 25,
     justifyContent: 'center',
     alignItems: 'center',
     alignSelf: 'center',

@@ -5,7 +5,11 @@ import useView from '../hooks/useView';
 import styles from '../styles';
 
 function AddFloatingButton(): JSX.Element {
-  const {onUpdateCameraOn, onUpdateIsAddBtnClicked} = useView();
+  const {
+    onUpdateCameraOn,
+    onUpdateIsAddBtnClicked,
+    onUpdateIsBefore,
+  } = useView();
   const options = {
     enableVibrateFallback: true,
     ignoreAndroidSystemSettings: false,
@@ -24,6 +28,7 @@ function AddFloatingButton(): JSX.Element {
       onLongPress={() => {
         ReactNativeHapticFeedback.trigger(hapticTriggerType, options);
         onUpdateCameraOn(true);
+        onUpdateIsBefore(true);
       }}
       delayLongPress={200}>
       <Image

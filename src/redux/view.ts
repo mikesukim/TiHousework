@@ -5,6 +5,8 @@ const UPDATE_CLICKEDUSERNAME = 'view/UPDATE_CLICKEDUSERNAME' as const;
 const REMOVE_CLICKEDUSERNAME = 'view/REMOVE_CLICKEDUSERNAME' as const;
 const UPDATE_CAMERAON = 'view/UPDATE_CAMERAON' as const;
 const REMOVE_CAMERAON = 'view/REMOVE_CAMERAON' as const;
+const UPDATE_ISBEFORE = 'view/UPDATE_ISBEFORE' as const;
+const REMOVE_ISBEFORE = 'view/REMOVE_ISBEFORE' as const;
 const UPDATE_ISADDBTNCLICKED = 'view/UPDATE_ISADDBTNCLICKED' as const;
 const REMOVE_ISADDBTNCLICKED = 'view/REMOVE_ISADDBTNCLICKED' as const;
 
@@ -35,6 +37,13 @@ export const updateCameraOn = (cameraOn: boolean): actionType => ({
 export const removeCameraOn = (): actionType => ({
   type: REMOVE_CAMERAON,
 });
+export const updateIsBefore = (isBefore: boolean): actionType => ({
+  type: UPDATE_ISBEFORE,
+  payload: isBefore,
+});
+export const removeIsBefore = (): actionType => ({
+  type: REMOVE_ISBEFORE,
+});
 export const updateIsAddBtnClicked = (
   isAddBtnClicked: boolean,
 ): actionType => ({
@@ -53,6 +62,8 @@ type ViewAction =
   | ReturnType<typeof removeClickedUserName>
   | ReturnType<typeof updateCameraOn>
   | ReturnType<typeof removeCameraOn>
+  | ReturnType<typeof updateIsBefore>
+  | ReturnType<typeof removeIsBefore>
   | ReturnType<typeof updateIsAddBtnClicked>
   | ReturnType<typeof removeIsAddBtnClicked>;
 
@@ -60,6 +71,7 @@ type ViewState = {
   clickedUserId: string;
   clickedUserName: string;
   cameraOn: boolean;
+  isBefore: boolean;
   isAddBtnClicked: boolean;
 };
 
@@ -67,6 +79,7 @@ const initialState: ViewState = {
   clickedUserId: '',
   clickedUserName: '',
   cameraOn: false,
+  isBefore: false,
   isAddBtnClicked: false,
 };
 
@@ -84,6 +97,10 @@ function view(state: ViewState = initialState, action: ViewAction): ViewState {
       return {...state, cameraOn: action.payload};
     case REMOVE_CAMERAON:
       return {...state, cameraOn: false};
+    case UPDATE_ISBEFORE:
+      return {...state, isBefore: action.payload};
+    case REMOVE_ISBEFORE:
+      return {...state, isBefore: false};
     case UPDATE_ISADDBTNCLICKED:
       return {...state, isAddBtnClicked: action.payload};
     case REMOVE_ISADDBTNCLICKED:

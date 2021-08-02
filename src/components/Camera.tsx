@@ -6,17 +6,21 @@ import useTodo from '../hooks/useTodo';
 import useView from '../hooks/useView';
 import styles from '../styles';
 
-function Camera(): JSX.Element {
+function Camera({selectedId}): JSX.Element {
   const [imgUri, setImgUri] = useState('');
-  const {onUpdateCameraOn} = useView();
-  const {todoItem, onAddTodoItem} = useTodo();
+  const {isBefore, onUpdateCameraOn} = useView();
+  const {
+    todoItem,
+    onAddTodoItem,
+    onToggleTodoDone,
+    onUpdateAfterImgUri,
+  } = useTodo();
   const camera = useRef();
   const takePicture = async () => {
     if (camera.current) {
       const options = {quality: 0.5, base64: true};
       const data = await camera.current.takePictureAsync(options);
       setImgUri(data.uri);
-      console.log(data.uri);
     }
   };
   const addNewItem = imgUri => {
@@ -35,6 +39,10 @@ function Camera(): JSX.Element {
         afterImgUri: '',
       },
     ]);
+  };
+  const addAfterImg = imgUri => {
+    onUpdateAfterImgUri(selectedId, imgUri);
+    onToggleTodoDone(selectedId);
   };
 
   return (
@@ -59,7 +67,7 @@ function Camera(): JSX.Element {
             <TouchableOpacity
               onPress={() => {
                 onUpdateCameraOn(false);
-                addNewItem(imgUri);
+                isBefore ? addNewItem(imgUri) : addAfterImg(imgUri);
               }}
               style={styles.capture}>
               <Text style={{fontSize: 14}}> DONE </Text>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {FlatList, Image, Platform, Text, TouchableOpacity} from 'react-native';
 import Swipeable from 'react-native-swipeable';
 import ReactNativeHapticFeedback from 'react-native-haptic-feedback';
@@ -14,6 +14,7 @@ function TodoList(): JSX.Element {
   // 리덕스 때문에 불필요하게 리렌더되는 부분 없나?
   const {cameraOn} = useView();
   const {todoItem} = useTodo();
+  const [selectedId, setSelectedId] = useState();
 
   // haptic feedback
   const options = {
@@ -26,7 +27,7 @@ function TodoList(): JSX.Element {
   });
 
   const Item = ({item, index}) => {
-    const {onUpdateCameraOn} = useView();
+    const {onUpdateCameraOn, onUpdateIsBefore} = useView();
     const {onToggleTodoDone} = useTodo();
     const navigation = useNavigation();
     const leftContent = [
@@ -59,7 +60,11 @@ function TodoList(): JSX.Element {
           onRightActionActivate={() => {
             ReactNativeHapticFeedback.trigger(hapticTriggerType, options);
           }}
-          onRightActionComplete={() => onUpdateCameraOn(true)}
+          onRightActionComplete={() => {
+            onUpdateCameraOn(true);
+            onUpdateIsBefore(false);
+            setSelectedId(item.id);
+          }}
           leftContent={leftContent}
           rightContent={rightContent}>
           <TouchableOpacity
@@ -68,7 +73,7 @@ function TodoList(): JSX.Element {
               {backgroundColor: item.done ? 'darkseagreen' : 'white'},
             ]}
             onPress={() => {
-              navigation.navigate('Details', {item: item});
+              navigation.navigate('Details', {item});
             }}>
             <Text style={{fontFamily: 'NotoSerifKR-SemiBold'}}>
               {item.title}
@@ -84,7 +89,7 @@ function TodoList(): JSX.Element {
   };
 
   if (cameraOn) {
-    return <Camera />;
+    return <Camera selectedId={selectedId} />;
   }
   return (
     <>

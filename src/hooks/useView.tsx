@@ -8,6 +8,8 @@ import {
   removeClickedUserName,
   updateCameraOn,
   removeCameraOn,
+  updateIsBefore,
+  removeIsBefore,
   updateIsAddBtnClicked,
   removeIsAddBtnClicked,
 } from '../redux/view.ts';
@@ -16,6 +18,7 @@ interface ViewProps {
   clickedUserId: string;
   clickedUserName: string;
   cameraOn: boolean;
+  isBefore: boolean;
   isAddBtnClicked: boolean;
   onUpdateClickedUserId: (clickedUserId: string) => void;
   onRemoveClickedUserId: () => void;
@@ -23,6 +26,8 @@ interface ViewProps {
   onRemoveClickedUserName: () => void;
   onUpdateCameraOn: (cameraOn: boolean) => void;
   onRemoveCameraOn: () => void;
+  onUpdateIsBefore: (isBefore: boolean) => void;
+  onRemoveIsBefore: () => void;
   onUpdateIsAddBtnClicked: (isAddBtnClicked: boolean) => void;
   onRemoveIsAddBtnClicked: () => void;
 }
@@ -35,6 +40,7 @@ export default function useView(): ViewProps {
     (state: RootState) => state.view.clickedUserName,
   );
   const cameraOn = useSelector((state: RootState) => state.view.cameraOn);
+  const isBefore = useSelector((state: RootState) => state.view.isBefore);
   const isAddBtnClicked = useSelector(
     (state: RootState) => state.view.isAddBtnClicked,
   );
@@ -65,6 +71,13 @@ export default function useView(): ViewProps {
   const onRemoveCameraOn = useCallback(() => dispatch(removeCameraOn()), [
     dispatch,
   ]);
+  const onUpdateIsBefore = useCallback(
+    (isBefore: boolean) => dispatch(updateIsBefore(isBefore)),
+    [dispatch],
+  );
+  const onRemoveIsBefore = useCallback(() => dispatch(removeIsBefore()), [
+    dispatch,
+  ]);
   const onUpdateIsAddBtnClicked = useCallback(
     (isAddBtnClicked: boolean) =>
       dispatch(updateIsAddBtnClicked(isAddBtnClicked)),
@@ -79,6 +92,7 @@ export default function useView(): ViewProps {
     clickedUserId,
     clickedUserName,
     cameraOn,
+    isBefore,
     isAddBtnClicked,
     onUpdateClickedUserId,
     onRemoveClickedUserId,
@@ -86,6 +100,8 @@ export default function useView(): ViewProps {
     onRemoveClickedUserName,
     onUpdateCameraOn,
     onRemoveCameraOn,
+    onUpdateIsBefore,
+    onRemoveIsBefore,
     onUpdateIsAddBtnClicked,
     onRemoveIsAddBtnClicked,
   };
