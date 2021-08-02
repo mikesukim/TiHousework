@@ -80,12 +80,6 @@ function TodoList(): JSX.Element {
               {item.title}
             </Text>
           </TouchableOpacity>
-          <Button
-            title="삭제"
-            onPress={() => {
-              onRemoveTodoItem(item.id);
-            }}
-          />
         </Swipeable>
       </>
     );

@@ -1,12 +1,14 @@
 import {useNavigation} from '@react-navigation/native';
 import React from 'react';
-import {Image, Text, TouchableOpacity, View} from 'react-native';
+import {Button, Image, Text, TouchableOpacity, View} from 'react-native';
 import SafeAreaView from 'react-native-safe-area-view';
 import Icon from 'react-native-vector-icons/Ionicons';
+import useTodo from '../hooks/useTodo';
 import styles from '../styles';
 
 function TodoDetailsScreen({route}): JSX.Element {
   const navigation = useNavigation();
+  const {onRemoveTodoItem} = useTodo();
   const {item} = route.params;
   return (
     <SafeAreaView style={styles.safeAreaView} forceInset={{top: 'always'}}>
@@ -83,6 +85,13 @@ function TodoDetailsScreen({route}): JSX.Element {
           />
         </View>
       </View>
+      <Button
+        title="삭제"
+        onPress={() => {
+          onRemoveTodoItem(item.id);
+          navigation.goBack();
+        }}
+      />
     </SafeAreaView>
   );
 }
