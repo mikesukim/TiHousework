@@ -10,7 +10,14 @@ interface actionType {
 }
 
 export const addTodoItem = (
-  todoItem: Array<{id: number; title: string; name: string; done: boolean}>,
+  todoItem: Array<{
+    id: number;
+    title: string;
+    name: string;
+    done: boolean;
+    beforeImgUri: string;
+    afterImgUri: string;
+  }>,
 ): actionType => ({
   type: ADD_TODOITEM,
   payload: todoItem,
@@ -31,11 +38,27 @@ type TodoAction =
   | ReturnType<typeof toggleTodoDone>;
 
 type TodoState = {
-  todoItem: Array<{id: number; title: string; name: string; done: boolean}>;
+  todoItem: Array<{
+    id: number;
+    title: string;
+    name: string;
+    done: boolean;
+    beforeImgUri: string;
+    afterImgUri: string;
+  }>;
 };
 
 const initialState: TodoState = {
-  todoItem: [{id: 0, title: '설거지 하기', name: '지윤', done: false}],
+  todoItem: [
+    {
+      id: 0,
+      title: '설거지 하기',
+      name: '지윤',
+      done: false,
+      beforeImgUri: '',
+      afterImgUri: '',
+    },
+  ],
 };
 
 function todo(state: TodoState = initialState, action: TodoAction): TodoState {

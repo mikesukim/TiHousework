@@ -5,7 +5,6 @@ import {getStatusBarHeight} from 'react-native-status-bar-height';
 import MemberListView from '../components/MemberListView';
 import ClickedMemberTodoView from '../components/ClickedMemberTodoView';
 import styles from '../styles';
-import AddTodoModal from '../components/AddTodoModal';
 import useView from '../hooks/useView';
 
 function TodoHomeScreen(): JSX.Element {
@@ -39,7 +38,6 @@ function TodoHomeScreen(): JSX.Element {
             ]
           : null}
         <MemberListView />
-        <AddTodoModal />
         <ClickedMemberTodoView />
       </SafeAreaView>
     </>

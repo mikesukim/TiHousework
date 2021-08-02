@@ -22,6 +22,8 @@ function AddTodoModal(): JSX.Element {
         title: text,
         name: '지윤',
         done: false,
+        beforeImgUri: '',
+        afterImgUri: '',
       },
     ]);
   };

@@ -68,7 +68,11 @@ function TodoDetailsScreen({route}): JSX.Element {
             alignItems: 'center',
           }}>
           <Image
-            source={require('../img/before.jpg')}
+            source={
+              item.beforeImgUri
+                ? {uri: item.beforeImgUri}
+                : require('../img/before.jpg')
+            }
             style={{width: '100%', height: '100%', borderRadius: 5}}
           />
         </View>
@@ -80,7 +84,11 @@ function TodoDetailsScreen({route}): JSX.Element {
             alignItems: 'center',
           }}>
           <Image
-            source={require('../img/after.jpg')}
+            source={
+              item.afterImgUri
+                ? {uri: item.afterImgUri}
+                : require('../img/after.jpg')
+            }
             style={{width: '100%', height: '100%', borderRadius: 5}}
           />
         </View>

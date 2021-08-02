@@ -4,9 +4,23 @@ import {RootState} from '../redux';
 import {addTodoItem, removeTodoItem, toggleTodoDone} from '../redux/todo.ts';
 
 interface TodoProps {
-  todoItem: Array<{id: number; title: string; name: string; done: boolean}>;
+  todoItem: Array<{
+    id: number;
+    title: string;
+    name: string;
+    done: boolean;
+    beforeImgUri: string;
+    afterImgUri: string;
+  }>;
   onAddTodoItem: (
-    todoItem: Array<{id: number; title: string; name: string; done: boolean}>,
+    todoItem: Array<{
+      id: number;
+      title: string;
+      name: string;
+      done: boolean;
+      beforeImgUri: string;
+      afterImgUri: string;
+    }>,
   ) => void;
   onRemoveTodoItem: (id: number) => void;
   onToggleTodoDone: (id: number) => void;
@@ -19,7 +33,14 @@ export default function useTodo(): TodoProps {
 
   const onAddTodoItem = useCallback(
     (
-      todoItem: Array<{id: number; title: string; name: string; done: boolean}>,
+      todoItem: Array<{
+        id: number;
+        title: string;
+        name: string;
+        done: boolean;
+        beforeImgUri: string;
+        afterImgUri: string;
+      }>,
     ) => dispatch(addTodoItem(todoItem)),
     [dispatch],
   );

@@ -8,6 +8,7 @@ import Camera from './Camera';
 import styles from '../styles';
 import useView from '../hooks/useView';
 import useTodo from '../hooks/useTodo';
+import AddTodoModal from './AddTodoModal';
 
 function TodoList(): JSX.Element {
   // 리덕스 때문에 불필요하게 리렌더되는 부분 없나?
@@ -97,6 +98,7 @@ function TodoList(): JSX.Element {
         // extraData={selectedId}
       />
       <AddFloatingButton />
+      <AddTodoModal />
     </>
   );
 }

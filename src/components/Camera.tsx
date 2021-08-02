@@ -31,6 +31,8 @@ function Camera(): JSX.Element {
         title: title,
         name: '지윤',
         done: false,
+        beforeImgUri: imgUri,
+        afterImgUri: '',
       },
     ]);
   };
