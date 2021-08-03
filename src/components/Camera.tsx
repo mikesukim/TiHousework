@@ -117,9 +117,12 @@ function Camera({selectedId}): JSX.Element {
             <TouchableOpacity
               onPress={() => setFlashOn(prevState => !prevState)}
               style={{
+                width: 50,
+                height: 50,
+                justifyContent: 'center',
+                alignItems: 'center',
                 position: 'absolute',
-                left: 30,
-                backgroundColor: '#fff',
+                left: 20,
                 borderRadius: 20,
                 alignSelf: 'center',
               }}>
@@ -133,9 +136,12 @@ function Camera({selectedId}): JSX.Element {
             <TouchableOpacity
               onPress={() => onUpdateCameraOn(false)}
               style={{
+                width: 50,
+                height: 50,
+                justifyContent: 'center',
+                alignItems: 'center',
                 position: 'absolute',
-                right: 30,
-                backgroundColor: '#fff',
+                right: 20,
                 borderRadius: 20,
                 alignSelf: 'center',
               }}>
