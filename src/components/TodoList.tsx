@@ -50,7 +50,7 @@ function TodoList(): JSX.Element {
       <>
         <Swipeable
           leftActionActivationDistance={50}
-          rightActionActivationDistance={100}
+          rightActionActivationDistance={50}
           onLeftActionActivate={() => {
             ReactNativeHapticFeedback.trigger(hapticTriggerType, options);
           }}
