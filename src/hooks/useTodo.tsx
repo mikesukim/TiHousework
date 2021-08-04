@@ -5,6 +5,7 @@ import {
   addTodoItem,
   removeTodoItem,
   toggleTodoDone,
+  updateTitle,
   updateAfterImgUri,
   removeAfterImgUri,
 } from '../redux/todo.ts';
@@ -30,6 +31,7 @@ interface TodoProps {
   ) => void;
   onRemoveTodoItem: (id: number) => void;
   onToggleTodoDone: (id: number) => void;
+  onUpdateTitle: (id: number, title: string) => void;
   onUpdateAfterImgUri: (id: number, afterImgUri: string) => void;
   onRemoveAfterImgUri: (id: number, afterImgUri: string) => void;
 }
@@ -60,6 +62,10 @@ export default function useTodo(): TodoProps {
     (id: number) => dispatch(toggleTodoDone(id)),
     [dispatch],
   );
+  const onUpdateTitle = useCallback(
+    (id: number, title: string) => dispatch(updateTitle(id, title)),
+    [dispatch],
+  );
   const onUpdateAfterImgUri = useCallback(
     (id: number, afterImgUri: string) =>
       dispatch(updateAfterImgUri(id, afterImgUri)),
@@ -76,6 +82,7 @@ export default function useTodo(): TodoProps {
     onAddTodoItem,
     onRemoveTodoItem,
     onToggleTodoDone,
+    onUpdateTitle,
     onUpdateAfterImgUri,
     onRemoveAfterImgUri,
   };

@@ -84,13 +84,13 @@ const styles = StyleSheet.create({
   threedotsModal: {
     height: 100,
     width: '35%',
-    backgroundColor: 'white',
     position: 'absolute',
     top: statusHeight + 60,
     right: 15,
   },
   threedotsModalItem: {
     flex: 1,
+    backgroundColor: 'white',
     justifyContent: 'center',
     alignItems: 'center',
     width: '100%',

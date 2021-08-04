@@ -69,8 +69,8 @@ function TodoDetailsScreen({route}): JSX.Element {
         </Text>
       </View>
       <ThreedotsModal
-        state={isDotsClicked}
-        setState={setIsDotsClicked}
+        isDotsClicked={isDotsClicked}
+        setIsDotsClicked={setIsDotsClicked}
         item={item}
       />
     </SafeAreaView>

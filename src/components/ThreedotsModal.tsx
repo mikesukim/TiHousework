@@ -1,52 +1,52 @@
 import {useNavigation} from '@react-navigation/native';
-import React from 'react';
+import React, {useState} from 'react';
 import {Modal, Text, TouchableOpacity, View} from 'react-native';
 import useTodo from '../hooks/useTodo';
+import useView from '../hooks/useView';
 import styles from '../styles';
+import AddTodoModal from './AddTodoModal';
 
-function ThreedotsModal({state, setState, item}): JSX.Element {
+function ThreedotsModal({isDotsClicked, setIsDotsClicked, item}): JSX.Element {
   const navigation = useNavigation();
-  const {todoItem, onAddTodoItem, onRemoveTodoItem} = useTodo();
-  const addNewItem = text => {
-    let id = 0;
-    if (todoItem.length !== 0) {
-      id = Math.max(...todoItem.map(item => item.id)) + 1;
-    }
-    onAddTodoItem([
-      {
-        id,
-        title: text,
-        name: '지윤',
-        done: false,
-        beforeImgUri: '',
-        afterImgUri: '',
-      },
-    ]);
-  };
+  const {onRemoveTodoItem} = useTodo();
+  const {onUpdateIsAddBtnClicked} = useView();
+  const [isUpdatingTitle, setIsUpdatingTitle] = useState(false);
+  const [isClicked, setIsClicked] = useState(false);
+
   return (
-    <Modal animationType="none" transparent visible={state}>
-      <TouchableOpacity
-        style={styles.entireScreen}
-        onPressOut={() => {
-          setState(false);
-        }}>
-        <View style={[styles.todoListItem, styles.threedotsModal]}>
-          <TouchableOpacity style={styles.threedotsModalItem}>
-            <Text style={{fontFamily: 'NotoSerifKR-Regular'}}>수정하기</Text>
-          </TouchableOpacity>
-          <View style={styles.horizontalLine} />
-          <TouchableOpacity
-            style={styles.threedotsModalItem}
-            onPress={() => {
-              setState(false);
-              onRemoveTodoItem(item.id);
-              navigation.navigate('Home');
-            }}>
-            <Text style={{fontFamily: 'NotoSerifKR-Regular'}}>삭제하기</Text>
-          </TouchableOpacity>
-        </View>
-      </TouchableOpacity>
-    </Modal>
+    <>
+      <Modal animationType="none" transparent visible={isDotsClicked}>
+        <TouchableOpacity
+          style={styles.entireScreen}
+          onPressOut={() => {
+            setIsDotsClicked(false);
+          }}>
+          <View style={[styles.todoListItem, styles.threedotsModal]}>
+            <TouchableOpacity
+              style={styles.threedotsModalItem}
+              onPress={() => {
+                setIsDotsClicked(false);
+                onUpdateIsAddBtnClicked(true);
+                setIsUpdatingTitle(true);
+              }}>
+              <Text style={{fontFamily: 'NotoSerifKR-Regular'}}>수정하기</Text>
+            </TouchableOpacity>
+            <View style={styles.horizontalLine} />
+            <TouchableOpacity
+              style={styles.threedotsModalItem}
+              onPress={() => {
+                setIsClicked(true);
+                setIsDotsClicked(false);
+                onRemoveTodoItem(item.id);
+                navigation.navigate('Home');
+              }}>
+              <Text style={{fontFamily: 'NotoSerifKR-Regular'}}>삭제하기</Text>
+            </TouchableOpacity>
+          </View>
+        </TouchableOpacity>
+      </Modal>
+      <AddTodoModal isUpdatingTitle={isUpdatingTitle} item={item} />
+    </>
   );
 }
 

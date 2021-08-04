@@ -2,6 +2,7 @@
 const ADD_TODOITEM = 'todo/ADD_TODOITEM' as const;
 const REMOVE_TODOITEM = 'todo/REMOVE_TODOITEM' as const;
 const TOGGLE_TODODONE = 'todo/TOGGLE_TODODONE' as const;
+const UPDATE_TITLE = 'todo/UPDATE_TITLE' as const;
 const UPDATE_AFTERIMGURI = 'todo/UPDATE_AFTERIMGURI' as const;
 const REMOVE_AFTERIMGURI = 'todo/REMOVE_AFTERIMGURI' as const;
 
@@ -32,6 +33,10 @@ export const toggleTodoDone = (id: number): actionType => ({
   type: TOGGLE_TODODONE,
   payload: id,
 });
+export const updateTitle = (id: number, title: string): actionType => ({
+  type: UPDATE_TITLE,
+  payload: {id, title},
+});
 export const updateAfterImgUri = (
   id: number,
   afterImgUri: string,
@@ -52,6 +57,7 @@ type TodoAction =
   | ReturnType<typeof addTodoItem>
   | ReturnType<typeof removeTodoItem>
   | ReturnType<typeof toggleTodoDone>
+  | ReturnType<typeof updateTitle>
   | ReturnType<typeof updateAfterImgUri>
   | ReturnType<typeof removeAfterImgUri>;
 
@@ -93,6 +99,15 @@ function todo(state: TodoState = initialState, action: TodoAction): TodoState {
         ...state,
         todoItem: state.todoItem.map(item =>
           item.id === action.payload ? {...item, done: !item.done} : item,
+        ),
+      };
+    case UPDATE_TITLE:
+      return {
+        ...state,
+        todoItem: state.todoItem.map(item =>
+          item.id === action.payload.id
+            ? {...item, title: action.payload.title}
+            : item,
         ),
       };
     case UPDATE_AFTERIMGURI:
