@@ -30,14 +30,8 @@ function AddTodoModal(): JSX.Element {
   return (
     <Modal animationType="slide" transparent visible={isAddBtnClicked}>
       <TouchableOpacity
-        style={{
-          position: 'absolute',
-          top: 0,
-          bottom: 0,
-          left: 0,
-          right: 0,
-        }}
-        onPressIn={() => {
+        style={styles.entireScreen}
+        onPressOut={() => {
           onUpdateIsAddBtnClicked(false);
         }}>
         <KeyboardAvoidingView

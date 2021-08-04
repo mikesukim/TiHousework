@@ -1,4 +1,16 @@
+import {StatusBar, Platform} from 'react-native';
 import {StyleSheet} from 'react-native';
+import {getStatusBarHeight} from 'react-native-status-bar-height';
+
+let statusHeight = 0;
+const androidStatusBarHeight = StatusBar.currentHeight;
+const iosStatusBarHeight = getStatusBarHeight();
+if (Platform.OS === 'ios') {
+  statusHeight = iosStatusBarHeight;
+}
+if (Platform.OS === 'android') {
+  statusHeight = androidStatusBarHeight;
+}
 
 const styles = StyleSheet.create({
   safeAreaView: {
@@ -34,6 +46,59 @@ const styles = StyleSheet.create({
     shadowRadius: 3,
     shadowOpacity: 0.2,
     shadowOffset: {width: 2, height: 4},
+  },
+  detailScreenTopBar: {
+    height: 60,
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+  },
+  detailScreenSmallBtn: {
+    flex: 3,
+    height: 60,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  detailScreenTitle: {
+    flex: 14,
+    height: 60,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  detailScreenImgViewWrapper: {
+    height: '40%',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    padding: 20,
+  },
+  detailScreenImgView: {
+    flex: 1,
+    margin: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  detailScreenImg: {
+    width: '100%',
+    height: '100%',
+    borderRadius: 5,
+  },
+  threedotsModal: {
+    height: 100,
+    width: '35%',
+    backgroundColor: 'white',
+    position: 'absolute',
+    top: statusHeight + 60,
+    right: 15,
+  },
+  threedotsModalItem: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '100%',
+  },
+  horizontalLine: {
+    height: 0.5,
+    backgroundColor: '#484848',
+    width: '100%',
   },
   addTodoModal: keyboardHeight => ({
     backgroundColor: 'white',
@@ -77,7 +142,7 @@ const styles = StyleSheet.create({
     right: 0,
     zIndex: 5,
   },
-  greyOutMemberList: statusHeight => ({
+  greyOutMemberList: {
     backgroundColor: 'rgba(0, 0, 0, 0.5)',
     position: 'absolute',
     top: 0,
@@ -85,7 +150,7 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     zIndex: 5,
-  }),
+  },
   memberListViewWrapper: {
     height: 90,
     borderBottomWidth: 1,
@@ -126,6 +191,13 @@ const styles = StyleSheet.create({
     zIndex: 1,
     borderWidth: 3,
     borderColor: 'red',
+  },
+  entireScreen: {
+    position: 'absolute',
+    top: 0,
+    bottom: 0,
+    left: 0,
+    right: 0,
   },
 });
 

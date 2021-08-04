@@ -3,12 +3,14 @@ import {FlatList, Image, Platform, Text, TouchableOpacity} from 'react-native';
 import Swipeable from 'react-native-swipeable';
 import ReactNativeHapticFeedback from 'react-native-haptic-feedback';
 import {useNavigation} from '@react-navigation/native';
+import ConfettiCannon from 'react-native-confetti-cannon';
 import AddFloatingButton from './AddFloatingButton';
 import Camera from './Camera';
 import styles from '../styles';
 import useView from '../hooks/useView';
 import useTodo from '../hooks/useTodo';
 import AddTodoModal from './AddTodoModal';
+import LottieComp from './LottieComp';
 
 function TodoList(): JSX.Element {
   // 리덕스 때문에 불필요하게 리렌더되는 부분 없나?
@@ -56,6 +58,7 @@ function TodoList(): JSX.Element {
           }}
           onLeftActionComplete={() => {
             onToggleTodoDone(item.id);
+            setSelectedId(item.id);
           }}
           onRightActionActivate={() => {
             ReactNativeHapticFeedback.trigger(hapticTriggerType, options);
@@ -104,6 +107,8 @@ function TodoList(): JSX.Element {
       />
       <AddFloatingButton />
       <AddTodoModal />
+      {/* <LottieComp selectedId={selectedId} /> */}
+      {/* <ConfettiCannon count={40} origin={{x: -10, y: 0}} /> */}
     </>
   );
 }
