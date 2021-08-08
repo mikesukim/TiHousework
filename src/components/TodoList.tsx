@@ -103,7 +103,7 @@ function TodoList(): JSX.Element {
         data={todoItem}
         renderItem={renderItem}
         // keyExtractor={item => item.id}
-        // extraData={selectedId}
+        extraData={selectedId}
       />
       <AddFloatingButton />
       <AddTodoModal />

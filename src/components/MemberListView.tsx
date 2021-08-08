@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {FlatList, TouchableOpacity, View} from 'react-native';
 import useView from '../hooks/useView';
 import styles from '../styles';
@@ -40,18 +40,20 @@ function MemberListView(): JSX.Element {
     },
   ];
   const Item = ({item, src}) => {
-    const {onUpdateClickedUserId, onUpdateClickedUserName} = useView();
+    const {clickedUserId, onUpdateClickedUserId} = useView();
 
     return (
       <>
         <TouchableOpacity
           onPress={() => {
             onUpdateClickedUserId(item.id);
-            onUpdateClickedUserName(item.name);
           }}
           style={styles.memberListItem}>
-          <MemberListImg src={src} />
-          <ClickedMemberHighlight item={item} />
+          <MemberListImg src={src} item={item} />
+          {/* <ClickedMemberHighlight item={item} /> */}
+          {/* {item.id !== clickedUserId ? (
+            <View style={styles.unclickedMemberList} />
+          ) : null} */}
         </TouchableOpacity>
       </>
     );

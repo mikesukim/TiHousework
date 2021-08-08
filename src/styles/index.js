@@ -152,7 +152,7 @@ const styles = StyleSheet.create({
     zIndex: 5,
   },
   memberListViewWrapper: {
-    height: 90,
+    height: 78,
     borderBottomWidth: 1,
     borderColor: '#484848',
     shadowColor: '#484848',
@@ -165,14 +165,12 @@ const styles = StyleSheet.create({
     zIndex: 2,
   },
   memberListView: {
-    height: 90,
+    height: 78,
     flexGrow: 0,
   },
   memberListItem: {
-    height: 72,
-    width: 72,
-    marginLeft: 10,
-    borderRadius: 40,
+    height: 78,
+    width: 78,
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -180,7 +178,7 @@ const styles = StyleSheet.create({
     width: 60,
     height: 60,
     borderRadius: 40,
-    zIndex: 2,
+    // zIndex: 2,
   },
   highlight: {
     backgroundColor: '#EBE9E0',
@@ -191,6 +189,13 @@ const styles = StyleSheet.create({
     zIndex: 1,
     borderWidth: 3,
     borderColor: 'red',
+  },
+  unclickedMemberList: {
+    height: 78,
+    width: 78,
+    backgroundColor: '#EBE9E0',
+    opacity: 0.5,
+    position: 'absolute',
   },
   entireScreen: {
     position: 'absolute',
